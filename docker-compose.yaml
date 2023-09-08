@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+  php-fpm:
+    container_name: blog_php
+    build:
+      args:
+        user: ivan
+        uid: 1000
+      context: ./
+      dockerfile: .docker/php-fpm/Dockerfile
+    volumes:
+      - ./:/var/www
+  node-app:
+    container_name: blog_laravel_node
+    user: node
+    build:
+      context: ./
+      dockerfile: .docker/node/Dockerfile
+    volumes:
+      - ./:/home/node/app
+    working_dir: /home/node/app
+    ports:
+      - "3010:3000"
+      - "3011:3001"
+    tty: true
+  nginx:
+    container_name: blog_laravel_nginx
+    build: ./.docker/nginx
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8090:80"
+    links:
+      - php-fpm
+  mysql:
+    image: mysql:8.0.34
+    container_name: blog_mysql
+    platform: linux/x86_64
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - mysql_data:/var/lib/mysql/
+      - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - "3316:3306"
+volumes:
+  mysql_data:
+    driver: local
