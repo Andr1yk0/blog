@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         $jsCategory = Category::factory()->create(['title' => 'JavaScript']);
         $htmlCategory = Category::factory()->create(['title' => 'HTML']);
         $laravelCategory = Category::factory()->create(['title' => 'Laravel']);
-
+        $mysqlCategory = Category::factory()->create(['title' => 'MySQL']);
+        $gitCategory = Category::factory()->create(['title' => 'Git']);
+        $linuxCategory = Category::factory()->create(['title' => 'Linux']);
+        $dockerCategory = Category::factory()->create(['title' => 'Docker']);
         $laravelTestingTag = Tag::factory()->create(['title' => 'Testing', 'category_id' => $laravelCategory->id]);
         $laravelStorageTag = Tag::factory()->create(['title' => 'Storage', 'category_id' => $laravelCategory->id]);
 
