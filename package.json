@@ -22,6 +22,7 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "@toast-ui/editor": "^3.2.2",
         "bootstrap-icons": "^1.11.0"
     }
 }

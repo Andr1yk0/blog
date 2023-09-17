@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('title')->unique();
-            $table->text('body');
+            $table->text('body_markdown');
+            $table->text('body_html');
             $table->timestamp('published_at')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->timestamps();

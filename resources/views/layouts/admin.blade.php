@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -64,5 +63,10 @@
         </main>
     </div>
 </div>
+<script>
+    window.validationErrors = @json($errors->toArray());
+</script>
+<script src="{{ mix('js/app.js') }}"></script>
+@stack('scripts')
 </body>
 </html>

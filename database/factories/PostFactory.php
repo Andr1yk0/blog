@@ -22,7 +22,8 @@ class PostFactory extends Factory
             'slug' => function(array $attributes) {
                 return  Str::slug($attributes['title']);
             },
-            'body' => fake()->paragraphs(3, true),
+            'body_markdown' => fake()->text(),
+            'body_html' => fake()->randomHtml(),
             'category_id' => function() {
                 return Category::factory()->create()->id;
             }
