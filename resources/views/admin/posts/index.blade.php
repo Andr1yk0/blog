@@ -10,8 +10,8 @@
             <th>Id</th>
             <th>Title</th>
             <th>Slug</th>
+            <th>Tags</th>
             <th>Published</th>
-            <th>Category</th>
             <th>Created</th>
             <th>Updated</th>
             <th>Actions</th>
@@ -22,12 +22,12 @@
                     <td>{{$post->id}}</td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->slug}}</td>
+                    <td>{{$post->tags->pluck('title')->join(', ')}}</td>
                     <td>{{$post->published_at}}</td>
-                    <td>{{$post->category->title}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->updated_at}}</td>
                     <td>
-                        <a class="btn btn-primary btn-sm"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="{{route('admin.posts.edit', [$post->id])}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-fill"></i></a>
                         <a class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>

@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('slug');
             $table->string('title');
-            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }

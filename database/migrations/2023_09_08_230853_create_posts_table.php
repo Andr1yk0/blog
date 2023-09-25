@@ -15,7 +15,6 @@ return new class extends Migration
             $table->text('body_markdown');
             $table->text('body_html');
             $table->timestamp('published_at')->nullable();
-            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }

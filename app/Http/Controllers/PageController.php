@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,7 +26,8 @@ class PageController extends Controller
             'SEOData' => new SEOData(
                 title: 'Posts',
                 description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
-            )
+            ),
+            'tags' => Tag::withCount('posts')->get(),
         ]);
     }
 

@@ -24,9 +24,6 @@ class PostFactory extends Factory
             },
             'body_markdown' => fake()->text(),
             'body_html' => fake()->randomHtml(),
-            'category_id' => function() {
-                return Category::factory()->create()->id;
-            }
         ];
     }
 }
