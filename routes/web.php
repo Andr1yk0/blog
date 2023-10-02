@@ -4,7 +4,10 @@ use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\TestsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'about'])->name('about');
-Route::get('/posts', [PageController::class, 'posts'])->name('posts');
+Route::get('/', [AboutController::class, 'about'])->name('about');
+Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+Route::get('/tests', [TestsController::class, 'index'])->name('tests.index');
+Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 
 Auth::routes();
 
