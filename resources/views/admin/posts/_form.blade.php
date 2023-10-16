@@ -3,40 +3,63 @@
     @if(isset($post))
         @method('PUT')
     @endif
-    <div class="col-12 mb-3">
-        <label class="form-label">Title</label>
-        <input required type="text" class="form-control" name="title" value="{{ $post->title ?? old('title') }}">
-        <div class="invalid-feedback">
-            Please provide a valid title.
+    <div class="mb-2">
+        <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+        <div class="mt-2">
+            <input
+                type="text"
+                name="title"
+                value="{{ $post->title ?? old('title') }}"
+                id="title"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
         </div>
     </div>
-    <div class="col-12 mb-3">
-        <label class="form-label">Slug</label>
-        <div class="input-group">
-            <input type="text" class="form-control" name="slug" value="{{ $post->slug ?? old('slug') }}">
-            <button class="btn btn-outline-secondary" type="button" id="generateSlugBtn">Generate</button>
+    <div class="mb-2">
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Slug</label>
+        <div class="mt-2 flex rounded-md shadow-sm">
+            <div class="relative flex flex-grow items-stretch focus-within:z-10">
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    value="{{$post->slug ?? old('slug')}}"
+                    class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                >
+            </div>
+            <button type="button"
+                    id="generateSlugBtn"
+                    class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            >
+                Generate
+            </button>
         </div>
     </div>
-    <div class="col-12 mb-3">
-        <label class="form-label">Body</label>
+    <div class="mb-2">
+        <label>Body</label>
         <div id="editor"></div>
         <input type="hidden" name="body_html">
         <input type="hidden" name="body_markdown" value="{{ $post->body_markdown ?? old('body_markdown') }}">
     </div>
-    <div class="col-lg-6">
-        <label class="form-label">Published</label>
-        <input type="datetime-local" class="form-control" name="published_at" value="{{ $post->published_at ?? old('published_at') }}">
+    <div class="mb-2">
+        <label for="publishedAt" class="block text-sm font-medium leading-6 text-gray-900">Published at</label>
+        <div class="mt-2">
+            <input
+                type="datetime-local"
+                name="published_at"
+                value="{{ $post->published_at ?? old('published_at') }}"
+                id="publishedAt"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+        </div>
     </div>
-    <div class="col-lg-6">
-        <label class="form-label">Tags</label>
-        <select class="form-select" name="tags[]" multiple>
-            @foreach($tags as $tag)
-                <option value="{{$tag->id}}" {{isset($post) && $post->tags->contains($tag->id) ? 'selected' : ''}}>{{$tag->title}}</option>
-            @endforeach
-        </select>
+    <div class="mb-2">
+        <x-tag-select :selected-tags="$post->tags"/>
     </div>
-    <div class="col-12 mt-3 text-center">
-        <button type="submit" class="btn btn-primary">Save</button>
+    <div class="text-center">
+        <button type="submit" class="rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>
 </form>
 @push('scripts')

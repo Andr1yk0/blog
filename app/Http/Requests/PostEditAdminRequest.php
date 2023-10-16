@@ -19,7 +19,7 @@ class PostEditAdminRequest extends FormRequest
             'body_markdown' => ['required', 'string'],
             'body_html' => ['required', 'string'],
             'published_at' => ['nullable', 'date'],
-            'tags' => ['required', 'array'],
+            'tags' => ['required', 'string'],
         ];
 
         $rules['title'][] = 'unique:posts,title' . ($this->post ? ',' . $this->post->id : '');
