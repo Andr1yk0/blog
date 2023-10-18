@@ -1,7 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/admin/edit-post-form.js": "/js/admin/edit-post-form.js",
-    "/js/admin/tag-select.js": "/js/admin/tag-select.js",
     "/css/admin.css": "/css/admin.css",
     "/css/app.css": "/css/app.css"
 }
