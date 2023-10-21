@@ -1,32 +1,6 @@
-<div x-data="{
-    tags: {{ $tags }},
-    search: '',
-    selectedTags: {{ $selectedTags }},
-    showOptions: false,
-    get filteredTags(){
-        if(this.search === ''){
-            return this.availableTags;
-        }
-        return this.availableTags.filter(tag => tag.title.toLowerCase().includes(this.search.toLowerCase()));
-    },
-    get availableTags(){
-        return this.tags.filter(tag => !this.selectedTags.some(selectedTag => selectedTag.id === tag.id));
-    },
-    get selectedTagsIds(){
-        return this.selectedTags.map(tag => tag.id).join(',');
-    },
-    selectTagHandler(tag){
-        if(this.selectedTags.some(selectedTag => selectedTag.id === tag.id)){
-            this.selectedTags = this.selectedTags.filter(selectedTag => selectedTag.id !== tag.id);
-        }else{
-            this.selectedTags.push(tag);
-        }
-        this.search = '';
-        this.showOptions = false;
-    }
-}">
-    <label for="tagSearch" class="block text-sm font-medium leading-6 text-gray-900">Tags</label>
-    <input type="hidden" name="tags" x-model="selectedTagsIds">
+<div x-data="tagSelect({{$tags}}, {{$selectedTags}}, '{{$inputName}}', '{{$label}}')">
+    <label :for="$id('tagSearch')" x-text="label" class="block text-sm font-medium leading-6 text-gray-900"></label>
+    <input type="hidden" :name="inputName" x-model="selectedTagsIds">
     <div class="inline-flex gap-x-1" x-show="selectedTags.length">
         <template x-for="tag in selectedTags">
             <span
@@ -46,7 +20,7 @@
     </div>
     <div class="relative mt-2" @click.outside="showOptions = false">
         <input
-            id="tagSearch"
+            :id="$id('tagSearch')"
             type="text"
             x-model="search"
             class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -71,7 +45,7 @@
         >
             <template x-for="tag in filteredTags">
                 <li class="relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white"
-                    id="option-0"
+                    :id="$id('option')"
                     role="option"
                     tabindex="-1"
                     @click="selectTagHandler(tag)"
@@ -97,8 +71,6 @@
         </ul>
     </div>
 </div>
-
-
 @push('scripts')
-    <script src="{{asset('js/admin/tag-select.js')}}"></script>
+    <script src="{{ asset('js/components/tag-select.js') }}"></script>
 @endpush

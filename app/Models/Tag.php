@@ -19,4 +19,14 @@ class Tag extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+
+    public function subTags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'sub_tags', 'tag_id', 'sub_tag_id');
+    }
+
+    public function mainTags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'sub_tags', 'sub_tag_id', 'tag_id');
+    }
 }

@@ -19,6 +19,14 @@
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Slug</label>
         <x-slug-input :slug="$tag->slug ?? old('slug', '')"/>
     </div>
+    <div class="mb-2">
+        <label class="block text-sm font-medium leading-6 text-gray-900"></label>
+        <x-tag-select
+            :selectedTags="$tag->subTags ?? new \Illuminate\Database\Eloquent\Collection([])"
+            :label="'Sub tags'"
+            :inputName="'sub_tags'"
+        />
+    </div>
     <div class="text-center">
         <button type="submit" class="rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>

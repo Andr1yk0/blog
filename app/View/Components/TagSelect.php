@@ -12,6 +12,8 @@ class TagSelect extends Component
 {
     public function __construct(
         public Collection $selectedTags,
+        public string $inputName = 'tags',
+        public string $label = 'Tags',
     ){}
 
     public function render(): View|Closure|string

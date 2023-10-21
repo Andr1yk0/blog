@@ -32,10 +32,12 @@ class TagAdminController extends Controller
     {
         $data = request()->validate([
             'title' => 'required',
-            'slug' => 'required|unique:tags'
+            'slug' => 'required|unique:tags',
+            'sub_tags' => 'string',
         ]);
 
-        Tag::create($data);
+        $tag = Tag::create($data);
+        $tag->subTags()->sync(explode(',', $data['sub_tags']));
 
         return redirect()->route('admin.tags.index')->with('success', 'Tag created successfully');
     }
@@ -50,10 +52,12 @@ class TagAdminController extends Controller
     {
         $data = request()->validate([
             'title' => 'required',
-            'slug' => 'required|unique:tags,slug,' . $tag->id
+            'slug' => 'required|unique:tags,slug,' . $tag->id,
+            'sub_tags' => 'string',
         ]);
 
         $tag->update($data);
+        $tag->subTags()->sync(explode(',', $data['sub_tags']));
 
         return redirect()->route('admin.tags.index')->with('success', 'Tag updated successfully');
     }
