@@ -17,23 +17,15 @@
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                     <table class="table-fixed divide-y divide-gray-300">
                         <thead>
-                        <tr>
-                            <th scope="col"
-                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Id
-                            </th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Slug</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Posts count
-                            </th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created
-                            </th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Updated
-                            </th>
-                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                                <span class="sr-only">Edit</span>
-                            </th>
-                        </tr>
+                            <tr>
+                                <x-admin-table-header title="ID" sortBy="id"/>
+                                <x-admin-table-header title="Title" sortBy="title"/>
+                                <x-admin-table-header title="Slug" sortBy="slug"/>
+                                <x-admin-table-header title="Posts count" sortBy="posts_count"/>
+                                <x-admin-table-header title="Created" sortBy="created_at"/>
+                                <x-admin-table-header title="Updated" sortBy="updated_at"/>
+                                <x-admin-table-header title="Actions"/>
+                            </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                         @foreach($tags as $tag)

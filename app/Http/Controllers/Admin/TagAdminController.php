@@ -8,12 +8,17 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TagAdminController extends Controller
 {
     public function index(): View
     {
-        $tags = Tag::withCount('posts')->paginate(10);
+        $query = Tag::withCount('posts');
+        $tags = QueryBuilder::for($query)
+            ->allowedSorts(['id', 'title', 'slug', 'posts_count', 'created_at', 'updated_at'])
+            ->paginate(10)
+            ->appends(request()->query());
         return view('admin.tags.index', compact('tags'));
     }
 

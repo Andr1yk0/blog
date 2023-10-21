@@ -9,14 +9,19 @@ use App\Models\Tag;
 use App\Services\PostsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PostAdminController extends Controller
 {
     public function index(): View
     {
-        return view('admin.posts.index', [
-            'posts' => Post::with('tags')->paginate(10),
-        ]);
+        $query = Post::with('tags');
+        $posts = QueryBuilder::for($query)
+            ->allowedFilters(['title', 'content', 'tags.title'])
+            ->allowedSorts(['id', 'title', 'slug', 'published_at', 'updated_at', 'created_at'])
+            ->paginate(10)
+            ->appends(request()->query());
+        return view('admin.posts.index', compact('posts'));
     }
 
     public function create(): View
