@@ -168,5 +168,9 @@
 <x-notification/>
 <script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
+<script>
+    console.log('start');
+    Alpine.start();
+</script>
 </body>
 </html>

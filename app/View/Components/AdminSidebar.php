@@ -24,9 +24,9 @@ class AdminSidebar extends Component
                 'is_active' => request()->routeIs('admin.posts.*')
             ],
             [
-                'title' => 'Tests',
-                'url' => route('admin.tests.index'),
-                'is_active' => request()->routeIs('admin.tests.*')
+                'title' => 'Tags',
+                'url' => route('admin.tags.index'),
+                'is_active' => request()->routeIs('admin.tags.*')
             ],
         ];
     }

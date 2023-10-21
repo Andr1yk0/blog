@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('header')
-    <h1>Create post</h1>
-@endsection
 @section('content')
+    <x-admin-page-header>Create post</x-admin-page-header>
     @include('admin.posts._form')
 @endsection

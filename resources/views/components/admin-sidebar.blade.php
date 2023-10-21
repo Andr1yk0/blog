@@ -8,7 +8,6 @@
                 <ul role="list" class="-mx-2 space-y-1">
                     @foreach($menuItems as $menuItem)
                         <li>
-                            <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                             <a href="{{$menuItem['url']}}"
                                @class([
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',

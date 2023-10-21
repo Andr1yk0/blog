@@ -3,14 +3,12 @@
     <div class="px-2">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold leading-6 text-gray-900">Posts</h1>
+                <h1 class="text-base font-semibold leading-6 text-gray-900">Tags</h1>
             </div>
             <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <a type="button"
-                   href="{{route('admin.posts.create')}}"
-                   class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                    Add post
+                <a href="{{route('admin.tags.create')}}"
+                   class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    Add tag
                 </a>
             </div>
         </div>
@@ -25,9 +23,8 @@
                             </th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Slug</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tags</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Published
+                                Posts count
                             </th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created
                             </th>
@@ -39,19 +36,19 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                        @foreach($posts as $post)
+                        @foreach($tags as $tag)
                             <tr>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$post->id}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->title}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->slug}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->tags->pluck('title')->join(', ')}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->published_at}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->created_at}}</td>
-                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->updated_at}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $tag->id }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->title }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->slug }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->posts_count }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->created_at }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->updated_at }}</td>
                                 <td>
-                                    <a href="{{route('admin.posts.edit', [$post->id])}}"
+                                    <a href="{{ route('admin.tags.edit', [$tag->id]) }}"
                                        class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a class="text-red-600 hover:text-red-900">Delete</a>
+                                    <a class="text-red-600 hover:text-red-900" x-data="deleteTag"
+                                       href="{{route('admin.tags.destroy', [$tag->id])}}" @click.prevent="deleteTag">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -61,5 +58,18 @@
             </div>
         </div>
     </div>
-    {{--    {!! $posts->links() !!}--}}
 @endsection
+@push('scripts')
+    <script>
+        Alpine.data('deleteTag', () => ({
+            deleteTag(){
+                if(confirm('Are you sure you want to delete this tag?')) {
+                    axios.delete('{{ route('admin.tags.destroy', [$tag->id]) }}')
+                        .then(() => {
+                            window.location.reload();
+                        });
+                }
+            }
+        }));
+    </script>
+@endpush
