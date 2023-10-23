@@ -54,9 +54,9 @@
 @push('scripts')
     <script>
         Alpine.data('deleteTag', () => ({
-            deleteTag(){
+            deleteTag(e){
                 if(confirm('Are you sure you want to delete this tag?')) {
-                    axios.delete('{{ route('admin.tags.destroy', [$tag->id]) }}')
+                    axios.delete(e.currentTarget.href)
                         .then(() => {
                             window.location.reload();
                         });

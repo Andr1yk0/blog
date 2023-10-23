@@ -2,23 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PostsController extends Controller
 {
-    public function index(): View|Application|Factory
+    public function index(Tag $tag = null): View|Application|Factory
     {
+        $seoTitle = $tag ? $tag->title . ' posts' : 'Posts';
+        $postsQuery = Post::with('tags');
+        if($tag) {
+            $postsQuery->whereHas('tags', function($query) use ($tag) {
+                $query->where('slug', $tag->slug);
+            });
+        }
+
+        $posts = QueryBuilder::for($postsQuery)
+            ->defaultSort('-published_at')
+            ->allowedSorts(['published_at'])
+            ->paginate(10)
+            ->appends(request()->query());
+
         return view('posts.index', [
             'SEOData' => new SEOData(
-                title: 'Posts',
+                title: $seoTitle,
                 description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
             ),
-            'tags' => Tag::withCount('posts')->get(),
+            'tags' => Tag::withCount('posts')->orderBy('posts_count', 'desc')->get(),
+            'posts' => $posts,
+            'pageTag' => $tag
         ]);
     }
 }

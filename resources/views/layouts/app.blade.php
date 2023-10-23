@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="h-full bg-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,15 +14,14 @@
     <link rel="apple-touch-icon" href="{{asset('apple-icon.png')}}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="h-full">
+<body class="bg-gray-50">
 <div id="app" class="flex flex-col h-screen justify-between">
     <x-main-header />
     <div class="mb-auto">
         @yield('content')
     </div>
-    <footer class="bg-white border-t border-gray-900/10">
+    <footer class="bg-white border-t border-gray-900/10 mt-6">
         <div class="mx-auto max-w-7xl p-6 md:flex md:items-center md:justify-between">
             <div class="flex justify-center space-x-6 md:order-2">
                 <a href="https://github.com/Andr1yk0" target="_blank" class="text-gray-400 hover:text-gray-500">
@@ -44,6 +43,10 @@
         </div>
     </footer>
 </div>
+<script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
+<script>
+    Alpine.start();
+</script>
 </body>
 </html>

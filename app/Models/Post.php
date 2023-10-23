@@ -21,6 +21,13 @@ class Post extends Model
         );
     }
 
+    public function publishedAtFormatted(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => $this->published_at ? $this->published_at->format('F d, Y') : null,
+        );
+    }
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);

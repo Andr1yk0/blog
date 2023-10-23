@@ -30,14 +30,10 @@ class TagAdminController extends Controller
 
     public function store(): RedirectResponse
     {
-        $data = request()->validate([
-            'title' => 'required',
-            'slug' => 'required|unique:tags',
-            'sub_tags' => 'string',
-        ]);
-
+        $data = request()->all();
         $tag = Tag::create($data);
-        $tag->subTags()->sync(explode(',', $data['sub_tags']));
+        $subTags = $data['sub_tags'] ? explode(',', $data['sub_tags']) : [];
+        $tag->subTags()->sync($subTags);
 
         return redirect()->route('admin.tags.index')->with('success', 'Tag created successfully');
     }
@@ -50,15 +46,11 @@ class TagAdminController extends Controller
 
     public function update(Tag $tag): RedirectResponse
     {
-        $data = request()->validate([
-            'title' => 'required',
-            'slug' => 'required|unique:tags,slug,' . $tag->id,
-            'sub_tags' => 'string',
-        ]);
-
+        $data = request()->all();
         $tag->update($data);
-        $tag->subTags()->sync(explode(',', $data['sub_tags']));
 
+        $subTags = $data['sub_tags'] ? explode(',', $data['sub_tags']) : [];
+        $tag->subTags()->sync($subTags);
         return redirect()->route('admin.tags.index')->with('success', 'Tag updated successfully');
     }
 
