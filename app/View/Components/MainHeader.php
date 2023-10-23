@@ -21,7 +21,7 @@ class MainHeader extends Component
             [
                 'title' => 'Posts',
                 'url' => route('posts.index'),
-                'is_active' => request()->routeIs('posts.index')
+                'is_active' => request()->routeIs('posts.*')
             ],
             [
                 'title' => 'Tests',

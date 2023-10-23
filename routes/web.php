@@ -12,7 +12,9 @@ use App\Http\Controllers\TestsController;
 
 Route::get('/', [AboutController::class, 'about'])->name('about');
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
 Route::get('/posts/tagged/{tag:slug}', [PostsController::class, 'index'])->name('posts.index.tagged');
+
 Route::get('/tests', [TestsController::class, 'index'])->name('tests.index');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 

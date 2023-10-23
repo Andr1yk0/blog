@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 [x-cloak] { display: none !important; }
+.prose .hljs {
+    @apply bg-transparent;
+}

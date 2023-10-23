@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -37,6 +36,18 @@ class PostsController extends Controller
             'tags' => Tag::withCount('posts')->orderBy('posts_count', 'desc')->get(),
             'posts' => $posts,
             'pageTag' => $tag
+        ]);
+    }
+
+    public function show(Post $post): View|Application|Factory
+    {
+        $seoTitle = $post->title;
+
+        return view('posts.show', [
+            'SEOData' => new SEOData(
+                title: $seoTitle,
+            ),
+            'post' => $post
         ]);
     }
 }

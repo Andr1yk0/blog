@@ -1,7 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/admin/edit-post-form.js": "/js/admin/edit-post-form.js",
-    "/js/components/tag-select.js": "/js/components/tag-select.js",
-    "/css/admin.css": "/css/admin.css",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=f66e8fb4c502b8e7e2d440697ccdbf88",
+    "/js/admin/edit-post-form.js": "/js/admin/edit-post-form.js?id=003fd8a18b8434bf73c300f87198a8a1",
+    "/js/components/tag-select.js": "/js/components/tag-select.js?id=1bc94d6bf6d5a6288284af725c3ad2c6",
+    "/js/pages/posts-show.js": "/js/pages/posts-show.js?id=642d3b35d2ceea06ef2051a7344a149a",
+    "/css/admin.css": "/css/admin.css?id=50c1c58cebe6e76bcacf2fae710aa2ad",
+    "/css/app.css": "/css/app.css?id=73859e10b4272c9d3b156f431cb8012f"
 }
