@@ -32,6 +32,11 @@ class AdminSidebar extends Component
                 'title' => 'Contact requests',
                 'url' => route('admin.contact-requests.index'),
                 'is_active' => request()->routeIs('admin.contact-requests.*')
+            ],
+            [
+                'title' => 'Media',
+                'url' => route('admin.media.index'),
+                'is_active' => request()->routeIs('admin.media.*')
             ]
         ];
     }
