@@ -18,6 +18,7 @@
     <x-main-header />
     <div class="mb-auto">
         @yield('content')
+        <x-notification />
     </div>
     <footer class="bg-white border-t border-gray-900/10 mt-6">
         <div class="mx-auto max-w-7xl p-6 md:flex md:items-center md:justify-between">

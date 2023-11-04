@@ -39,8 +39,16 @@
                                 <td>
                                     <a href="{{ route('admin.tags.edit', [$tag->id]) }}"
                                        class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a class="text-red-600 hover:text-red-900" x-data="deleteTag"
-                                       href="{{route('admin.tags.destroy', [$tag->id])}}" @click.prevent="deleteTag">Delete</a>
+                                    <form action="{{route('admin.tags.destroy', $tag->id)}}"
+                                          method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="#"
+                                           onclick="if(confirm('Are you sure you want to delete the tag?')){this.closest('form').submit()}"
+                                           class="text-red-600 hover:text-red-900">
+                                            Delete
+                                        </a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -28,6 +28,11 @@ class AdminSidebar extends Component
                 'url' => route('admin.tags.index'),
                 'is_active' => request()->routeIs('admin.tags.*')
             ],
+            [
+                'title' => 'Contact requests',
+                'url' => route('admin.contact-requests.index'),
+                'is_active' => request()->routeIs('admin.contact-requests.*')
+            ]
         ];
     }
 

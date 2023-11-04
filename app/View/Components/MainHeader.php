@@ -24,11 +24,6 @@ class MainHeader extends Component
                 'is_active' => request()->routeIs('posts.*')
             ],
             [
-                'title' => 'Tests',
-                'url' => route('tests.index'),
-                'is_active' => request()->routeIs('tests.index')
-            ],
-            [
                 'title' => 'Contacts',
                 'url' => route('contacts.index'),
                 'is_active' => request()->routeIs('contacts.index')
