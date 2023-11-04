@@ -48,5 +48,12 @@
     <script>
         const notifications = @json($notifications);
         Alpine.store('notifications').items = notifications;
+        notifications
+            .filter(notification => notification.timeout)
+            .forEach(notification => {
+                setTimeout(() => {
+                    Alpine.store('notifications').remove(notification.id);
+                }, notification.timeout);
+            });
     </script>
 @endpush

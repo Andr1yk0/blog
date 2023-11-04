@@ -32,6 +32,7 @@ class Notification extends Component
             $this->notifications->push([
                 'type' => 'success',
                 'message' => $success,
+                'timeout' => 5000
             ]);
         }
     }
