@@ -54,11 +54,9 @@ class TagAdminController extends Controller
         return redirect()->route('admin.tags.index')->with('success', 'Tag updated successfully');
     }
 
-    public function destroy(Tag $tag): JsonResponse
+    public function destroy(Tag $tag): RedirectResponse
     {
         $tag->delete();
-        return response()->json([
-            'success' => true
-        ]);
+        return redirect()->route('admin.tags.index')->with('success', 'Tag has been deleted!');
     }
 }

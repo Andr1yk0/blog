@@ -15,7 +15,7 @@
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <table class="table-fixed divide-y divide-gray-300">
+                    <table class="min-w-full divide-y divide-gray-300">
                         <thead>
                             <tr>
                                 <x-admin-table-header title="ID" sortBy="id"/>
@@ -54,22 +54,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{$tags->links()}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-        Alpine.data('deleteTag', () => ({
-            deleteTag(e){
-                if(confirm('Are you sure you want to delete this tag?')) {
-                    axios.delete(e.currentTarget.href)
-                        .then(() => {
-                            window.location.reload();
-                        });
-                }
-            }
-        }));
-    </script>
-@endpush

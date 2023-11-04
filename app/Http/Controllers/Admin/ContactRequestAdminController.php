@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactRequest;
+use Illuminate\Http\RedirectResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ContactRequestAdminController extends Controller
@@ -19,7 +20,7 @@ class ContactRequestAdminController extends Controller
         return view('admin.contact-requests.index', compact('contactRequests'));
     }
 
-    public function destroy(ContactRequest $contactRequest)
+    public function destroy(ContactRequest $contactRequest): RedirectResponse
     {
         $contactRequest->delete();
         return redirect()->route('admin.contact-requests.index')->with('success', 'Contact request has been deleted!');
