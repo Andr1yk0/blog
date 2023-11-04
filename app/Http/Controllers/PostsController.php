@@ -33,7 +33,10 @@ class PostsController extends Controller
                 title: $seoTitle,
                 description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
             ),
-            'tags' => Tag::withCount('posts')->orderBy('posts_count', 'desc')->get(),
+            'tags' => Tag::withCount('publishedPosts')
+                ->whereHas('publishedPosts')
+                ->orderBy('published_posts_count', 'desc')
+                ->get(),
             'posts' => $posts,
             'pageTag' => $tag
         ]);
@@ -47,7 +50,11 @@ class PostsController extends Controller
             'SEOData' => new SEOData(
                 title: $seoTitle,
             ),
-            'post' => $post
+            'post' => $post,
+            'tags' => Tag::withCount('publishedPosts')
+                ->whereHas('publishedPosts')
+                ->orderBy('published_posts_count', 'desc')
+                ->get(),
         ]);
     }
 }

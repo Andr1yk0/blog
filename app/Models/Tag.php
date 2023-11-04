@@ -20,6 +20,11 @@ class Tag extends Model
         return $this->belongsToMany(Post::class);
     }
 
+    public function publishedPosts(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class)->whereNotNull('published_at');
+    }
+
     public function subTags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'sub_tags', 'tag_id', 'sub_tag_id');

@@ -3,8 +3,10 @@
         <div class="flex h-16 justify-between">
             <div class="flex px-2 lg:px-0 justify-between w-full">
                 <div class="flex flex-shrink-0 items-center">
-                    <img class="block h-8 w-auto lg:hidden" src="{{asset('logo.png')}}" alt="Your Company">
-                    <img class="hidden h-8 w-auto lg:block" src="{{asset('logo.png')}}" alt="Your Company">
+                    <a href="/">
+                        <img class="block h-8 w-auto lg:hidden" src="{{asset('logo.png')}}" alt="prostocode.com">
+                        <img class="hidden h-8 w-auto lg:block" src="{{asset('logo.png')}}" alt="prostocode.com">
+                    </a>
                 </div>
                 <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
                     @foreach($menuItems as $menuItem)
