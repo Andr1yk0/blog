@@ -12,11 +12,11 @@
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-2">
             <x-card>
                 <x-slot:header>
-                    <h3 class="text-base font-semibold leading-6 text-gray-900">About the website</h3>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">About prostocode.com</h1>
                     </x-slot>
                     <div class="flex flex-wrap gap-2">
-                        I'm a full-stack web developer from Lviv, Ukraine.
-                        I have {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::create(2016, 1, 1)) }}+ years of experience in building web applications with PHP and JavaScript.
+                        prostocode.com - a personal blog about web development technologies.
+                        The main goal of this blog is to share my experience and knowledge with other developers.
                     </div>
             </x-card>
             <x-card>
