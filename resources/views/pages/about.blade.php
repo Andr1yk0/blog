@@ -14,16 +14,17 @@
                 <x-slot:header>
                     <h1 class="text-base font-semibold leading-6 text-gray-900">About prostocode.com</h1>
                     </x-slot>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="prose prose-base lg:prose-lg">
                         prostocode.com - a personal blog about web development technologies.
-                        The main goal of this blog is to share my experience and knowledge with other developers.
+                        I write short posts about problems and solutions that I encounter in my work.
+                        Writing helps me to structure my knowledge, share it with others and gives me motivation to explore new things.
                     </div>
             </x-card>
             <x-card>
                 <x-slot:header>
                     <h3 class="text-base font-semibold leading-6 text-gray-900">About the author</h3>
                     </x-slot>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="prose prose-base lg:prose-lg">
                         I'm a full-stack web developer from Lviv, Ukraine.
                         I have {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::create(2016, 1, 1)) }}+ years of experience in building web applications with PHP and JavaScript.
                     </div>

@@ -16,7 +16,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:col-span-2">
-
                 <x-card>
                     <x-slot:header>
                         <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
@@ -61,7 +60,7 @@
                                                 <x-tag :tag="$tag"/>
                                             @endforeach
                                         </div>
-                                        <h2 class="mt-2 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
+                                        <h2 class="mt-2 text-xl font-semibold text-gray-900 group-hover:text-gray-600">
                                             <a href="{{ route('posts.show', [$post->slug]) }}">
                                                 {{ $post->title }}
                                             </a>
