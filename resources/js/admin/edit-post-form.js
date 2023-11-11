@@ -9,6 +9,7 @@ const editor = new Editor({
     height: '500px',
     initialValue: form.querySelector('[name="body_markdown"]').value,
     usageStatistics: false,
+    linkAttributes: {target: '_blank'}
 });
 
 form.addEventListener('submit', () => {
