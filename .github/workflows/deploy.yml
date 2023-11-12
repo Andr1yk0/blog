@@ -27,6 +27,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: ".,!node_modules,!tests,!.git"
+          target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
 #      - name: Extract artifacts
 #        uses: appleboy/ssh-action@master
 #        env:
