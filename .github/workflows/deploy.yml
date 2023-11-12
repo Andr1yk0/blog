@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Frontend
         run: |
-          npm install
+          npm ci
           npm run prod
       - name: Configure PHP
         uses: shivammathur/setup-php@master
@@ -19,29 +19,20 @@ jobs:
           php-version: '8.1'
           extensions: zip, pdo_mysql, gd, json
       - name: Install Composer
-        run: |
-          composer install --no-dev --no-interaction --prefer-dist
-#      - name: Store artifacts for distribution
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: app-build
-#          path: |
-#            .
-#            !.git
-#            !./node_modules
-#            !./tests
+        run: composer install --no-dev --no-interaction --prefer-dist
       - name: Upload
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          run: ls -al
           source: |
             .
             !.git
             !./node_modules
             !./tests
-          target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
+            target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
 #      - name: Extract artifacts
 #        uses: appleboy/ssh-action@master
 #        env:
