@@ -25,7 +25,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-build
-          path: .
+          path: |
+            .
+            !.git
+            !./node_modules
+            !./tests
   prepare-release-on-server:
     name: Prepare Release on Server
     needs: create-artifacts
