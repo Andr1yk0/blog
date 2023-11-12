@@ -24,9 +24,9 @@ jobs:
       - name: Create deployment artifacts
         env:
           GITHUB_SHA: ${{ github.sha }}
-        run: tar -czf "${GITHUB_SHA}.tar.gz" --exclude=*.git --exclude=node_modules --exclude=tests *
+        run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules --exclude=tests *
       - name: Store artifacts for distribution
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: app-build
           path: ${{ github.sha }}.tar.gz
@@ -35,7 +35,7 @@ jobs:
     needs: create-artifacts
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v2
         with:
           name: app-build
       - name: Upload
@@ -46,22 +46,22 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           source: ${{ github.sha }}.tar.gz
           target: /home/${{ secrets.USERNAME }}/prostocode.com/www/artifacts/${{ github.sha }}.tar.gz
-      - name: Extract artifacts
-        uses: appleboy/ssh-action@master
-        env:
-          RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
-          ACTIVE_RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/current
-          STORAGE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/storage
-          BASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          timeout: 120s
-          envs: RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH
-          script: |
-            mkdir -p "${RELEASE_PATH}"
-            tar xzf ${BASE_PATH}/artifacts/${{ github.sha }}.tar.gz -C $RELEASE_PATH
-            ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
-            ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
-            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
+#      - name: Extract artifacts
+#        uses: appleboy/ssh-action@master
+#        env:
+#          RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
+#          ACTIVE_RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/current
+#          STORAGE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/storage
+#          BASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          timeout: 120s
+#          envs: RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH
+#          script: |
+#            mkdir -p "${RELEASE_PATH}"
+#            tar xzf ${BASE_PATH}/artifacts/${{ github.sha }}.tar.gz -C $RELEASE_PATH
+#            ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
+#            ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
+#            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
