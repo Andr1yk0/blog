@@ -7,29 +7,29 @@ jobs:
   create-artifacts:
     name: Create Artifacts
     runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - name: Build Frontend
-      run: |
-        npm install
-        npm run prod
-    - name: Configure PHP
-      uses: shivammathur/setup-php@master
-      with:
-        php-version: '8.1'
-        extensions: zip, unzip, pdo_mysql, gd, json
-    - name: Install Composer
-      run: |
-        composer install --no-dev --no-interaction --prefer-dist
-    - name: Create deployment artifacts
-      env:
-        GITHUB_SHA: ${{ github.sha }}
-      run: tar -czf "${GITHUB_SHA}.tar.gz" --exclude=*.git --exclude=node_modules --exclude=tests *
-    - name: Store artifacts for distribution
-      uses: actions/upload-artifact@v3
-      with:
-        name: app-build
-        path: ${{ github.sha }}.tar.gz
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Frontend
+        run: |
+          npm install
+          npm run prod
+      - name: Configure PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: '8.1'
+          extensions: zip, unzip, pdo_mysql, gd, json
+      - name: Install Composer
+        run: |
+          composer install --no-dev --no-interaction --prefer-dist
+      - name: Create deployment artifacts
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: tar -czf "${GITHUB_SHA}.tar.gz" --exclude=*.git --exclude=node_modules --exclude=tests *
+      - name: Store artifacts for distribution
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-build
+          path: ${{ github.sha }}.tar.gz
   prepare-release-on-server:
     name: Prepare Release on Server
     needs: create-artifacts
