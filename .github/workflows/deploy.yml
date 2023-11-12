@@ -21,15 +21,11 @@ jobs:
       - name: Install Composer
         run: |
           composer install --no-dev --no-interaction --prefer-dist
-      - name: Create deployment artifacts
-        env:
-          GITHUB_SHA: ${{ github.sha }}
-        run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules --exclude=tests *
       - name: Store artifacts for distribution
         uses: actions/upload-artifact@v2
         with:
           name: app-build
-          path: ${{ github.sha }}.tar.gz
+          path: .
   prepare-release-on-server:
     name: Prepare Release on Server
     needs: create-artifacts
@@ -44,8 +40,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: ${{ github.sha }}.tar.gz
-          target: /home/${{ secrets.USERNAME }}/prostocode.com/www/artifacts/${{ github.sha }}.tar.gz
+          source: .
+          target: /home/${{ secrets.USERNAME }}/prostocode.com/www/artifacts/${{ github.sha }}
 #      - name: Extract artifacts
 #        uses: appleboy/ssh-action@master
 #        env:
