@@ -57,6 +57,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          port: 80
           script: |
             mkdir -p RELEASE_PATH
             tar xzf ${BASE_PATH}/artifacts/${{ github.sha }}.tar.gz -C $RELEASE_PATH
