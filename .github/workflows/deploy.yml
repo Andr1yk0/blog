@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: ".,!node_modules,!tests,!.git"
+          source: ".,!node_modules,!tests,!.git,!storage,!.github,!.docker.!.gitignore"
           target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
       - name: Release setup
         uses: appleboy/ssh-action@master
@@ -45,22 +45,6 @@ jobs:
             ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
             ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
-#      - name: Extract artifacts
-#        uses: appleboy/ssh-action@master
-#        env:
-#          RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
-#          ACTIVE_RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/current
-#          STORAGE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/storage
-#          BASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USERNAME }}
-#          password: ${{ secrets.PASSWORD }}
-#          timeout: 120s
-#          envs: RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH
-#          script: |
-#            mkdir -p "${RELEASE_PATH}"
-#            tar xzf ${BASE_PATH}/artifacts/${{ github.sha }}.tar.gz -C $RELEASE_PATH
-#            ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
-#            ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
-#            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
+            cd $BASE_PATH/releases && ls -t -1 | tail -n +6 | xargs rm -rf
+            cd $RELEASE_PATH && php artisan migrate --force && php artisan config:cache
+
