@@ -28,6 +28,23 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           source: ".,!node_modules,!tests,!.git"
           target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
+      - name: Release setup
+        uses: appleboy/ssh-action@master
+        env:
+          RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
+          ACTIVE_RELEASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/current
+          STORAGE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www/storage
+          BASE_PATH: /home/${{ secrets.USERNAME }}/prostocode.com/www
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          timeout: 120s
+          envs: RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH
+          script: |
+            ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
+            ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
+            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
 #      - name: Extract artifacts
 #        uses: appleboy/ssh-action@master
 #        env:
