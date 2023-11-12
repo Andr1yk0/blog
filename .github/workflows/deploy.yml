@@ -17,7 +17,7 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: '8.1'
-          extensions: zip, unzip, pdo_mysql, gd, json
+          extensions: zip, pdo_mysql, gd, json
       - name: Install Composer
         run: |
           composer install --no-dev --no-interaction --prefer-dist
