@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{config('google.ga_measurement_id')}}');
+</script>
 <body class="bg-gray-50">
 <div id="app" class="flex flex-col h-screen justify-between">
     <x-main-header />
