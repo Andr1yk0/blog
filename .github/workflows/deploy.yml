@@ -21,15 +21,15 @@ jobs:
       - name: Install Composer
         run: |
           composer install --no-dev --no-interaction --prefer-dist
-      - name: Store artifacts for distribution
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-build
-          path: |
-            .
-            !.git
-            !./node_modules
-            !./tests
+#      - name: Store artifacts for distribution
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: app-build
+#          path: |
+#            .
+#            !.git
+#            !./node_modules
+#            !./tests
       - name: Upload
         uses: appleboy/scp-action@master
         with:
