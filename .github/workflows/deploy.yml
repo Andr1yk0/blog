@@ -59,7 +59,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           timeout: 120s
           script: |
-            mkdir -p RELEASE_PATH
+            mkdir -p $RELEASE_PATH
             tar xzf ${BASE_PATH}/artifacts/${{ github.sha }}.tar.gz -C $RELEASE_PATH
             ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
             ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
