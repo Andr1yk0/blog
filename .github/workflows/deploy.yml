@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: ".,!node_modules,!tests,!.git,!storage,!.github,!.docker.!.gitignore"
+          source: ".,!node_modules,!tests,!.git,!storage,!.github,!.docker.,!.gitignore"
           target: /home/${{ secrets.USERNAME }}/prostocode.com/www/releases/${{ github.sha }}
       - name: Release setup
         uses: appleboy/ssh-action@master
