@@ -22,5 +22,5 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
+          password: ${{ secrets.PASSWORD }}
           script: "cd /home/andriyl/prostocode.com/www && ./deploy.sh"
