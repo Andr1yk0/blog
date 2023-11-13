@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\SitemapService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Spatie\Sitemap\SitemapGenerator;
 
 class SettingsAdminController extends Controller
 {
@@ -14,9 +14,9 @@ class SettingsAdminController extends Controller
         return view('admin.settings.index');
     }
 
-    public function generateSitemap(): RedirectResponse
+    public function generateSitemap(SitemapService $sitemapService): RedirectResponse
     {
-        SitemapGenerator::create('https://prostocode.com')->writeToFile(public_path('sitemap.xml'));
+        $sitemapService->generateSitemap();
         return redirect()->back()->with('success', 'Sitemap generated successfully!');
     }
 }
