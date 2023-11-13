@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ContactRequestAdminController;
 use App\Http\Controllers\Admin\MediaAdminController;
 use App\Http\Controllers\Admin\PostAdminController;
+use App\Http\Controllers\Admin\SettingsAdminController;
 use App\Http\Controllers\Admin\TagAdminController;
 use App\Http\Controllers\Admin\TestAdminController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -31,5 +32,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(functi
     Route::resource('contact-requests', ContactRequestAdminController::class)->only(['index', 'destroy']);
     Route::resource('media', MediaAdminController::class)->only(['index', 'store']);
     Route::delete('media', [MediaAdminController::class, 'destroy'])->name('media.destroy');
+
+    Route::get('settings', [SettingsAdminController::class, 'index'])->name('settings.index');
+    Route::post('/generate-sitemap', [SettingsAdminController::class, 'generateSitemap'])->name('settings.generate-sitemap');
 });
 

@@ -17,7 +17,7 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: '8.1'
-          extensions: zip, pdo_mysql, gd, json
+          extensions: zip, pdo_mysql, gd, json, exif
       - name: Install Composer
         run: composer install --no-dev --no-interaction --prefer-dist
       - name: Upload
@@ -46,4 +46,4 @@ jobs:
             ln -s -f ${BASE_PATH}/storage $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd $BASE_PATH/releases && ls -t -1 | tail -n +6 | xargs rm -rf
-            cd $RELEASE_PATH && php artisan migrate --force && php artisan config:cache && php artisan storage:link
+            cd $RELEASE_PATH && php artisan migrate --force && php artisan config:cache && php artisan storage:link && php artisan sitemap:generate
