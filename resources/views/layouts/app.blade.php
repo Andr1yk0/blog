@@ -10,7 +10,6 @@
     <link rel="icon" href="{{asset('favicon.ico')}}" sizes="any">
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <link rel="apple-touch-icon" href="{{asset('apple-icon.png')}}">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>
