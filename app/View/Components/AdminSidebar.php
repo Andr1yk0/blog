@@ -37,6 +37,11 @@ class AdminSidebar extends Component
                 'title' => 'Media',
                 'url' => route('admin.media.index'),
                 'is_active' => request()->routeIs('admin.media.*')
+            ],
+            [
+                'title' => 'Logs',
+                'url' => route('log-viewer.index'),
+                'is_active' => request()->routeIs('log-viewer.*')
             ]
         ];
     }

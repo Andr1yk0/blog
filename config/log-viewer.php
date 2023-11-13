@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'back_to_system_url' => config('app.url', null) . '/admin',
+    'back_to_system_url' => config('app.url', null) . 'admin',
 
     'back_to_system_label' => null, // Displayed by default: "Back to {{ app.name }}"
 
