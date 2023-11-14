@@ -4,8 +4,8 @@
         $heatMapData = \App\Models\Config::where('key', \App\Enums\ConfigKeyEnum::EXPERIENCE_HEATMAP)->first()->value;
         $heatMapYears = array_keys($heatMapData[0]['history']);
         $heatMapCellBackgrounds = [
-            'bg-gray-100', 'bg-indigo-100', 'bg-indigo-200', 'bg-indigo-300', 'bg-indigo-400', 'bg-indigo-500',
-            'bg-indigo-600', 'bg-indigo-700', 'bg-indigo-800', 'bg-indigo-900'
+            'bg-gray-100', 'bg-clr-100', 'bg-indigo-200', 'bg-indigo-300', 'bg-indigo-400', 'bg-indigo-500',
+            'bg-indigo-600', 'bg-indigo-700', 'bg-indigo-800', 'bg-clr-90'
         ];
     @endphp
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">

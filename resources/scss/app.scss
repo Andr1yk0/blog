@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.theme-indigo{
+    --clr-50: theme('colors.indigo.50');
+    --clr-100: theme('colors.indigo.100');
+    --clr-200: theme('colors.indigo.200');
+    --clr-300: theme('colors.indigo.300');
+    --clr-400: theme('colors.indigo.400');
+    --clr-500: theme('colors.indigo.500');
+    --clr-600: theme('colors.indigo.600');
+    --clr-700: theme('colors.indigo.700');
+    --clr-800: theme('colors.indigo.800');
+    --clr-900: theme('colors.indigo.900');
+    --clr-950: theme('colors.indigo.950');
+}
+
+.theme-green{
+    --clr-50: theme('colors.green.50');
+    --clr-100: theme('colors.green.100');
+    --clr-200: theme('colors.green.200');
+    --clr-300: theme('colors.green.300');
+    --clr-400: theme('colors.green.400');
+    --clr-500: theme('colors.green.500');
+    --clr-600: theme('colors.green.600');
+    --clr-700: theme('colors.green.700');
+    --clr-800: theme('colors.green.800');
+    --clr-900: theme('colors.green.900');
+    --clr-950: theme('colors.green.950');
+}
+
 [x-cloak] { display: none !important; }
 .prose .hljs {
     @apply bg-transparent;

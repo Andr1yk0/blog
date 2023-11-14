@@ -20,7 +20,7 @@
 
     gtag('config', '{{config('google.ga_measurement_id')}}');
 </script>
-<body class="bg-gray-50">
+<body class="theme-green">
 <div id="app" class="flex flex-col h-screen justify-between">
     <x-main-header />
     <div class="mb-auto">
