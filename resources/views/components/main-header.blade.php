@@ -13,8 +13,8 @@
                         <a href="{{$menuItem['url']}}"
                             @class([
                                  'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
-                                 'border-clr-500 text-text-clr-700' => $menuItem['is_active'],
-                                 'border-transparent text-text-clr-500 hover:border-text-clr-300 hover:text-text-clr-600' => !$menuItem['is_active'],
+                                 'border-clr-500 text-clr-500' => $menuItem['is_active'],
+                                 'border-transparent text-text-clr-700 hover:border-text-clr-300 hover:text-text-clr-800' => !$menuItem['is_active'],
                             ])>{{ $menuItem['title'] }}</a>
                     @endforeach
                 </div>

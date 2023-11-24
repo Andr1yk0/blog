@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" :class="{dark: isDarkMode, light: !isDarkMode}" x-data="{isDarkMode: localStorage.getItem('darkMode')}">
+<html x-cloak lang="{{ str_replace('_', '-', app()->getLocale()) }}" :class="{dark: isDarkMode, light: !isDarkMode}" x-data="{isDarkMode: localStorage.getItem('darkMode')}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 
     gtag('config', '{{config('google.ga_measurement_id')}}');
 </script>
-<body class="theme-indigo bg-text-clr-200">
+<body class="theme-indigo  bg-text-clr-200">
 <div class="flex flex-col h-screen justify-between">
     <x-main-header />
     <div class="mb-auto">

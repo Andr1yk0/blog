@@ -32,4 +32,18 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function previous(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value) => $this->where('id', '<', $this->id)->orderBy('id', 'desc')->first()
+        );
+    }
+
+    public function next(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value) => $this->where('id', '>', $this->id)->orderBy('id', 'asc')->first()
+        );
+    }
 }
