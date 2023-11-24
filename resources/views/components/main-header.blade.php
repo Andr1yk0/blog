@@ -5,6 +5,7 @@
                 <div class="flex flex-shrink-0 items-center">
                     <a href="/">
                         <img class="block h-8 w-auto lg:hidden" src="{{asset('logo.png')}}" alt="prostocode.com">
+                        <img class="hidden h-8 w-auto lg:block" src="{{asset('logo.png')}}" alt="prostocode.com">
                     </a>
                 </div>
                 <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
