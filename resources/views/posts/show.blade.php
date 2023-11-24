@@ -39,9 +39,7 @@
                             <div class="relative py-5 hover:bg-text-clr-100 basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
                                     <div class="flex items-center gap-x-2">
-                                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-text-clr-400">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                                        </svg>
+                                        <x-icons.outline.chevron-left class="text-text-clr-400" />
                                     </div>
                                     <div class="flex gap-x-4 flex-1">
                                         <div class="min-w-0 flex-auto">
@@ -76,9 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-x-2">
-                                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-text-clr-400">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                        </svg>
+                                        <x-icons.outline.chevron-right class="text-text-clr-400" />
                                     </div>
                                 </div>
                             </div>

@@ -39,22 +39,14 @@
                             <span
                                 class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-text-clr-500 border border-text-clr-300 cursor-default rounded-l-md leading-5"
                                 aria-hidden="true">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                          clip-rule="evenodd"/>
-                                </svg>
+                                <x-icons.mini.chevron-left />
                             </span>
                         </span>
                     @else
                         <a href="{{ $paginator->previousPageUrl() }}"
                            class="relative inline-flex items-center rounded-l-md px-2 py-2 text-text-clr-400 ring-1 ring-inset ring-text-clr-300 hover:bg-text-clr-100 focus:z-20 focus:outline-offset-0">
                             <span class="sr-only">Previous</span>
-                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                      d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                                      clip-rule="evenodd"/>
-                            </svg>
+                            <x-icons.mini.chevron-left />
                         </a>
                     @endif
                     @foreach($elements as $element)
@@ -78,22 +70,14 @@
                         <a href="{{$paginator->nextPageUrl()}}"
                            class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-text-clr-300 hover:bg-text-clr-100 focus:z-20 focus:outline-offset-0">
                             <span class="sr-only">Next</span>
-                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                                      clip-rule="evenodd"/>
-                            </svg>
+                            <x-icons.mini.chevron-right />
                         </a>
                     @else
                         <span aria-disabled="true" aria-label="Next">
                             <span
                                 class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-text-clr-500 border border-text-clr-300 cursor-default rounded-r-md leading-5"
                                 aria-hidden="true">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                          clip-rule="evenodd"/>
-                                </svg>
+                                <x-icons.mini.chevron-right />
                             </span>
                         </span>
                     @endif
