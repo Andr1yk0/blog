@@ -2,10 +2,10 @@
 @section('content')
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
-            <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+            <div class="divide-y divide-text-clr-200 overflow-hidden rounded-lg bg-text-clr-50 shadow">
                 <x-card>
                     <x-slot:header>
-                        <h3 class="text-base font-semibold leading-6 text-gray-900">Top tags</h3>
+                        <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
                     </x-slot>
                     <div class="flex flex-wrap gap-2">
                         @foreach($tags as $tag)
@@ -20,7 +20,7 @@
                     <x-slot:header>
                         <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
                             <div class="ml-4 mt-2">
-                                <h1 class="text-xl font-semibold leading-6 text-gray-900">
+                                <h1 class="text-xl font-semibold leading-6 text-text-clr-900">
                                     {{isset($pageTag) ? $pageTag->title : 'All'}} posts
                                 </h1>
                             </div>
@@ -37,7 +37,7 @@
                                                 window.location = url;
                                             })"
                                         x-model="sort"
-                                        class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        class="mt-2 block w-full rounded-md border-0 bg-text-clr-50 py-1.5 pl-3 pr-10 text-text-clr-900 ring-1 ring-inset ring-text-clr-300 focus:ring-2 focus:ring-clr-600 sm:text-sm sm:leading-6"
                                     >
                                         <option value="">Newest first</option>
                                         <option value="published_at">Oldest first</option>
@@ -46,13 +46,13 @@
                             </div>
                         </div>
                     </x-slot>
-                    <div class="divide-y divide-gray-900/10">
+                    <div class="divide-y divide-text-clr-300">
                             @foreach($posts as $post)
                                 <article class="py-10">
                                     <div class="group relative max-w-xl">
                                         <div class="flex items-center gap-x-4">
                                             <time datetime="{{ $post->published_at->format('Y-m-d') }}"
-                                                  class="block text-sm leading-6 text-gray-600"
+                                                  class="block text-sm leading-6 text-text-clr-500"
                                             >
                                                 {{ $post->published_at_formatted }}
                                             </time>
@@ -60,7 +60,7 @@
                                                 <x-tag :tag="$tag"/>
                                             @endforeach
                                         </div>
-                                        <h2 class="mt-2 text-xl font-semibold text-gray-900 group-hover:text-gray-600">
+                                        <h2 class="mt-2 text-xl font-semibold text-text-clr-900 group-hover:text-text-clr-600">
                                             <a href="{{ route('posts.show', [$post->slug]) }}">
                                                 {{ $post->title }}
                                             </a>

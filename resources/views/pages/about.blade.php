@@ -22,7 +22,7 @@
             </x-card>
             <x-card>
                 <x-slot:header>
-                    <h3 class="text-base font-semibold leading-6 text-text-clr-800">About the author</h3>
+                    <h2 class="text-base font-semibold leading-6 text-text-clr-800">About the author</h2>
                     </x-slot>
                     <div class="prose prose-base text-text-clr-600 lg:prose-lg">
                         I'm a full-stack web developer from Lviv, Ukraine.
@@ -36,11 +36,11 @@
                         </x-slot>
                         <div>
                             <div class="flex">
-                                <div class="w-28 mt-5 border-r flex-shrink-0">
+                                <div class="w-28 mt-5 border-r border-text-clr-300 flex-shrink-0">
                                     @foreach($heatMapData as $item)
                                         <div class="h-10">
                                             <span class="text-sm text-text-clr-800">{{ $item['title'] }}</span>
-                                            <p class="text-xs text-text-clr-500"> {{$item['duration']}} </p>
+                                            <p class="text-xs text-text-clr-600"> {{$item['duration']}} </p>
                                         </div>
                                     @endforeach
                                 </div>

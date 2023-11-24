@@ -23,6 +23,6 @@ class CaptchaService {
             return true;
         }
 
-        return $captchaResponseObj->score < 0.5;
+        return $captchaResponseObj->score > 0.5;
     }
 }

@@ -35,7 +35,29 @@ module.exports = {
                 'text-clr-800': 'var(--text-clr-800)',
                 'text-clr-900': 'var(--text-clr-900)',
                 'text-clr-950': 'var(--text-clr-950)',
-            }
+            },
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        '--tw-prose-body': 'var(--text-clr-700)',
+                        '--tw-prose-headings': 'var(--text-clr-900)',
+                        '--tw-prose-lead': 'var(--text-clr-800)',
+                        '--tw-prose-links': 'var(--text-clr-800)',
+                        '--tw-prose-bold': 'var(--text-clr-900)',
+                        '--tw-prose-counters': 'var(--text-clr-700)',
+                        '--tw-prose-bullets': 'var(--text-clr-800)',
+                        '--tw-prose-hr': 'var(--text-clr-500)',
+                        '--tw-prose-quotes': 'var(--text-clr-800)',
+                        '--tw-prose-quote-borders': 'var(--text-clr-800)',
+                        '--tw-prose-captions': 'var(--text-clr-800)',
+                        '--tw-prose-code': 'var(--text-clr-900)',
+                        // '--tw-prose-pre-code': theme('colors.pink[100]'),
+                        // '--tw-prose-pre-bg': 'var(--text-clr-800)',
+                        '--tw-prose-th-borders': 'var(--text-clr-300)',
+                        '--tw-prose-td-borders': 'var(--text-clr-200)',
+                    }
+                }
+            })
         },
     },
     plugins: [
