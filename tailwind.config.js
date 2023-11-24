@@ -36,7 +36,7 @@ module.exports = {
                 'text-clr-900': 'var(--text-clr-900)',
                 'text-clr-950': 'var(--text-clr-950)',
             },
-            typography: (theme) => ({
+            'typography': () => ({
                 DEFAULT: {
                     css: {
                         '--tw-prose-body': 'var(--text-clr-700)',

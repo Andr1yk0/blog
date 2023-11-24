@@ -1,4 +1,3 @@
-<!-- Global notification live region, render this permanently at the end of the document -->
 <div x-data
      aria-live="assertive"
      class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50"
@@ -47,13 +46,15 @@
 @push('scripts')
     <script>
         const notifications = @json($notifications);
-        Alpine.store('notifications').items = notifications;
-        notifications
-            .filter(notification => notification.timeout)
-            .forEach(notification => {
-                setTimeout(() => {
-                    Alpine.store('notifications').remove(notification.id);
-                }, notification.timeout);
-            });
+        if(notifications){
+            Alpine.store('notifications').items = notifications;
+            notifications
+                .filter(notification => notification.timeout)
+                .forEach(notification => {
+                    setTimeout(() => {
+                        Alpine.store('notifications').remove(notification.id);
+                    }, notification.timeout);
+                });
+        }
     </script>
 @endpush

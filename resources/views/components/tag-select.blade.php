@@ -16,7 +16,6 @@
                 </button>
             </span>
         </template>
-
     </div>
     <div class="relative mt-2" @click.outside="showOptions = false">
         <input
