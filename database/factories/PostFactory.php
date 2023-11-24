@@ -26,4 +26,13 @@ class PostFactory extends Factory
             'body_html' => fake()->randomHtml(),
         ];
     }
+
+    public function published(): Factory
+    {
+        return $this->state(function (){
+            return [
+                'published_at' => fake()->dateTime
+            ];
+        });
+    }
 }

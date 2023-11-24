@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    libpng-dev
+    libpng-dev \
+    && pecl install pcov \
+    && docker-php-ext-enable pcov
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/www/html
 

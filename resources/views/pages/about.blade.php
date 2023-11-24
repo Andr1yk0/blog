@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
     @php
-        $heatMapData = \App\Models\Config::where('key', \App\Enums\ConfigKeyEnum::EXPERIENCE_HEATMAP)->first()->value;
-        $heatMapYears = array_keys($heatMapData[0]['history']);
+        $heatMapDataConfig = \App\Models\Config::where('key', \App\Enums\ConfigKeyEnum::EXPERIENCE_HEATMAP)->first();
+        $heatMapData = $heatMapDataConfig->value ?? [];
+        $heatMapYears = $heatMapDataConfig ? array_keys($heatMapData[0]['history']) : [];
         $heatMapCellBackgrounds = [
             'bg-text-clr-100', 'bg-clr-100', 'bg-clr-200', 'bg-clr-300', 'bg-clr-400', 'bg-clr-500',
             'bg-clr-600', 'bg-clr-700', 'bg-clr-800', 'bg-clr-900'
@@ -29,7 +30,8 @@
                         I have {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::create(2016, 1, 1)) }}+ years of experience in building web applications with PHP and JavaScript.
                     </div>
             </x-card>
-            <div class="lg:col-span-2">
+            @if($heatMapDataConfig)
+                <div class="lg:col-span-2">
                 <x-card>
                     <x-slot:header>
                         <h3 class="text-base font-semibold leading-6 text-text-clr-800">Experience heatmap</h3>
@@ -81,6 +83,7 @@
                         </div>
                 </x-card>
             </div>
+            @endif
         </div>
     </div>
 @endsection
