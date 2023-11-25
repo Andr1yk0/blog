@@ -2,10 +2,14 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 
 class CaptchaService {
 
+    /**
+     * @throws GuzzleException
+     */
     public function verifyRequest(array $requestData): bool
     {
         $client = app(Client::class);

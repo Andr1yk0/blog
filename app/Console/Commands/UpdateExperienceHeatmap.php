@@ -4,17 +4,15 @@ namespace App\Console\Commands;
 
 use App\Enums\ConfigKeyEnum;
 use App\Models\Config;
-use Faker\Core\File;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
 class UpdateExperienceHeatmap extends Command
 {
     protected $signature = 'app:update-experience-heatmap';
-
     protected $description = 'Command description';
 
-    public function handle()
+    public function handle(): void
     {
         $filePath = Storage::path('experience_graph.csv');
         $file = fopen($filePath, 'r');
