@@ -26,10 +26,8 @@ jobs:
           php_extensions: exif
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
-        run: |
-          cp .env.example .env
-          php artisan key:generate
         env:
+          APP_KEY: base64:jUufceXxV/VCwQa+FfUao45IijVUeEPK4g6E/dq5WRM=
           DB_TESTING_CONNECTION: mysql_testing
           DB_TESTING_HOST: 127.0.0.1
           DB_TESTING_PORT: 3306
