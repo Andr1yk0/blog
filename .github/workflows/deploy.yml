@@ -27,7 +27,7 @@ jobs:
         with:
           configuration: "phpunit.xml"
           coverage_html: "storage/framework/testing/coverage"
-          php_extensions: "xdebug,pdo_mysql"
+          php_extensions: xdebug pdo_mysql
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
