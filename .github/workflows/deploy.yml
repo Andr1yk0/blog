@@ -47,7 +47,24 @@ jobs:
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd $BASE_PATH/releases && ls -t -1 | tail -n +6 | xargs rm -rf
             cd $RELEASE_PATH && php artisan migrate --force && php artisan config:cache && php artisan storage:link && php artisan sitemap:generate
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        with:
+          configuration: "phpunit.xml"
+          coverage_html: "storage/framework/testing/coverage"
+          php_extensions: "xdebug"
+      - name: Make code coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
+        with:
+          coverage_badge_path: output/coverage.svg
+          report_type: 'html'
+          report: 'storage/framework/testing/coverage/index.html'
+          push_badge: true
+      - name: Git push to image-data branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./output
+          publish_branch: image-data
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
