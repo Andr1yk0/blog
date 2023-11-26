@@ -16,7 +16,7 @@ jobs:
       - name: Configure PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: '8.1'
+          php-version: '8.2'
           extensions: zip, pdo_mysql, gd, json, exif
       - name: Install Composer
         run: composer install --no-dev --no-interaction --prefer-dist
@@ -53,6 +53,7 @@ jobs:
           configuration: "phpunit.xml"
           coverage_html: "storage/framework/testing/coverage"
           php_extensions: "xdebug"
+          vendored_phpunit_path: "vendor/bin/phpunit"
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
