@@ -51,6 +51,7 @@ jobs:
           report_type: 'html'
           report: 'storage/framework/testing/coverage/index.html'
           push_badge: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Git push to image-data branch
         uses: peaceiris/actions-gh-pages@v3
         with:
