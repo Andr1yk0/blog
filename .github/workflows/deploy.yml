@@ -47,13 +47,14 @@ jobs:
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd $BASE_PATH/releases && ls -t -1 | tail -n +6 | xargs rm -rf
             cd $RELEASE_PATH && php artisan migrate --force && php artisan config:cache && php artisan storage:link && php artisan sitemap:generate
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
         with:
           configuration: "phpunit.xml"
           coverage_html: "storage/framework/testing/coverage"
           php_extensions: "xdebug"
-          vendored_phpunit_path: "vendor/bin/phpunit"
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
