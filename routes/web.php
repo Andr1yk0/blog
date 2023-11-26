@@ -22,7 +22,7 @@ Route::get('/tests', [TestsController::class, 'index'])->name('tests.index');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts', [ContactsController::class, 'store'])->name('contacts.store');
 
-\Auth::routes();
+\Auth::routes(['register' => false, 'confirm' => false]);
 
 Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');

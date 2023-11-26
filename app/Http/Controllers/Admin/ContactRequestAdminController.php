@@ -23,6 +23,8 @@ class ContactRequestAdminController extends Controller
     public function destroy(ContactRequest $contactRequest): RedirectResponse
     {
         $contactRequest->delete();
-        return redirect()->route('admin.contact-requests.index')->with('success', 'Contact request has been deleted!');
+        return redirect()
+            ->route('admin.contact-requests.index')
+            ->with('success', 'Contact request has been deleted!');
     }
 }

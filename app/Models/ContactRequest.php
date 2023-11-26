@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\ContactRequest
@@ -12,18 +15,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $email
  * @property string $message
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest query()
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereMessage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|ContactRequest newModelQuery()
+ * @method static Builder|ContactRequest newQuery()
+ * @method static Builder|ContactRequest query()
+ * @method static Builder|ContactRequest whereCreatedAt($value)
+ * @method static Builder|ContactRequest whereEmail($value)
+ * @method static Builder|ContactRequest whereId($value)
+ * @method static Builder|ContactRequest whereMessage($value)
+ * @method static Builder|ContactRequest whereName($value)
+ * @method static Builder|ContactRequest whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class ContactRequest extends Model
 {

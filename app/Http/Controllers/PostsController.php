@@ -15,7 +15,7 @@ class PostsController extends Controller
     public function index(Tag $tag = null): View|Application|Factory
     {
         $seoTitle = $tag ? $tag->title . ' posts' : 'Posts';
-        $postsQuery = Post::with('tags')->published();
+        $postsQuery = Post::published()->with('tags');
         if($tag) {
             $postsQuery->whereHas('tags', function($query) use ($tag) {
                 $query->where('slug', $tag->slug);

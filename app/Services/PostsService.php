@@ -20,7 +20,7 @@ class PostsService
 
     public function save(Post $post, array $data): Post
     {
-        $data['published_at'] = $data['published_at'] ? Carbon::parse($data['published_at'], config('app.timezone'))->setTimezone('UTC') : null;
+        $data['published_at'] = isset($data['published_at']) ? Carbon::parse($data['published_at'], config('app.timezone'))->setTimezone('UTC') : null;
         $tagIds = explode(',', $data['tags']);
         $post->fill($data);
         $post->save();
