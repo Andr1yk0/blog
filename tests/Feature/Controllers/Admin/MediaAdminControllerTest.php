@@ -16,8 +16,6 @@ class MediaAdminControllerTest extends TestCase
 
     protected function tearDown(): void
     {
-        //clear testing disks to prevent permission issue with github actions
-        \File::cleanDirectory(storage_path('framework/testing/disks'));
         parent::tearDown();
     }
 
