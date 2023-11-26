@@ -38,6 +38,7 @@ jobs:
           DB_TESTING_DATABASE: testing
           DB_TESTING_USERNAME: tester
           DB_TESTING_PASSWORD: password
+          XDEBUG_MODE: coverage
         with:
           configuration: "phpunit.xml"
           coverage_html: "storage/framework/testing/coverage"
