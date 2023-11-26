@@ -26,10 +26,18 @@ jobs:
           php_extensions: exif
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
+        env:
+          DB_TESTING_CONNECTION: mysql_testing
+          DB_TESTING_HOST: localhost
+          DB_TESTING_PORT: 3306
+          DB_TESTING_DATABASE: testing
+          DB_TESTING_USERNAME: tester
+          DB_TESTING_PASSWORD: password
         with:
           configuration: "phpunit.xml"
           coverage_html: "storage/framework/testing/coverage"
           php_extensions: xdebug pdo_mysql
+
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
