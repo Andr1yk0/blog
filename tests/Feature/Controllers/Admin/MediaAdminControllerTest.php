@@ -14,6 +14,12 @@ class MediaAdminControllerTest extends TestCase
 {
     use RefreshDatabaseCustom, AuthUser;
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        Storage::fake('public');
+    }
+
     public function test_list_media(): void
     {
         $publicDisk = Storage::fake('public');
