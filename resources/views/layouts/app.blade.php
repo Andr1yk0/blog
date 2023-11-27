@@ -27,7 +27,7 @@
         @yield('content')
         <x-notification />
     </div>
-    <footer class="bg-text-clr-50 mt-6 shadow">
+    <footer class="bg-text-clr-50 mt-10 shadow">
         <div class="mx-auto max-w-7xl p-6 md:flex md:items-center md:justify-between">
             <div class="flex justify-center space-x-6 md:order-2">
                 <a href="https://github.com/Andr1yk0" target="_blank" class="text-text-clr-500 hover:text-text-clr-600">
