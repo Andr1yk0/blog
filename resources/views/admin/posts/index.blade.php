@@ -41,9 +41,19 @@
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->created_at}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->updated_at}}</td>
                                 <td>
-                                    <a href="{{route('admin.posts.edit', [$post->id])}}"
-                                       class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a class="text-red-600 hover:text-red-900">Delete</a>
+                                    <a class="cursor-pointer" href="{{route('admin.posts.edit', [$post->id])}}">
+                                        <x-icons.mini.pencil-square class="text-indigo-500 hover:text-indigo-700" />
+                                    </a>
+                                    <form method="POST" action="{{route('admin.posts.destroy', $post->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a class="cursor-pointer"
+                                           onclick="if(confirm('Are you sure you want to delete this post?')){this.closest('form').submit()}"
+                                        >
+                                            <x-icons.mini.trash class="text-red-500 hover:text-red-700" />
+                                        </a>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

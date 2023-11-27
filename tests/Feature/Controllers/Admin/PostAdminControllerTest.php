@@ -71,4 +71,17 @@ class PostAdminControllerTest extends TestCase
             'tag_id' => $tag->id,
         ]);
     }
+
+    public function test_delete_post()
+    {
+        $post = Post::factory()->create();
+        $tag = Tag::factory()->create();
+        $post->tags()->sync([$tag->id]);
+
+        $response = $this->setUser()->delete("/admin/posts/$post->id");
+
+        $response->assertRedirect('/admin/posts')->assertSessionHas('success');
+        $this->assertDatabaseEmpty('posts');
+        $this->assertDatabaseEmpty('post_tag');
+    }
 }

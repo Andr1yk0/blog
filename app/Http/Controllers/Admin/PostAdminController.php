@@ -49,4 +49,10 @@ class PostAdminController extends Controller
         $postsService->update($post, $request->all());
         return redirect()->route('admin.posts.index')->with('success', 'Post updated');
     }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('success', 'Post deleted');
+    }
 }
