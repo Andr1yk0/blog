@@ -14,7 +14,7 @@
             </x-card>
             <div class="grid grid-cols-1 md:col-span-2">
                 <x-card>
-                    <div class="group relative">
+                    <div class="group relative mb-10">
                         <div class="flex items-center gap-x-4">
                             <time datetime="{{ $post->published_at->format('Y-m-d') }}"
                                   class="block text-sm leading-6 text-text-clr-600"
@@ -29,12 +29,10 @@
                             {{ $post->title }}
                         </h1>
                     </div>
-                    <hr class="my-5">
                     <div class="mx-auto prose prose-base lg:prose-lg prose-pre:mt-2 prose-p:mb-0 mb-5">
                         {!! $post->body_html !!}
                     </div>
-                    <hr class="my-5">
-                    <div class="flex">
+                    <div class="flex mt-16 ">
                         @if($post->previous)
                             <div class="relative py-5 hover:bg-text-clr-100 basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
