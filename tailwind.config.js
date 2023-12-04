@@ -55,6 +55,12 @@ module.exports = {
                         // '--tw-prose-pre-bg': 'var(--text-clr-800)',
                         '--tw-prose-th-borders': 'var(--text-clr-300)',
                         '--tw-prose-td-borders': 'var(--text-clr-200)',
+                        'code::before': {
+                            content: '""'
+                        },
+                        'code::after': {
+                            content: '""'
+                        },
                     }
                 }
             })

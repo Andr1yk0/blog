@@ -75,4 +75,9 @@
 .prose img{
     @apply m-0;
 }
-
+.prose code{
+    @apply bg-text-clr-200 p-1.5 rounded
+}
+.prose a{
+    @apply font-semibold underline-offset-4
+}
