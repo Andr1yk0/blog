@@ -19,6 +19,7 @@ class PostAdminController extends Controller
         $posts = QueryBuilder::for($query)
             ->allowedFilters(['title', 'content', 'tags.title'])
             ->allowedSorts(['id', 'title', 'slug', 'published_at', 'updated_at', 'created_at'])
+            ->defaultSort('-id')
             ->paginate(10)
             ->appends(request()->query());
         return view('admin.posts.index', compact('posts'));
