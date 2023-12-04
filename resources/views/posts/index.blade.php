@@ -60,7 +60,7 @@
                                                 <x-tag :tag="$tag"/>
                                             @endforeach
                                         </div>
-                                        <h2 class="mt-2 text-xl font-semibold text-text-clr-900 group-hover:text-text-clr-600">
+                                        <h2 class="mt-2 text-xl font-semibold text-text-clr-900 hover:underline underline-offset-4 decoration-clr-400">
                                             <a href="{{ route('posts.show', [$post->slug]) }}">
                                                 {{ $post->title }}
                                             </a>
