@@ -24,8 +24,8 @@
                             class="rounded-full p-2 text-text-clr-500 hover:text-text-clr-600"
                             @click="isDarkMode = !isDarkMode; isDarkMode ? localStorage.setItem('darkMode', 'true') : localStorage.removeItem('darkMode');"
                     >
-                            <x-icons.outline.sun x-show="isDarkMode" />
-                            <x-icons.outline.moon x-show="!isDarkMode" />
+                            <x-icons.outline.sun class="text-orange-300" x-show="!isDarkMode" />
+                            <x-icons.outline.moon class="text-yellow-200" x-show="isDarkMode" />
                     </button>
                 </div>
             </div>

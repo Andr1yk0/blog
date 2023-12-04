@@ -75,7 +75,7 @@
 .prose img{
     @apply m-0;
 }
-.prose code{
+.prose code[data-backticks]{
     @apply bg-text-clr-200 p-1.5 rounded
 }
 .prose a{
