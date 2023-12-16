@@ -17,14 +17,16 @@
     <link rel="apple-touch-icon" href="{{asset('apple-icon.png')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+@env('production')
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', '{{config('google.ga_measurement_id')}}');
-</script>
+        gtag('config', '{{config('google.ga_measurement_id')}}');
+    </script>
+@endenv
 <body class="theme-indigo bg-text-clr-200">
 <div class="flex flex-col h-screen justify-between">
     <x-main-header />

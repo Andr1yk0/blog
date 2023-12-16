@@ -10,12 +10,18 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class ContactsController extends Controller
 {
     public function index(): View|Factory|Application
     {
-        return view('pages.contacts');
+        return view('pages.contacts', [
+            'SEOData' => new SEOData(
+                title: 'Contacts',
+                description: ''
+            )
+        ]);
     }
 
     /**
