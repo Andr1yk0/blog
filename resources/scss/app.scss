@@ -81,3 +81,15 @@
 .prose a{
     @apply font-semibold underline-offset-4
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--text-clr-800);
+    -webkit-box-shadow: inset 0 0 20px 20px var(--text-clr-200);
+}
+input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
+    background-color: var(--text-clr-800);
+}
