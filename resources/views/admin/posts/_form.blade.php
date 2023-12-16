@@ -9,7 +9,7 @@
             <input
                 type="text"
                 name="title"
-                value="{{ $post->title ?? old('title') }}"
+                value="{{ old('title', $post->title ?? '') }}"
                 id="title"
                 autocomplete="given-name"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -18,13 +18,13 @@
     </div>
     <div class="mb-2">
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Slug</label>
-        <x-slug-input :slug="$post->slug ?? old('slug', '')"/>
+        <x-slug-input :slug="old('slug', $post->slug ?? '')"/>
     </div>
     <div class="mb-2">
         <label>Body</label>
         <div id="editor"></div>
         <input type="hidden" name="body_html">
-        <input type="hidden" name="body_markdown" value="{{ $post->body_markdown ?? old('body_markdown') }}">
+        <input type="hidden" name="body_markdown" value="{{ old('body_markdown', $post->body_markdown ?? '') }}">
     </div>
     <template x-if="$store.editPostForm.postDescriptionLength < 100 || $store.editPostForm.postDescriptionLength > 170">
         <div  class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
@@ -41,7 +41,7 @@
             <input
                 type="datetime-local"
                 name="published_at"
-                value="{{ $post->published_at ?? old('published_at') }}"
+                value="{{ old('published_at', $post->published_at ?? '') }}"
                 id="publishedAt"
                 autocomplete="given-name"
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
