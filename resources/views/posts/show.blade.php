@@ -1,17 +1,47 @@
+@php
+    use App\Models\Post;
+    /**
+     * @var Post $post
+     */
+@endphp
 @extends('layouts.app')
 @section('content')
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
-            <x-card>
-                <x-slot:header>
-                    <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
-                </x-slot>
-                <div class="flex flex-wrap gap-2">
-                    @foreach($tags as $tag)
-                        <x-tag :tag="$tag"/>
-                    @endforeach
-                </div>
-            </x-card>
+            <div>
+                <x-card class="mb-6">
+                    <x-slot:header>
+                        <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
+                    </x-slot>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach($tags as $tag)
+                            <x-tag :tag="$tag"/>
+                        @endforeach
+                    </div>
+                </x-card>
+                @if($post->related->isNotEmpty())
+                    <x-card>
+                        <x-slot:header>
+                            <h3 class="text-base font-semibold leading-6 text-text-clr-900">Related posts</h3>
+                            </x-slot>
+                            <ul role="list" class="divide-y divide-text-clr-300">
+                                @foreach($post->related as $relatedPost)
+                                    <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-3 sm:flex-nowrap">
+                                        <div>
+                                            <p class="text-lg font-semibold leading-6 text-text-clr-900">
+                                                <a href="{{ route('posts.show', [$relatedPost->slug]) }}"
+                                                   class="hover:underline underline-offset-4 decoration-clr-400"
+                                                >
+                                                    {{ $relatedPost->title }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                    </x-card>
+                @endif
+            </div>
             <div class="grid grid-cols-1 md:col-span-2">
                 <x-card>
                     <div class="group relative mb-10">

@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Tag;
 
 /**
  * App\Models\Post
@@ -18,10 +20,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $title
  * @property string $body_markdown
  * @property string $body_html
- * @property string|null $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
+ * @property string|Carbon|null $published_at
+ * @property Post|null $next
+ * @property Post|null $previous
+ * @property string|null $published_at_formatted
+ * @property Collection $related
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, Tag> $tags
  * @property-read int|null $tags_count
  * @method static PostFactory factory($count = null, $state = [])
  * @method static Builder|Post newModelQuery()
@@ -75,6 +81,20 @@ class Post extends Model
                 ->published()
                 ->orderBy('id', 'asc')
                 ->first()
+        );
+    }
+
+    public function related(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->withCount(['tags as matched_tags_count' => function (Builder $query) {
+                $query->whereIn('id', $this->tags->pluck('id'));
+            }])->published()
+                ->where('id', '!=', $this->id)
+                ->having('matched_tags_count', '>', 0)
+                ->orderBy('matched_tags_count', 'desc')
+                ->limit(5)
+                ->get()
         );
     }
 
