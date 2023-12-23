@@ -5,8 +5,11 @@
             <x-slot:header>
                 <h1 class="text-3xl font-bold text-center tracking-tight text-text-clr-900 sm:text-2xl">Contact form</h1>
                 </x-slot>
-                <form action="{{ route('contacts.store') }}" id="contactForm" method="POST"
-                      class="mx-auto mt-6 max-w-xl">
+                <form action="{{ route('contacts.store') }}"
+                      id="contactForm"
+                      method="POST"
+                      class="mx-auto mt-6 max-w-xl"
+                >
                     @csrf
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div class="sm:col-span-2">
@@ -64,6 +67,7 @@
     <script src='https://www.google.com/recaptcha/api.js?render={{config('captcha.site_key')}}'></script>
     <script>
         function onSubmit() {
+            Alpine.store('loader', true);
             document.getElementById("contactForm").submit();
         }
     </script>

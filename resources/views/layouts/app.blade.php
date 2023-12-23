@@ -33,6 +33,7 @@
     <div class="mb-auto">
         @yield('content')
         <x-notification />
+        <x-loader />
     </div>
     <footer class="bg-text-clr-50 mt-10 shadow">
         <div class="mx-auto max-w-7xl p-6 md:flex md:items-center md:justify-between">

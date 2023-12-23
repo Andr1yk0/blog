@@ -126,10 +126,10 @@
     </div>
 </div>
 <x-notification/>
+<x-loader/>
 <script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
 <script>
-    console.log('start');
     Alpine.start();
 </script>
 </body>
