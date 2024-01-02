@@ -7,7 +7,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
+        <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-3">
             <div>
                 <x-card class="mb-6">
                     <x-slot:header>
@@ -42,12 +42,12 @@
                     </x-card>
                 @endif
             </div>
-            <div class="grid grid-cols-1 md:col-span-2">
+            <div class="grid grid-cols-1 order-first lg:order-last lg:col-span-2">
                 <x-card>
-                    <div class="group relative mb-10">
+                    <div class="group relative mb-10 max-w-[65ch] mx-auto lg:max-w-none lg:mx-0">
                         <div class="flex items-center gap-x-4">
                             <time datetime="{{ $post->published_at->format('Y-m-d') }}"
-                                  class="block text-sm leading-6 text-text-clr-600"
+                                  class="block text-sm leading-6 text-text-clr-600 text-center"
                             >
                                 {{ $post->published_at_formatted }}
                             </time>
@@ -62,23 +62,23 @@
                     <div class="mx-auto prose prose-base lg:prose-lg prose-pre:mt-2 prose-p:mb-0 mb-5">
                         {!! $post->body_html !!}
                     </div>
-                    <div class="flex mt-16 ">
+                    <div class="flex flex-wrap mt-16">
                         @if($post->previous)
-                            <div class="relative py-5 hover:bg-text-clr-100 basis-1/2">
+                            <div class="relative py-5 basis-full hover:bg-text-clr-100 md:basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
                                     <div class="flex items-center gap-x-2">
                                         <x-icons.outline.chevron-left class="text-text-clr-400" />
                                     </div>
                                     <div class="flex gap-x-4 flex-1">
                                         <div class="min-w-0 flex-auto">
-                                            <p class="text-sm text-center font-semibold leading-6 text-text-clr-900">
+                                            <p class="mt-1 text-xs leading-5 text-text-clr-500">
+                                                Previous post
+                                            </p>
+                                            <p class="text-sm font-semibold leading-6 text-text-clr-900">
                                                 <a href="{{ route('posts.show', [$post->previous->slug]) }}">
                                                     <span class="absolute inset-x-0 -top-px bottom-0"></span>
                                                     {{ $post->previous->title }}
                                                 </a>
-                                            </p>
-                                            <p class="mt-1 text-center text-xs leading-5 text-text-clr-500">
-                                                {{ $post->previous->published_at_formatted }}
                                             </p>
                                         </div>
                                     </div>
@@ -86,19 +86,20 @@
                             </div>
                         @endif
                         @if($post->next)
-                            <div class="relative py-5 hover:bg-text-clr-100 basis-1/2 ml-auto">
+                            <div class="relative py-5 basis-full hover:bg-text-clr-100 md:basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
                                     <div class="flex gap-x-4 flex-1">
                                         <div class="min-w-0 flex-auto">
-                                            <p class="text-sm text-center font-semibold leading-6 text-text-clr-900">
+                                            <p class="mt-1 text-xs leading-5 text-text-clr-500 text-right">
+                                                Next post
+                                            </p>
+                                            <p class="text-sm text-right font-semibold leading-6 text-text-clr-900">
                                                 <a href="{{ route('posts.show', [$post->next->slug]) }}">
                                                     <span class="absolute inset-x-0 -top-px bottom-0"></span>
                                                     {{ $post->next->title }}
                                                 </a>
                                             </p>
-                                            <p class="mt-1 text-xs leading-5 text-text-clr-500 text-center">
-                                                {{ $post->next->published_at_formatted }}
-                                            </p>
+
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-x-2">

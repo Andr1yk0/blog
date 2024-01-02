@@ -73,7 +73,7 @@
     visibility: hidden;
 }
 .prose img{
-    @apply m-0;
+    @apply m-0 w-full rounded-md shadow-[0px_0px_6px_-3px_rgba(0,0,0,0.7)];
 }
 .prose code[data-backticks]{
     @apply bg-text-clr-200 p-1.5 rounded

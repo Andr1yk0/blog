@@ -73,7 +73,7 @@
                                         @if($loop->first)
                                             @continue
                                         @endif
-                                        <div class="p-0.5 w-8 h-8 flex-shrink-0">
+                                        <div class="p-0.5 w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
                                             <div class="w-full h-full rounded-sm {{ $background }}"></div>
                                         </div>
                                     @endforeach
