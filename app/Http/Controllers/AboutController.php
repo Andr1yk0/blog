@@ -14,7 +14,7 @@ class AboutController extends Controller
             return view('pages.about', [
                 'SEOData' => new SEOData(
                     title: 'About',
-                    description: 'Carefully crafted posts and quizzes about web development technologies.',
+                    description: 'Personal blog about web development technologies. I write short posts about problems and solutions that I encounter in my work',
                 )
             ]);
         }
