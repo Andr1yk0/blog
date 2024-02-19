@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 class SlugInput extends Component
 {
-    public function __construct(public string $slug = '', public string $textInputId = 'title')
+    public function __construct(public ?string $slug = '', public string $textInputId = 'title')
     {
 
     }

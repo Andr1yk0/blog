@@ -81,6 +81,21 @@
 .prose a{
     @apply font-semibold underline-offset-4
 }
+.prose{
+    th, td{
+        @apply p-3
+    }
+}
+.prose th{
+    @apply bg-text-clr-100
+}
+.prose th p, .prose td p{
+    @apply m-0
+}
+.prose table{
+    @apply border
+}
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
