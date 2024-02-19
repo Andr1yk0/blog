@@ -19,8 +19,10 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Composer
+        uses: php-actions/composer@v6
         with:
           version: "10.5.10"
           php_version: "8.2"
