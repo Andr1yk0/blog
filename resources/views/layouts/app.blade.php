@@ -12,6 +12,9 @@
     @if(isset($SEOData))
         {!! seo($SEOData) !!}
     @endif
+    @if((int)request()->query('page') === 1)
+        <link rel="canonical" href="{{request()->fullUrlWithoutQuery('page')}}">
+    @endif
     <link rel="icon" href="{{asset('favicon.ico')}}" sizes="any">
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <link rel="apple-touch-icon" href="{{asset('apple-icon.png')}}">
