@@ -13,7 +13,7 @@
                     <x-slot:header>
                         <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
                     </x-slot>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-1">
                         @foreach($tags as $tag)
                             <x-tag :tag="$tag"/>
                         @endforeach
@@ -51,9 +51,11 @@
                             >
                                 {{ $post->published_at_formatted }}
                             </time>
-                            @foreach($post->tags as $tag)
-                                <x-tag :tag="$tag"/>
-                            @endforeach
+                            <div class="flex gap-1">
+                                @foreach($post->tags as $tag)
+                                    <x-tag :tag="$tag"/>
+                                @endforeach
+                            </div>
                         </div>
                         <h1 class="mt-2 text-2xl font-semibold text-text-clr-900">
                             {{ $post->title }}
