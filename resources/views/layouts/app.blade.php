@@ -50,7 +50,7 @@
                     <x-icons.linkedin />
                 </a>
             </div>
-            <div class="mt-8 md:order-1 md:mt-0">
+            <div class="mt-4 md:order-1 md:mt-0">
                 <p class="text-center text-xs leading-5 text-text-clr-600">&copy; 2023 prostocode.com. All rights reserved.</p>
             </div>
         </div>

@@ -14,7 +14,7 @@
                     </div>
                 </x-card>
             </div>
-            <div class="grid grid-cols-1 order-first lg:order-last md:col-span-2">
+            <div class="grid grid-cols-1 order-first md:order-last md:col-span-2">
                 <x-card>
                     <x-slot:header>
                         <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
