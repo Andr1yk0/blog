@@ -19,6 +19,10 @@
     <link rel="icon" href="{{asset('favicon.png')}}" type="image/png">
     <link rel="apple-touch-icon" href="{{asset('apple-icon.png')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @if(app()->isProduction())
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710254041885287"
+                crossorigin="anonymous"></script>
+    @endif
 </head>
 @env('production')
     <script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>
