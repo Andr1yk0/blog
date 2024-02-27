@@ -35,4 +35,9 @@ class ContactsController extends Controller
         ContactRequest::create($request->all());
         return redirect()->route('contacts.index')->with('success', 'Your message has been sent!');
     }
+
+    public function cookiePolicy()
+    {
+        return \view('pages.cookie-policy');
+    }
 }

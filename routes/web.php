@@ -19,6 +19,7 @@ Route::get('/posts/tagged/{tag:slug}', [PostsController::class, 'index'])->name(
 
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts', [ContactsController::class, 'store'])->name('contacts.store');
+Route::get('/cookie-policy', [ContactsController::class, 'cookiePolicy'])->name('cookie-policy');
 
 \Auth::routes(['register' => false, 'confirm' => false]);
 
