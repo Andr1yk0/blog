@@ -40,4 +40,14 @@ class ContactsController extends Controller
     {
         return \view('pages.cookie-policy');
     }
+
+    public function privacyPolicy()
+    {
+        return \view('pages.privacy-policy');
+    }
+
+    public function terms()
+    {
+        return \view('pages.terms');
+    }
 }

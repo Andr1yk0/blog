@@ -54,10 +54,16 @@
                     <x-icons.linkedin />
                 </a>
             </div>
+            <div class="flex justify-center gap-5 py-2">
+                <a href="{{route('terms')}}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms & conditions</a>
+                <a href="{{route('cookie-policy')}}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Cookie policy</a>
+                <a href="{{route('privacy-policy')}}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy policy</a>
+            </div>
             <div class="mt-4 md:order-1 md:mt-0">
                 <p class="text-center text-xs leading-5 text-text-clr-600">&copy; 2023 prostocode.com. All rights reserved.</p>
             </div>
         </div>
+
     </footer>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>

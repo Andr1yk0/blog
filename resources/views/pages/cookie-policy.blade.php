@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mx-auto max-w-4xl">
-        <x-card>
-            <div class="prose prose-base">
+        <x-card class="mx-auto max-w-[65ch]">
+            <div class="prose prose-base prose-h1:text-center">
 
                 <h1>Cookie Policy</h1>
                 <p>Updated at 2024-02-26</p>
 
-                <h1>Definitions and key terms</h1>
+                <h2>Definitions and key terms</h2>
                 <p>To help explain things as clearly as possible in this Cookie Policy, every time any of these terms are
                     referenced, are strictly defined as:</p>
                 <ul>
@@ -35,20 +34,20 @@
                 </ul>
                 <p>This Cookie Policy was created with <a href="https://termify.io" target="_blank">Termify</a>.</p>
 
-                <h1>Introduction</h1>
+                <h2>Introduction</h2>
                 <p>This Cookie Policy explains how ProstoCode and its affiliates (collectively "ProstoCode", "we", "us", and
                     "ours"), use cookies and similar technologies to recognize you when you visit our website, including
                     without limitation https://prostocode.com/ and any related URLs, mobile or localized versions and
                     related domains / sub-domains ("Websites"). It explains what these technologies are and why we use them,
                     as well as the choices for how to control them.</p>
 
-                <h1>What is a cookie?</h1>
+                <h2>What is a cookie?</h2>
                 <p>A cookie is a small text file that is stored on your computer or other internet connected device in order
                     to identify your browser, provide analytics, remember information about you such as your language
                     preference or login information. They're completely safe and can't be used to run programs or deliver
                     viruses to your device.</p>
 
-                <h1>Why do we use cookies?</h1>
+                <h2>Why do we use cookies?</h2>
                 <p>We use first party and/or third party cookies on our website for various purposes such as:</p>
                 <ul>
                     <li>To facilitate the operation and functionality of our website;</li>
@@ -62,7 +61,7 @@
                     <li>You: a person or entity that is registered with ProstoCode to use the Services.</li>
                 </ul>
 
-                <h1>What type of cookies does ProstoCode use?</h1>
+                <h2>What type of cookies does ProstoCode use?</h2>
                 <p>Cookies can either be session cookies or persistent cookies. A session cookie expires automatically when
                     you close your browser. A persistent cookie will remain until it expires or you delete your cookies.
                     Expiration dates are set in the cookies themselves; some may expire after a few minutes while others may
@@ -73,12 +72,12 @@
                     If you remove or disable these cookies, we cannot guarantee that you will be able to use our
                     website.</p>
                 <p>We use the following types of cookies in our website:</p>
-                <h1>Essential Cookies</h1>
+                <h2>Essential Cookies</h2>
                 <p>We use essential cookies to make our website work. These cookies are strictly necessary to enable core
                     functionality such as security, network management, your cookie preferences and accessibility. Without
                     them you wouldn't be able to use basic services. You may disable these by changing your browser
                     settings, but this may affect how the Websites function.</p>
-                <h1>Analytics and Customization Cookies</h1>
+                <h2>Analytics and Customization Cookies</h2>
                 <p>These cookies collect information that is used to help us understand how our website is being used or how
                     effective our marketing campaigns are, or to help us customize our website for you.</p>
                 <p>We use cookies served by Google Analytics to collect limited data directly from end-user browsers to
@@ -86,21 +85,21 @@
                     uses this data can be found at: https://www.google.com/policies/privacy/partners/. You can opt-out of
                     all Google supported analytics on our Websites by
                     visiting: https://tools.google.com/dlpage/gaoptout.</p>
-                <h1>Advertising Cookies</h1>
+                <h2>Advertising Cookies</h2>
                 <p>These cookies collect information over time about your online activity on the website and other online
                     services to make online advertisements more relevant and effective to you. This is known as
                     interest-based advertising. They also perform functions like preventing the same ad from continuously
                     reappearing and ensuring that ads are properly displayed for advertisers. Without cookies, it’s really
                     hard for an advertiser to reach its audience, or to know how many ads were shown and how many clicks
                     they received.</p>
-                <h1>Third Party Cookies</h1>
+                <h2>Third Party Cookies</h2>
                 <p>Some cookies that have been set on our website are not set on a first party basis by ProstoCode. The
                     Websites can be embedded with content from third parties to serve advertising. These third party service
                     providers may set their own cookies on your web browser. Third party service providers control many of
                     the performance and functionality, advertising, marketing and analytics cookies described above. We do
                     not control the use of these third party cookies as cookies can only be accessed by the third party that
                     originally set them.</p>
-                <h1>How you can manage cookies?</h1>
+                <h2>How you can manage cookies?</h2>
                 <p>Most browsers allow you to control cookies through their 'settings' preferences. However, if you limit
                     the ability of websites to set cookies, you may worsen your overall user experience, since it will no
                     longer be personalized to you. It may also stop you from saving customized settings like login
@@ -119,7 +118,7 @@
                     <li>Opera Mobile</li>
                 </ul>
 
-                <h1>Blocking and disabling cookies and similar technologies</h1>
+                <h2>Blocking and disabling cookies and similar technologies</h2>
                 <p>Wherever you're located you may also set your browser to block cookies and similar technologies, but this
                     action may block our essential cookies and prevent our website from functioning properly, and you may
                     not be able to fully utilize all of its features and services. You should also be aware that you may
@@ -128,7 +127,7 @@
                     category of cookie does not delete the cookie from your browser, you will need to do this yourself from
                     within your browser, you should visit your browser's help menu for more information.</p>
 
-                <h1>Changes To Our Cookie Policy</h1>
+                <h2>Changes To Our Cookie Policy</h2>
                 <p>We may change our Service and policies, and we may need to make changes to this Cookie Policy so that
                     they accurately reflect our Service and policies. Unless otherwise required by law, we will notify you
                     (for example, through our Service) before we make changes to this Cookie Policy and give you an
@@ -136,10 +135,10 @@
                     will be bound by the updated Cookie Policy. If you do not want to agree to this or any updated Cookie
                     Policy, you can delete your account.</p>
 
-                <h1>Your Consent</h1>
+                <h2>Your Consent</h2>
                 <p>By using our website, registering an account, or making a purchase, you hereby consent to our Cookie
                     Policy and agree to its terms.</p>
-                <h1>Contact Us</h1>
+                <h2>Contact Us</h2>
                 <p>Don't hesitate to contact us if you have any questions regarding our Cookie Policy.</p>
                 <ul>
                     <li>Via Email: alozynskiy@gmail.com</li>
@@ -147,5 +146,4 @@
                 </ul>
             </div>
         </x-card>
-    </div>
 @endsection
