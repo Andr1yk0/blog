@@ -3,6 +3,7 @@
 /public/build
 /public/hot
 /public/storage
+/public/ads.txt
 public/css
 public/js
 /storage/*.key
