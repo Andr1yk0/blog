@@ -11,7 +11,7 @@ services:
     volumes:
       - ./:/var/www
   node-app:
-    container_name: blog_laravel_node
+    container_name: blog_node
     user: node
     build:
       context: ./
@@ -24,7 +24,7 @@ services:
       - "3011:3001"
     tty: true
   nginx:
-    container_name: blog_laravel_nginx
+    container_name: blog_nginx
     build: ./.docker/nginx
     volumes:
       - ./:/var/www

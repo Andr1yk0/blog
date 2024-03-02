@@ -74,7 +74,7 @@
 }
 .prose{
     a{
-        @apply font-semibold underline-offset-4
+        @apply font-semibold underline-offset-4 text-clr-500 hover:text-clr-400
     }
     th, td{
         @apply p-3
@@ -92,7 +92,7 @@
         @apply m-0 w-full rounded-md shadow-[0px_0px_6px_-3px_rgba(0,0,0,0.7)];
     }
     code[data-backticks]{
-        @apply bg-text-clr-200 p-1.5 rounded
+        @apply bg-text-clr-200 p-1 rounded border font-normal
     }
 }
 

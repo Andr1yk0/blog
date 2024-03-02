@@ -7,7 +7,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-3">
+        <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-[auto,minmax(71ch,1fr)] items-start gap-x-8 gap-y-8">
             <div>
                 <x-card class="mb-6">
                     <x-slot:header>
@@ -28,7 +28,7 @@
                                 @foreach($post->related as $relatedPost)
                                     <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-3 sm:flex-nowrap">
                                         <div>
-                                            <p class="text-lg font-semibold leading-6 text-text-clr-900">
+                                            <p class="leading-6 text-text-clr-950">
                                                 <a href="{{ route('posts.show', [$relatedPost->slug]) }}"
                                                    class="hover:underline underline-offset-4 decoration-clr-400"
                                                 >
@@ -42,26 +42,30 @@
                     </x-card>
                 @endif
             </div>
-            <div class="grid grid-cols-1 order-first lg:order-last lg:col-span-2">
+            <div class="order-first lg:order-last lg:col-span-2 xl:col-span-1">
                 <x-card>
-                    <div class="group relative mb-10 max-w-[65ch] mx-auto lg:max-w-none lg:mx-0">
-                        <div class="flex items-center gap-x-4">
-                            <time datetime="{{ $post->published_at->format('Y-m-d') }}"
-                                  class="block text-sm leading-6 text-text-clr-600 text-center"
-                            >
-                                {{ $post->published_at_formatted }}
-                            </time>
-                            <div class="flex gap-1">
-                                @foreach($post->tags as $tag)
-                                    <x-tag :tag="$tag"/>
-                                @endforeach
+                    <x-slot:header>
+                        <div class="group relative max-w-[65ch] mx-auto lg:mx-0">
+                            <h1 class="mt-2 text-xl font-semibold text-text-clr-900 mb-4">
+                                {{ $post->title }}
+                            </h1>
+                            <div class="flex items-center gap-x-4">
+                                <time datetime="{{ $post->published_at->format('Y-m-d') }}"
+                                      class="block text-sm leading-6 text-text-clr-600 text-center"
+                                >
+                                    {{ $post->published_at_formatted }}
+                                </time>
+                                <div class="flex gap-1">
+                                    @foreach($post->tags as $tag)
+                                        <x-tag :tag="$tag"/>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                        <h1 class="mt-2 text-2xl font-semibold text-text-clr-900">
-                            {{ $post->title }}
-                        </h1>
-                    </div>
-                    <div class="mx-auto prose prose-base lg:prose-lg prose-pre:mt-2 prose-p:mb-0 mb-5">
+                    </x-slot>
+
+
+                    <div class="mx-auto prose prose-base prose-pre:mt-2 prose-p:mb-0 mb-5">
                         {!! $post->body_html !!}
                     </div>
                     <div class="flex flex-wrap mt-16">
@@ -88,7 +92,7 @@
                             </div>
                         @endif
                         @if($post->next)
-                            <div class="relative py-5 basis-full hover:bg-text-clr-100 md:basis-1/2">
+                            <div class="relative py-5 ml-auto basis-full hover:bg-text-clr-100 md:basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
                                     <div class="flex gap-x-4 flex-1">
                                         <div class="min-w-0 flex-auto">

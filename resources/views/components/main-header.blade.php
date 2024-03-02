@@ -41,8 +41,6 @@
                     <x-icons.outline.x-mark x-cloak x-show="isMobileMenuOpened" />
                 </button>
             </div>
-            <div class="hidden lg:ml-4 lg:flex lg:items-center">
-            </div>
         </div>
     </div>
     <!-- Mobile menu, show/hide based on menu state. -->

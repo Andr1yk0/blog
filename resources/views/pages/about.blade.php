@@ -15,7 +15,7 @@
                 <x-slot:header>
                     <h1 class="text-base font-semibold leading-6 text-text-clr-800">About prostocode.com</h1>
                     </x-slot>
-                    <div class="prose prose-base text-text-clr-600 lg:prose-lg">
+                    <div class="prose prose-base text-text-clr-600">
                         prostocode.com - a personal blog about web development technologies.
                         I write short posts about problems and solutions that I encounter in my work.
                         Writing helps me to structure my knowledge, share it with others and gives me motivation to explore new things.
@@ -25,7 +25,7 @@
                 <x-slot:header>
                     <h2 class="text-base font-semibold leading-6 text-text-clr-800">About the author</h2>
                     </x-slot>
-                    <div class="prose prose-base text-text-clr-600 lg:prose-lg">
+                    <div class="prose prose-base text-text-clr-600">
                         I'm a full-stack web developer from Lviv, Ukraine.
                         I have {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::create(2016, 1, 1)) }}+ years of experience in building web applications with PHP and JavaScript.
                     </div>
