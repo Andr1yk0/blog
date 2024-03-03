@@ -94,6 +94,9 @@
     code[data-backticks]{
         @apply bg-text-clr-200 p-1 rounded border font-normal
     }
+    pre{
+        @apply text-base
+    }
 }
 
 input:-webkit-autofill,
