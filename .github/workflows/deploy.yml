@@ -69,7 +69,7 @@ jobs:
       - name: Build Frontend
         run: |
           npm ci
-          npm run prod
+          npm run production
       - name: Configure PHP
         uses: shivammathur/setup-php@master
         with:
