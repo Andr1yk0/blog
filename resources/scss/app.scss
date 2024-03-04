@@ -15,9 +15,6 @@
     --text-clr-900: theme('colors.gray.800');
     --text-clr-950: theme('colors.gray.900');
     --tw-prose-links: theme('colors.gray.900');
-    //.scrollbar::-webkit-scrollbar-track {
-    //    @apply bg-gray-50;
-    //}
 }
 .dark{
     --text-clr-50: theme('colors.slate.900');
@@ -32,9 +29,6 @@
     --text-clr-900: theme('colors.slate.50');
     --text-clr-950: theme('colors.white');
     --tw-prose-links: theme('colors.slate.100');
-    //body::-webkit-scrollbar-track {
-    //    @apply bg-slate-900;
-    //}
 }
 
 .theme-indigo{

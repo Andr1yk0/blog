@@ -1,5 +1,9 @@
 import Alpine from 'alpinejs';
-window.Alpine = Alpine;
+import axios from "axios";
+window.axios = axios;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.Alpine = Alpine
+window.slugify = require('slugify');
 
 
 Alpine.store('notifications', {

@@ -127,7 +127,7 @@
 </div>
 <x-notification/>
 <x-loader/>
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/admin.js') }}"></script>
 @stack('scripts')
 <script>
     Alpine.start();
