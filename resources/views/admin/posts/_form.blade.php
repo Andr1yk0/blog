@@ -26,6 +26,13 @@
         <input type="hidden" name="body_html">
         <input type="hidden" name="body_markdown" value="{{ old('body_markdown', $post->body_markdown ?? '') }}">
     </div>
+    <div class="mb-2">
+        <label>Description</label>
+        <textarea
+            name="meta_description"
+            readonly
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('meta_description', $post->meta_description) }}</textarea>
+    </div>
     <template x-if="$store.editPostForm.postDescriptionLength < 100 || $store.editPostForm.postDescriptionLength > 170">
         <div  class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
             <div class="flex">

@@ -17,14 +17,17 @@ Alpine.store('editPostForm', {
     postDescriptionLength: 0,
 });
 
-const setPostDescriptionLength = (editor) => {
-    let html = editor.getHTML()
+const setPostDescription = (editor) => {
+    const descriptionInput = document.querySelector('textarea[name="meta_description"]')
+    let html = editor.getHTML();
     let element = (new DOMParser()).parseFromString(html, "text/html")
         .querySelector('body>*:first-child');
     if (element.tagName !== 'P') {
         Alpine.store('editPostForm').postDescriptionLength = 0;
+        descriptionInput.value = '';
         return;
     }
+    descriptionInput.value = element.innerHTML;
     Alpine.store('editPostForm').postDescriptionLength = element.textContent.length;
 }
 
@@ -38,7 +41,7 @@ const editor = new Editor({
     linkAttributes: {target: '_blank'},
     events: {
         load: (editor) => {
-            setPostDescriptionLength(editor);
+            setPostDescription(editor);
         },
     },
     customHTMLRenderer: {
@@ -67,7 +70,7 @@ const editor = new Editor({
 });
 
 editor.addHook('change', () => {
-    setPostDescriptionLength(editor);
+    setPostDescription(editor);
 });
 
 

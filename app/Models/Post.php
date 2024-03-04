@@ -24,6 +24,7 @@ use App\Models\Tag;
  * @property Post|null $next
  * @property Post|null $previous
  * @property string|null $published_at_formatted
+ * @property string|null $meta_description
  * @property Collection $related
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -48,7 +49,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'body_html', 'body_markdown', 'published_at'];
+    protected $fillable = ['title', 'slug', 'body_html', 'meta_description', 'body_markdown', 'published_at'];
 
     protected function publishedAt(): Attribute
     {

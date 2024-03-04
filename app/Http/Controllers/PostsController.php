@@ -44,16 +44,10 @@ class PostsController extends Controller
 
     public function show(Post $post): View|Application|Factory
     {
-        $seoTitle = $post->title;
-        $seoDescription = null;
-        $firstParagraphMatches = [];
-        if(preg_match('/^<p>(.+?)<\/p>/', $post->body_html, $firstParagraphMatches) && isset($firstParagraphMatches[1])) {
-            $seoDescription = strip_tags($firstParagraphMatches[1]);
-        }
         return view('posts.show', [
             'SEOData' => new SEOData(
-                title: $seoTitle,
-                description: $seoDescription,
+                title: $post->title,
+                description: $post->meta_description,
             ),
             'post' => $post,
             'tags' => Tag::withCount('publishedPosts')
