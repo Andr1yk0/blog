@@ -1,6 +1,16 @@
 import {Editor} from "@toast-ui/editor";
 import '@toast-ui/editor/dist/toastui-editor.css';
+import {bundledLanguages, getHighlighter} from "shiki";
 
+const highlighterTheme = 'one-dark-pro';
+let highlighter = null;
+const highlightLangs = Object.keys(bundledLanguages)
+getHighlighter({
+    themes: [highlighterTheme],
+    langs: Object.keys(bundledLanguages)
+}).then((shiki) => {
+    highlighter = shiki;
+});
 const form = document.querySelector('#editPostForm');
 
 Alpine.store('editPostForm', {
@@ -15,7 +25,6 @@ const setPostDescriptionLength = (editor) => {
         Alpine.store('editPostForm').postDescriptionLength = 0;
         return;
     }
-    console.log(element.textContent, element.textContent.length);
     Alpine.store('editPostForm').postDescriptionLength = element.textContent.length;
 }
 
@@ -30,6 +39,30 @@ const editor = new Editor({
     events: {
         load: (editor) => {
             setPostDescriptionLength(editor);
+        },
+    },
+    customHTMLRenderer: {
+        codeBlock(node) {
+            let content = node.literal;
+            if (highlighter && highlightLangs.includes(node.info)) {
+                content = highlighter.codeToHtml(content, {
+                    theme: highlighterTheme,
+                    lang: node.info
+                });
+                console.log(content);
+                content = (new DOMParser()).parseFromString(content, 'text/html').querySelector('pre code').innerHTML;
+            }
+            return [
+                {
+                    type: 'openTag',
+                    tagName: 'pre',
+                    classNames: [`lang-${node.info}`, 'shiki', highlighterTheme],
+                },
+                {type: 'openTag', tagName: 'code', attributes: {'data-language': node.info}},
+                {type: 'html', content},
+                {type: 'closeTag', tagName: 'code'},
+                {type: 'closeTag', tagName: 'pre'},
+            ];
         }
     }
 });
@@ -50,7 +83,11 @@ form.addEventListener('submit', (e) => {
         return false;
     }
     form.querySelector('[name="body_markdown"]').value = editor.getMarkdown();
-    form.querySelector('[name="body_html"]').value = editor.getHTML();
+    let html = document.querySelector('.toastui-editor-md-preview .toastui-editor-contents').innerHTML;
+    html = html.replace(/data-nodeid="\d+"/ig,'')
+    console.log(html);
+
+    form.querySelector('[name="body_html"]').value = html;
     return true;
 });
 
