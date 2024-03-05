@@ -27,7 +27,7 @@ const setPostDescription = (editor) => {
         descriptionInput.value = '';
         return;
     }
-    descriptionInput.value = element.innerHTML;
+    descriptionInput.value = element.innerText;
     Alpine.store('editPostForm').postDescriptionLength = element.textContent.length;
 }
 
