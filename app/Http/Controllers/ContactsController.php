@@ -38,16 +38,28 @@ class ContactsController extends Controller
 
     public function cookiePolicy()
     {
-        return \view('pages.cookie-policy');
+        return \view('pages.cookie-policy', [
+            'SEOData' => new SEOData(
+                title: 'Cookie policy', description: 'Cookie policy'
+            )
+        ]);
     }
 
     public function privacyPolicy()
     {
-        return \view('pages.privacy-policy');
+        return \view('pages.privacy-policy', [
+            'SEOData' => new SEOData(
+                title: 'Privacy policy', description: 'Privacy policy'
+            )
+        ]);
     }
 
     public function terms()
     {
-        return \view('pages.terms');
+        return \view('pages.terms', [
+            'SEOData' => new SEOData(
+                title: 'Terms & conditions', description: 'Terms and conditions'
+            )
+        ]);
     }
 }
