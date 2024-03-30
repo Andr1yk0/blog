@@ -3,14 +3,12 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import {bundledLanguages, getHighlighter} from "shiki";
 
 const highlighterTheme = 'nord';
-let highlighter = null;
 const highlightLangs = Object.keys(bundledLanguages)
-getHighlighter({
+let highlighter = await getHighlighter({
     themes: [highlighterTheme],
-    langs: Object.keys(bundledLanguages)
-}).then((shiki) => {
-    highlighter = shiki;
-});
+    langs: highlightLangs
+})
+
 const form = document.querySelector('#editPostForm');
 
 Alpine.store('editPostForm', {
@@ -47,7 +45,7 @@ const editor = new Editor({
     customHTMLRenderer: {
         codeBlock(node) {
             let content = node.literal;
-            if (highlighter && highlightLangs.includes(node.info)) {
+            if (highlightLangs.includes(node.info)) {
                 content = highlighter.codeToHtml(content, {
                     theme: highlighterTheme,
                     lang: node.info
