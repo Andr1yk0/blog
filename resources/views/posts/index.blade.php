@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <x-google-add :slot-id="9572261439" />
+    <x-header-google-add />
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
-            <div class="divide-y divide-text-clr-200 overflow-hidden rounded-lg bg-text-clr-50 shadow">
+            <div>
                 <x-card>
                     <x-slot:header>
                         <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
@@ -14,7 +14,7 @@
                         @endforeach
                     </div>
                 </x-card>
-                <x-google-add :slot-id="2513380132"/>
+                <x-sidebar-google-add />
             </div>
             <div class="grid grid-cols-1 order-first md:order-last md:col-span-2">
                 <x-card>
@@ -77,5 +77,5 @@
             </div>
         </div>
     </div>
-    <x-google-add :slot-id="7973590374" />
+    <x-footer-google-add />
 @endsection

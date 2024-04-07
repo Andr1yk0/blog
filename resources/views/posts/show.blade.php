@@ -6,7 +6,7 @@
 @endphp
 @extends('layouts.app')
 @section('content')
-    <x-google-add :slot-id="9572261439" />
+    <x-header-google-add />
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-[auto,minmax(71ch,1fr)] items-start gap-x-8 gap-y-8">
             <div>
@@ -20,6 +20,7 @@
                         @endforeach
                     </div>
                 </x-card>
+                <x-sidebar-google-add />
                 @if($post->related->isNotEmpty())
                     <x-card>
                         <x-slot:header>
@@ -42,7 +43,6 @@
                             </ul>
                     </x-card>
                 @endif
-                <x-google-add :slot-id="2513380132"/>
             </div>
             <div class="order-first lg:order-last lg:col-span-2 xl:col-span-1">
                 <x-card>
@@ -118,10 +118,11 @@
                         @endif
                     </div>
                 </x-card>
+                <x-block-google-add />
             </div>
         </div>
     </div>
-    <x-google-add :slot-id="7973590374" />
+    <x-footer-google-add />
 @endsection
 @push('scripts')
     <script src="{{ mix('js/pages/posts-show.js') }}"></script>
