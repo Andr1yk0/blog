@@ -110,6 +110,5 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
 }
 
 .adsbygoogle{
-    margin: 10px;
-    text-align: center;
+    @apply my-4 text-center
 }
