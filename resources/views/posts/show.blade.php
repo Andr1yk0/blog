@@ -20,7 +20,6 @@
                         @endforeach
                     </div>
                 </x-card>
-                <x-sidebar-google-add />
                 @if($post->related->isNotEmpty())
                     <x-card>
                         <x-slot:header>
@@ -43,6 +42,7 @@
                             </ul>
                     </x-card>
                 @endif
+                <x-sidebar-google-add />
             </div>
             <div class="order-first lg:order-last lg:col-span-2 xl:col-span-1">
                 <x-card>
