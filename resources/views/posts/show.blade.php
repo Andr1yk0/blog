@@ -10,7 +10,6 @@
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-[auto,minmax(71ch,1fr)] items-start gap-x-8 gap-y-8">
             <div>
-                <x-sidebar-google-add />
                 <x-card class="mb-6">
                     <x-slot:header>
                         <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
