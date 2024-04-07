@@ -9,7 +9,7 @@
             'bg-clr-600', 'bg-clr-700', 'bg-clr-800', 'bg-clr-900'
         ];
     @endphp
-    <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+    <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8 my-10">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-2">
             <x-card>
                 <x-slot:header>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <x-card class="mx-auto max-w-[65ch]">
+    <x-card class="mx-auto max-w-[65ch] my-10">
         <div class="prose prose-base prose-h1:text-center">
             <h1>Terms & Conditions</h1>
             <p>Updated at 2024-02-26</p>

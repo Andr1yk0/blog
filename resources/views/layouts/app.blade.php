@@ -45,7 +45,7 @@
         <x-notification />
         <x-loader />
     </div>
-    <footer class="bg-text-clr-50 mt-10 shadow">
+    <footer class="bg-text-clr-50 shadow">
         <div class="mx-auto max-w-7xl p-6 md:flex md:items-center md:justify-between">
             <div class="flex justify-center space-x-6 md:order-2">
                 <a href="https://github.com/Andr1yk0" target="_blank" class="text-text-clr-500 hover:text-text-clr-600">
@@ -66,7 +66,6 @@
                 <p class="text-center text-xs leading-5 text-text-clr-600">&copy; 2023 prostocode.com. All rights reserved.</p>
             </div>
         </div>
-
     </footer>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>

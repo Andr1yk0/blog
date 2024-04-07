@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mx-auto max-w-2xl">
+    <div class="mx-auto max-w-2xl my-10">
         <x-card>
             <x-slot:header>
                 <h1 class="text-3xl font-bold text-center tracking-tight text-text-clr-900 sm:text-2xl">Contact form</h1>
