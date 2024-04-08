@@ -33,10 +33,6 @@ class PostsController extends Controller
                 title: $seoTitle,
                 description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
             ),
-            'tags' => Tag::withCount('publishedPosts')
-                ->whereHas('publishedPosts')
-                ->orderBy('published_posts_count', 'desc')
-                ->get(),
             'posts' => $posts,
             'pageTag' => $tag
         ]);
@@ -50,10 +46,6 @@ class PostsController extends Controller
                 description: $post->meta_description,
             ),
             'post' => $post,
-            'tags' => Tag::withCount('publishedPosts')
-                ->whereHas('publishedPosts')
-                ->orderBy('published_posts_count', 'desc')
-                ->get(),
         ]);
     }
 }

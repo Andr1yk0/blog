@@ -4,16 +4,7 @@
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
             <div>
-                <x-card>
-                    <x-slot:header>
-                        <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
-                    </x-slot>
-                    <div class="flex flex-wrap gap-1">
-                        @foreach($tags as $tag)
-                            <x-tag :tag="$tag"/>
-                        @endforeach
-                    </div>
-                </x-card>
+                <x-top-tags />
                 <x-sidebar-google-add />
             </div>
             <div class="grid grid-cols-1 order-first md:order-last md:col-span-2">

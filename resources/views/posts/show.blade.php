@@ -10,16 +10,7 @@
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-[auto,minmax(71ch,1fr)] items-start gap-x-8 gap-y-8">
             <div>
-                <x-card class="mb-6">
-                    <x-slot:header>
-                        <h3 class="text-base font-semibold leading-6 text-text-clr-900">Top tags</h3>
-                    </x-slot>
-                    <div class="flex flex-wrap gap-1">
-                        @foreach($tags as $tag)
-                            <x-tag :tag="$tag"/>
-                        @endforeach
-                    </div>
-                </x-card>
+                <x-top-tags class="mb-6" />
                 @if($post->related->isNotEmpty())
                     <x-card>
                         <x-slot:header>
