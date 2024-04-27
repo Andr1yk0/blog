@@ -32,12 +32,41 @@ class ContactsControllerTest extends TestCase
         });
         $this->instance(CaptchaService::class, $captchaServiceMock);
 
-        $this->post('contacts', $data)->assertRedirect('contacts');
+        $this->from('/contacts')->post('contacts', $data)->assertRedirect('contacts');
 
-        $this->assertDatabaseHas('contact_requests', [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'message' => $data['message'],
+        $this->assertDatabaseHas('contact_requests', $data);
+    }
+
+    public function test_failed_robot_check(): void
+    {
+        $captchaServiceMock = \Mockery::mock(CaptchaService::class, function (MockInterface $mock) {
+            $mock->shouldReceive('verifyRequest')->once()->andReturn(false);
+        });
+        $this->instance(CaptchaService::class, $captchaServiceMock);
+
+        $res = $this->from('/contacts')->post('contacts', [
+            'name' => 'Tester',
+            'email' => 'test@example.com',
+            'message' => 'Hello',
         ]);
+
+        $res->assertRedirect('contacts');
+        $res->assertSessionHasErrors();
+        $this->assertDatabaseEmpty('contact_requests');
+    }
+
+    public function test_cookie_policy(): void
+    {
+        $this->get('cookie-policy')->assertSuccessful();
+    }
+
+    public function test_privacy_policy(): void
+    {
+        $this->get('privacy-policy')->assertSuccessful();
+    }
+
+    public function test_terms_and_conditions(): void
+    {
+        $this->get('terms-and-conditions')->assertSuccessful();
     }
 }
