@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
@@ -18,9 +18,9 @@ class TagFactory extends Factory
     {
         return [
             'title' => fake()->unique()->words(2, true),
-            'slug' => function(array $attributes) {
-                return  Str::slug($attributes['title']);
-            }
+            'slug' => function (array $attributes) {
+                return Str::slug($attributes['title']);
+            },
         ];
     }
 }

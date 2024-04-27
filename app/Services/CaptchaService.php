@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 
-class CaptchaService {
-
+class CaptchaService
+{
     /**
      * @throws GuzzleException
      */
@@ -16,14 +17,15 @@ class CaptchaService {
         $captchaResponse = $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'form_params' => [
                 'response' => $requestData['g-recaptcha-response'],
-                'secret' => config('captcha.secret_key')
-            ]
+                'secret' => config('captcha.secret_key'),
+            ],
         ]);
 
         $captchaResponseObj = json_decode($captchaResponse->getBody()->getContents());
 
-        if(!$captchaResponseObj->success){
+        if (! $captchaResponseObj->success) {
             Log::error('Captcha error', ['response' => $captchaResponseObj]);
+
             return true;
         }
 

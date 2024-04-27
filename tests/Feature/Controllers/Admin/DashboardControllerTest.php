@@ -2,14 +2,13 @@
 
 namespace Tests\Feature\Controllers\Admin;
 
-use App\Models\User;
 use Tests\AuthUser;
 use Tests\RefreshDatabaseCustom;
 use Tests\TestCase;
 
 class DashboardControllerTest extends TestCase
 {
-    use RefreshDatabaseCustom, AuthUser;
+    use AuthUser, RefreshDatabaseCustom;
 
     public function test_dashboard_is_not_public(): void
     {

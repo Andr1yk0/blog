@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\Storage;
 class UpdateExperienceHeatmap extends Command
 {
     protected $signature = 'app:update-experience-heatmap';
+
     protected $description = 'Command description';
 
     public function handle(): void
     {
         $filePath = Storage::path('experience_graph.csv');
         $file = fopen($filePath, 'r');
-        if(!$file) {
+        if (! $file) {
             $this->error('File not found!');
+
             return;
         }
         $languages = fgetcsv($file);
@@ -27,12 +29,12 @@ class UpdateExperienceHeatmap extends Command
         array_shift($months);
 
         $heatMapData = [];
-        foreach ($languages as $index => $language){
+        foreach ($languages as $index => $language) {
             $yearsCount = round($months[$index] / 12);
             $monthsCount = $months[$index] % 12;
             $duration = '';
             if ($yearsCount > 0) {
-                $duration .= $yearsCount . ' year';
+                $duration .= $yearsCount.' year';
                 if ($yearsCount > 1) {
                     $duration .= 's';
                 }
@@ -41,7 +43,7 @@ class UpdateExperienceHeatmap extends Command
                 if ($yearsCount > 0) {
                     $duration .= ' ';
                 }
-                $duration .= $monthsCount . ' month';
+                $duration .= $monthsCount.' month';
                 if ($monthsCount > 1) {
                     $duration .= 's';
                 }
@@ -61,24 +63,24 @@ class UpdateExperienceHeatmap extends Command
             $month = (int) $monthYear[0];
 
             foreach ($row as $index => $value) {
-                if(!isset($heatMapData[$index]['history'][$year])) {
-                    $heatMapData[$index]['history'][$year] = [0,0,0,0];
+                if (! isset($heatMapData[$index]['history'][$year])) {
+                    $heatMapData[$index]['history'][$year] = [0, 0, 0, 0];
                 }
 
-                if($month <= 3) {
-                    $heatMapData[$index]['history'][$year][3] += (int)$value;
-                }elseif ($month <= 6) {
-                    $heatMapData[$index]['history'][$year][2] += (int)$value;
-                }elseif ($month <= 9) {
-                    $heatMapData[$index]['history'][$year][1] += (int)$value;
-                }elseif ($month <= 12) {
-                    $heatMapData[$index]['history'][$year][0] += (int)$value;
+                if ($month <= 3) {
+                    $heatMapData[$index]['history'][$year][3] += (int) $value;
+                } elseif ($month <= 6) {
+                    $heatMapData[$index]['history'][$year][2] += (int) $value;
+                } elseif ($month <= 9) {
+                    $heatMapData[$index]['history'][$year][1] += (int) $value;
+                } elseif ($month <= 12) {
+                    $heatMapData[$index]['history'][$year][0] += (int) $value;
                 }
             }
         }
         fclose($file);
 
-        usort($heatMapData, function($a, $b) {
+        usort($heatMapData, function ($a, $b) {
             return $b['months'] <=> $a['months'];
         });
 

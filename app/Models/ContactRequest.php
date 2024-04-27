@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property string $message
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|ContactRequest newModelQuery()
  * @method static Builder|ContactRequest newQuery()
  * @method static Builder|ContactRequest query()
@@ -26,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|ContactRequest whereMessage($value)
  * @method static Builder|ContactRequest whereName($value)
  * @method static Builder|ContactRequest whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 class ContactRequest extends Model
@@ -35,6 +37,6 @@ class ContactRequest extends Model
     protected $fillable = [
         'name',
         'email',
-        'message'
+        'message',
     ];
 }

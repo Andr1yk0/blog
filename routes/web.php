@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\ContactRequestAdminController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MediaAdminController;
 use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\SettingsAdminController;
 use App\Http\Controllers\Admin\TagAdminController;
 use App\Http\Controllers\Admin\TestAdminController;
-use App\Http\Controllers\Admin\DashboardController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AboutController::class, 'about'])->name('about');
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
@@ -37,4 +37,3 @@ Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(functi
     Route::get('settings', [SettingsAdminController::class, 'index'])->name('settings.index');
     Route::post('/generate-sitemap', [SettingsAdminController::class, 'generateSitemap'])->name('settings.generate-sitemap');
 });
-

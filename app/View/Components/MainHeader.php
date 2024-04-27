@@ -16,18 +16,18 @@ class MainHeader extends Component
             [
                 'title' => 'About',
                 'url' => route('about'),
-                'is_active' => request()->routeIs('about')
+                'is_active' => request()->routeIs('about'),
             ],
             [
                 'title' => 'Posts',
                 'url' => route('posts.index'),
-                'is_active' => request()->routeIs('posts.*')
+                'is_active' => request()->routeIs('posts.*'),
             ],
             [
                 'title' => 'Contacts',
                 'url' => route('contacts.index'),
-                'is_active' => request()->routeIs('contacts.index')
-            ]
+                'is_active' => request()->routeIs('contacts.index'),
+            ],
         ];
     }
 

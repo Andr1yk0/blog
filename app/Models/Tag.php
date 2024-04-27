@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read int|null $published_posts_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Tag> $subTags
  * @property-read int|null $sub_tags_count
+ *
  * @method static \Database\Factories\TagFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Tag extends Model
@@ -39,7 +41,7 @@ class Tag extends Model
 
     protected $fillable = [
         'title',
-        'slug'
+        'slug',
     ];
 
     public function posts(): BelongsToMany

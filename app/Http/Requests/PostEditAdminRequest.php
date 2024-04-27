@@ -22,8 +22,8 @@ class PostEditAdminRequest extends FormRequest
             'tags' => ['required', 'string'],
         ];
 
-        $rules['title'][] = 'unique:posts,title' . ($this->post ? ',' . $this->post->id : '');
-        $rules['slug'][] = 'unique:posts,slug' . ($this->post ? ',' . $this->post->id : '');
+        $rules['title'][] = 'unique:posts,title'.($this->post ? ','.$this->post->id : '');
+        $rules['slug'][] = 'unique:posts,slug'.($this->post ? ','.$this->post->id : '');
 
         return $rules;
     }

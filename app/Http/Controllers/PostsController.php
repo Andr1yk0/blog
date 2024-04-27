@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class PostsController extends Controller
 {
-    public function index(Tag $tag = null): View|Application|Factory
+    public function index(?Tag $tag = null): View|Application|Factory
     {
-        $seoTitle = $tag ? $tag->title . ' posts' : 'Posts';
+        $seoTitle = $tag ? $tag->title.' posts' : 'Posts';
         $postsQuery = Post::published()->with('tags');
-        if($tag) {
-            $postsQuery->whereHas('tags', function($query) use ($tag) {
+        if ($tag) {
+            $postsQuery->whereHas('tags', function ($query) use ($tag) {
                 $query->where('slug', $tag->slug);
             });
         }
@@ -34,7 +34,7 @@ class PostsController extends Controller
                 description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
             ),
             'posts' => $posts,
-            'pageTag' => $tag
+            'pageTag' => $tag,
         ]);
     }
 

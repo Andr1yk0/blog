@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class ContactsControllerTest extends TestCase
 {
-
     use RefreshDatabaseCustom;
 
     public function test_contact_page(): void
@@ -25,10 +24,10 @@ class ContactsControllerTest extends TestCase
         $data = [
             'name' => 'Tester',
             'email' => 'test@example.com',
-            'message' => 'Hello'
+            'message' => 'Hello',
         ];
 
-        $captchaServiceMock = \Mockery::mock(CaptchaService::class, function (MockInterface $mock){
+        $captchaServiceMock = \Mockery::mock(CaptchaService::class, function (MockInterface $mock) {
             $mock->shouldReceive('verifyRequest')->once()->andReturn(true);
         });
         $this->instance(CaptchaService::class, $captchaServiceMock);
@@ -38,7 +37,7 @@ class ContactsControllerTest extends TestCase
         $this->assertDatabaseHas('contact_requests', [
             'name' => $data['name'],
             'email' => $data['email'],
-            'message' => $data['message']
+            'message' => $data['message'],
         ]);
     }
 }

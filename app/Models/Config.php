@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property int $type
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|Config newModelQuery()
  * @method static Builder|Config newQuery()
  * @method static Builder|Config query()
@@ -28,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Config whereType($value)
  * @method static Builder|Config whereUpdatedAt($value)
  * @method static Builder|Config whereValue($value)
+ *
  * @mixin Eloquent
  */
 class Config extends Model
@@ -37,24 +39,26 @@ class Config extends Model
     public function value(): Attribute
     {
         return Attribute::make(
-            get: function(mixed $value){
-                if($this->type === ConfigTypeEnum::STRING->value) {
+            get: function (mixed $value) {
+                if ($this->type === ConfigTypeEnum::STRING->value) {
                     return $value;
-                }elseif($this->type === ConfigTypeEnum::INT->value) {
+                } elseif ($this->type === ConfigTypeEnum::INT->value) {
                     return (int) $value;
-                }elseif($this->type === ConfigTypeEnum::BOOL->value) {
+                } elseif ($this->type === ConfigTypeEnum::BOOL->value) {
                     return (bool) $value;
-                }elseif($this->type === ConfigTypeEnum::ARRAY->value) {
+                } elseif ($this->type === ConfigTypeEnum::ARRAY->value) {
                     return json_decode($value, true);
                 }
+
                 return $value;
             },
-            set: function(mixed $value){
-                if($this->type === ConfigTypeEnum::ARRAY->value) {
+            set: function (mixed $value) {
+                if ($this->type === ConfigTypeEnum::ARRAY->value) {
                     return json_encode($value);
-                }elseif ($this->type === ConfigTypeEnum::BOOL->value) {
+                } elseif ($this->type === ConfigTypeEnum::BOOL->value) {
                     return (int) $value;
                 }
+
                 return $value;
             }
         );

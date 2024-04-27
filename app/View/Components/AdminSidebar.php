@@ -16,33 +16,33 @@ class AdminSidebar extends Component
             [
                 'title' => 'Dashboard',
                 'url' => route('admin.dashboard'),
-                'is_active' => request()->routeIs('admin.dashboard')
+                'is_active' => request()->routeIs('admin.dashboard'),
             ],
             [
                 'title' => 'Posts',
                 'url' => route('admin.posts.index'),
-                'is_active' => request()->routeIs('admin.posts.*')
+                'is_active' => request()->routeIs('admin.posts.*'),
             ],
             [
                 'title' => 'Tags',
                 'url' => route('admin.tags.index'),
-                'is_active' => request()->routeIs('admin.tags.*')
+                'is_active' => request()->routeIs('admin.tags.*'),
             ],
             [
                 'title' => 'Contact requests',
                 'url' => route('admin.contact-requests.index'),
-                'is_active' => request()->routeIs('admin.contact-requests.*')
+                'is_active' => request()->routeIs('admin.contact-requests.*'),
             ],
             [
                 'title' => 'Media',
                 'url' => route('admin.media.index'),
-                'is_active' => request()->routeIs('admin.media.*')
+                'is_active' => request()->routeIs('admin.media.*'),
             ],
             [
                 'title' => 'Logs',
                 'url' => route('log-viewer.index'),
-                'is_active' => request()->routeIs('log-viewer.*')
-            ]
+                'is_active' => request()->routeIs('log-viewer.*'),
+            ],
         ];
     }
 

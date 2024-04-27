@@ -17,6 +17,7 @@ class SettingsAdminController extends Controller
     public function generateSitemap(SitemapService $sitemapService): RedirectResponse
     {
         $sitemapService->generateSitemap();
+
         return redirect()->back()->with('success', 'Sitemap generated successfully!');
     }
 }

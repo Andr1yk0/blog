@@ -14,11 +14,13 @@ class TagSelect extends Component
         public Collection $selectedTags,
         public string $inputName = 'tags',
         public string $label = 'Tags',
-    ){}
+    ) {
+    }
 
     public function render(): View|Closure|string
     {
         $tags = Tag::all();
+
         return view('components.tag-select', compact('tags'));
     }
 }

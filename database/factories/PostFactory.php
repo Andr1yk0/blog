@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -19,8 +18,8 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->unique()->words(5, true),
-            'slug' => function(array $attributes) {
-                return  Str::slug($attributes['title']);
+            'slug' => function (array $attributes) {
+                return Str::slug($attributes['title']);
             },
             'body_markdown' => fake()->text(),
             'body_html' => fake()->randomHtml(),
@@ -29,9 +28,9 @@ class PostFactory extends Factory
 
     public function published(): Factory
     {
-        return $this->state(function (){
+        return $this->state(function () {
             return [
-                'published_at' => fake()->dateTime
+                'published_at' => fake()->dateTime,
             ];
         });
     }

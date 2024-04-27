@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use App\Models\Config;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
@@ -14,7 +13,7 @@ trait RefreshDatabaseCustom
 
     public function refreshTestDatabase()
     {
-        if(DB::getDefaultConnection() !== 'mysql_testing'){
+        if (DB::getDefaultConnection() !== 'mysql_testing') {
             dd('Database connection is not correct');
         }
 

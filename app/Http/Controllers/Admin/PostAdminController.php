@@ -22,6 +22,7 @@ class PostAdminController extends Controller
             ->defaultSort('-id')
             ->paginate(10)
             ->appends(request()->query());
+
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -29,12 +30,14 @@ class PostAdminController extends Controller
     {
         $formAction = route('admin.posts.store');
         $tags = Tag::all();
+
         return view('admin.posts.create', compact('formAction', 'tags'));
     }
 
     public function store(PostEditAdminRequest $request, PostsService $postsService): RedirectResponse
     {
         $postsService->create($request->all());
+
         return redirect()->route('admin.posts.index')->with('success', 'Post created');
     }
 
@@ -42,18 +45,21 @@ class PostAdminController extends Controller
     {
         $formAction = route('admin.posts.update', $post);
         $tags = Tag::all();
+
         return view('admin.posts.edit', compact('post', 'formAction', 'tags'));
     }
 
     public function update(Post $post, PostEditAdminRequest $request, PostsService $postsService): RedirectResponse
     {
         $postsService->update($post, $request->all());
+
         return redirect()->route('admin.posts.index')->with('success', 'Post updated');
     }
 
     public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
+
         return redirect()->route('admin.posts.index')->with('success', 'Post deleted');
     }
 }

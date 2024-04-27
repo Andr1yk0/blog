@@ -20,7 +20,7 @@ class ContactsController extends Controller
             'SEOData' => new SEOData(
                 title: 'Contacts',
                 description: ''
-            )
+            ),
         ]);
     }
 
@@ -29,10 +29,11 @@ class ContactsController extends Controller
      */
     public function store(StoreContactRequest $request, CaptchaService $captchaService): RedirectResponse
     {
-        if(!$captchaService->verifyRequest($request->all())){
+        if (! $captchaService->verifyRequest($request->all())) {
             return redirect()->back()->withErrors(['You did not pass the robot check'])->withInput();
         }
         ContactRequest::create($request->all());
+
         return redirect()->route('contacts.index')->with('success', 'Your message has been sent!');
     }
 
@@ -41,7 +42,7 @@ class ContactsController extends Controller
         return \view('pages.cookie-policy', [
             'SEOData' => new SEOData(
                 title: 'Cookie policy', description: 'Cookie policy'
-            )
+            ),
         ]);
     }
 
@@ -50,7 +51,7 @@ class ContactsController extends Controller
         return \view('pages.privacy-policy', [
             'SEOData' => new SEOData(
                 title: 'Privacy policy', description: 'Privacy policy'
-            )
+            ),
         ]);
     }
 
@@ -59,7 +60,7 @@ class ContactsController extends Controller
         return \view('pages.terms', [
             'SEOData' => new SEOData(
                 title: 'Terms & conditions', description: 'Terms and conditions'
-            )
+            ),
         ]);
     }
 }

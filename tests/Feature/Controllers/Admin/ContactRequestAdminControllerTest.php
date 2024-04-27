@@ -3,14 +3,13 @@
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\ContactRequest;
-use App\Models\User;
 use Tests\AuthUser;
 use Tests\RefreshDatabaseCustom;
 use Tests\TestCase;
 
 class ContactRequestAdminControllerTest extends TestCase
 {
-    use RefreshDatabaseCustom, AuthUser;
+    use AuthUser, RefreshDatabaseCustom;
 
     public function test_contact_request_list(): void
     {
@@ -22,7 +21,7 @@ class ContactRequestAdminControllerTest extends TestCase
         $response->assertSee($contactRequest->email);
     }
 
-    public function test_delete_contact_request():void
+    public function test_delete_contact_request(): void
     {
         $contactRequest = ContactRequest::factory()->create();
 

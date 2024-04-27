@@ -4,8 +4,8 @@ namespace Tests\Unit\Models;
 
 use App\Models\Post;
 use App\Models\Tag;
-use Tests\TestCase;
 use Tests\RefreshDatabaseCustom;
+use Tests\TestCase;
 
 class PostTest extends TestCase
 {

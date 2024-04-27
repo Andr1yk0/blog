@@ -17,12 +17,14 @@ class ContactRequestAdminController extends Controller
             ->defaultSort('-id')
             ->paginate(10)
             ->appends(request()->query());
+
         return view('admin.contact-requests.index', compact('contactRequests'));
     }
 
     public function destroy(ContactRequest $contactRequest): RedirectResponse
     {
         $contactRequest->delete();
+
         return redirect()
             ->route('admin.contact-requests.index')
             ->with('success', 'Contact request has been deleted!');

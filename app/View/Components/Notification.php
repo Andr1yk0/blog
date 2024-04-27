@@ -16,10 +16,10 @@ class Notification extends Component
     {
         $this->notifications = collect();
         $errors = Session::get('errors');
-        if($errors){
+        if ($errors) {
             $messages = $errors->getMessages();
             foreach ($messages as $field => $errors) {
-                foreach ($errors as $error){
+                foreach ($errors as $error) {
                     $this->notifications->push([
                         'type' => 'error',
                         'message' => $error,
@@ -28,11 +28,11 @@ class Notification extends Component
             }
         }
         $success = Session::get('success');
-        if($success){
+        if ($success) {
             $this->notifications->push([
                 'type' => 'success',
                 'message' => $success,
-                'timeout' => 5000
+                'timeout' => 5000,
             ]);
         }
     }

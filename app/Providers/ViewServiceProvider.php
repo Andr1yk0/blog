@@ -13,7 +13,6 @@ class ViewServiceProvider extends ServiceProvider
         //
     }
 
-
     public function boot(): void
     {
         \View::composer('components.top-tags', function (View $view) {

@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class TagAdminController extends Controller
@@ -19,12 +17,14 @@ class TagAdminController extends Controller
             ->allowedSorts(['id', 'title', 'slug', 'posts_count', 'created_at', 'updated_at'])
             ->paginate(10)
             ->appends(request()->query());
+
         return view('admin.tags.index', compact('tags'));
     }
 
     public function create(): View
     {
         $formAction = route('admin.tags.store');
+
         return view('admin.tags.create', compact('formAction'));
     }
 
@@ -41,6 +41,7 @@ class TagAdminController extends Controller
     public function edit(Tag $tag): View
     {
         $formAction = route('admin.tags.update', $tag);
+
         return view('admin.tags.edit', compact('tag', 'formAction'));
     }
 
@@ -51,12 +52,14 @@ class TagAdminController extends Controller
 
         $subTags = $data['sub_tags'] ? explode(',', $data['sub_tags']) : [];
         $tag->subTags()->sync($subTags);
+
         return redirect()->route('admin.tags.index')->with('success', 'Tag updated successfully');
     }
 
     public function destroy(Tag $tag): RedirectResponse
     {
         $tag->delete();
+
         return redirect()->route('admin.tags.index')->with('success', 'Tag has been deleted!');
     }
 }

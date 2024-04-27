@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Controllers\Admin;
 
-use App\Models\User;
-
 use Illuminate\Http\UploadedFile;
 use Storage;
 use Tests\AuthUser;
@@ -12,7 +10,7 @@ use Tests\TestCase;
 
 class MediaAdminControllerTest extends TestCase
 {
-    use RefreshDatabaseCustom, AuthUser;
+    use AuthUser, RefreshDatabaseCustom;
 
     protected function tearDown(): void
     {
@@ -38,12 +36,12 @@ class MediaAdminControllerTest extends TestCase
 
         $response = $this->setUser()->post('/admin/media', [
             'file' => UploadedFile::fake()->image($fileName),
-            'path' => $folder
+            'path' => $folder,
         ]);
 
         $response->assertRedirect('/admin/media');
         $response->assertSessionDoesntHaveErrors();
-        $this->assertTrue($publicDisk->exists('media/' . $folder . '/' . $fileName));
+        $this->assertTrue($publicDisk->exists('media/'.$folder.'/'.$fileName));
     }
 
     public function test_duplicated_media(): void
@@ -51,16 +49,16 @@ class MediaAdminControllerTest extends TestCase
         $publicDisk = Storage::fake('public');
         $folder = 'test';
         $fileName = 'test.png';
-        $filePath = $folder . '/' . $fileName;
+        $filePath = $folder.'/'.$fileName;
         $publicDisk->put('media/'.$filePath, 'test');
 
         $response = $this->setUser()->post('/admin/media', [
             'file' => UploadedFile::fake()->image($fileName),
-            'path' => $folder
+            'path' => $folder,
         ]);
 
         $response->assertRedirect('/admin/media');
-        $this->assertEquals( 'File already exists!', session('errors')->getBag('default')->first());
+        $this->assertEquals('File already exists!', session('errors')->getBag('default')->first());
     }
 
     public function test_delete_media(): void
@@ -69,13 +67,13 @@ class MediaAdminControllerTest extends TestCase
         $filePath = 'test/test.png';
         $publicDisk->put('media/'.$filePath, 'test');
 
-        $response = $this->setUser()->delete("/admin/media", [
-            'path' => 'media/' . $filePath,
+        $response = $this->setUser()->delete('/admin/media', [
+            'path' => 'media/'.$filePath,
         ]);
 
         $response->assertRedirect('/admin/media');
         $response->assertSessionHas('success');
-        $this->assertFalse($publicDisk->exists('media/' . $filePath));
+        $this->assertFalse($publicDisk->exists('media/'.$filePath));
 
     }
 }

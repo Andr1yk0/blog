@@ -10,6 +10,7 @@ class PostsService
     public function create(array $data): Post
     {
         $post = new Post();
+
         return $this->save($post, $data);
     }
 
@@ -25,6 +26,7 @@ class PostsService
         $post->fill($data);
         $post->save();
         $post->tags()->sync($tagIds);
+
         return $post;
     }
 }

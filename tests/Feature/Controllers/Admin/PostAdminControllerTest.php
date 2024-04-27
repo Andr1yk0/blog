@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class PostAdminControllerTest extends TestCase
 {
-    use RefreshDatabaseCustom, AuthUser;
+    use AuthUser, RefreshDatabaseCustom;
 
     public function test_posts_list(): void
     {
@@ -26,13 +26,13 @@ class PostAdminControllerTest extends TestCase
     {
         $postData = Post::factory()->raw();
         $tag = Tag::factory()->create();
-        $postData['tags'] = (string)$tag->id;
+        $postData['tags'] = (string) $tag->id;
 
         $response = $this->setUser()->post('/admin/posts', $postData);
 
         $response->assertRedirect('/admin/posts');
         $this->assertDatabaseHas('posts', [
-            'title' => $postData['title']
+            'title' => $postData['title'],
         ]);
     }
 
@@ -58,13 +58,13 @@ class PostAdminControllerTest extends TestCase
         $tag = Tag::factory()->create();
         $postData = $post->toArray();
         $postData['title'] = 'new title';
-        $postData['tags'] = (string)$tag->id;
+        $postData['tags'] = (string) $tag->id;
 
         $response = $this->setUser()->patch("/admin/posts/$post->id", $postData);
         $response->assertRedirect('/admin/posts')->assertSessionHas('success');
         $this->assertDatabaseHas('posts', [
             'id' => $post->id,
-            'title' => $postData['title']
+            'title' => $postData['title'],
         ]);
         $this->assertDatabaseHas('post_tag', [
             'post_id' => $post->id,
