@@ -27,7 +27,7 @@
                     </x-slot>
                     <div class="prose prose-base text-text-clr-600">
                         I'm a full-stack web developer from Lviv, Ukraine.
-                        I have {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::create(2016, 1, 1)) }}+ years of experience in building web applications with PHP and JavaScript.
+                        I have {{ floor(\Carbon\Carbon::create(2016, 10, 15)->diffInYears(now())) }}+ years of experience in building web applications with PHP and JavaScript.
                     </div>
             </x-card>
             @if($heatMapDataConfig)
