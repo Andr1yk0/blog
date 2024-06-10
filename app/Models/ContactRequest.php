@@ -38,5 +38,6 @@ class ContactRequest extends Model
         'name',
         'email',
         'message',
+        'captcha_score'
     ];
 }

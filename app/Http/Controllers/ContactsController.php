@@ -32,7 +32,9 @@ class ContactsController extends Controller
         if (! $captchaService->verifyRequest($request->all())) {
             return redirect()->back()->withErrors(['You did not pass the robot check'])->withInput();
         }
-        ContactRequest::create($request->all());
+        $data = $request->all();
+        $data['captcha_score'] = $captchaService->getScore();
+        ContactRequest::create($data);
 
         return redirect()->route('contacts.index')->with('success', 'Your message has been sent!');
     }

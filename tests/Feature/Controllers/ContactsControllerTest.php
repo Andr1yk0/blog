@@ -25,10 +25,12 @@ class ContactsControllerTest extends TestCase
             'name' => 'Tester',
             'email' => 'test@example.com',
             'message' => 'Hello',
+            'captcha_score' => 0.6
         ];
 
-        $captchaServiceMock = \Mockery::mock(CaptchaService::class, function (MockInterface $mock) {
+        $captchaServiceMock = \Mockery::mock(CaptchaService::class, function (MockInterface $mock) use ($data) {
             $mock->shouldReceive('verifyRequest')->once()->andReturn(true);
+            $mock->shouldReceive('getScore')->once()->andReturn($data['captcha_score']);
         });
         $this->instance(CaptchaService::class, $captchaServiceMock);
 
