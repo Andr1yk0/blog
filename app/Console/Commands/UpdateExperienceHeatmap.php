@@ -15,13 +15,7 @@ class UpdateExperienceHeatmap extends Command
 
     public function handle(): void
     {
-        $filePath = Storage::path('experience_graph.csv');
-        $file = fopen($filePath, 'r');
-        if (! $file) {
-            $this->error('File not found!');
-
-            return;
-        }
+        $file = $this->getFile();
         $languages = fgetcsv($file);
         array_shift($languages);
 
@@ -30,7 +24,7 @@ class UpdateExperienceHeatmap extends Command
 
         $heatMapData = [];
         foreach ($languages as $index => $language) {
-            $yearsCount = round($months[$index] / 12);
+            $yearsCount = floor($months[$index] / 12);
             $monthsCount = $months[$index] % 12;
             $duration = '';
             if ($yearsCount > 0) {
@@ -91,5 +85,15 @@ class UpdateExperienceHeatmap extends Command
         $config = Config::where('key', ConfigKeyEnum::EXPERIENCE_HEATMAP)->first();
         $config->value = $heatMapData;
         $config->save();
+    }
+
+    protected function getFile()
+    {
+        $filePath = Storage::path(config('heatmap.filename'));
+        $file = fopen($filePath, 'r');
+        if (! $file) {
+            $this->error('File not found!');
+        }
+        return $file;
     }
 }

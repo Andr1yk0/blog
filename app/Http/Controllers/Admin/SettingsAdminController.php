@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Console\Commands\UpdateExperienceHeatmap;
 use App\Http\Controllers\Controller;
 use App\Services\SitemapService;
 use Illuminate\Http\RedirectResponse;
@@ -19,5 +20,13 @@ class SettingsAdminController extends Controller
         $sitemapService->generateSitemap();
 
         return redirect()->back()->with('success', 'Sitemap generated successfully!');
+    }
+
+    public function updateHeatmap(UpdateExperienceHeatmap $updateExperienceHeatmap): RedirectResponse
+    {
+        \Storage::putFileAs('', request()->file('heatmap'), config('heatmap.filename'));
+        $updateExperienceHeatmap->handle();
+
+        return redirect()->back()->with('success', 'Experience heatmap updated!');
     }
 }

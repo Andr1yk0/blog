@@ -26,14 +26,18 @@ Route::get('/terms-and-conditions', [ContactsController::class, 'terms'])->name(
 \Auth::routes(['register' => false, 'confirm' => false]);
 
 Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'dashboard'])
+        ->name('dashboard');
     Route::resource('posts', PostAdminController::class);
     Route::resource('tests', TestAdminController::class);
     Route::resource('tags', TagAdminController::class);
-    Route::resource('contact-requests', ContactRequestAdminController::class)->only(['index', 'destroy']);
+    Route::resource('contact-requests', ContactRequestAdminController::class)
+        ->only(['index', 'destroy']);
     Route::resource('media', MediaAdminController::class)->only(['index', 'store']);
     Route::delete('media', [MediaAdminController::class, 'destroy'])->name('media.destroy');
-
     Route::get('settings', [SettingsAdminController::class, 'index'])->name('settings.index');
-    Route::post('/generate-sitemap', [SettingsAdminController::class, 'generateSitemap'])->name('settings.generate-sitemap');
+    Route::post('/generate-sitemap', [SettingsAdminController::class, 'generateSitemap'])
+        ->name('settings.generate-sitemap');
+    Route::put('/update-heatmap', [SettingsAdminController::class, 'updateHeatmap'])
+        ->name('settings.update-heatmap');
 });

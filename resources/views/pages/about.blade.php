@@ -57,8 +57,7 @@
                                             @foreach($item['history'] as $year => $historyData)
                                                 @foreach($historyData as $historyValue)
                                                     <div class="p-0.5 w-10 h-10 flex-shrink-0">
-                                                        <div
-                                                            class="w-full h-full rounded-sm {{ $heatMapCellBackgrounds[$historyValue] }}"></div>
+                                                        <div class="w-full h-full rounded-sm {{ $heatMapCellBackgrounds[$historyValue] }}"></div>
                                                     </div>
                                                 @endforeach
                                             @endforeach
