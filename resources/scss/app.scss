@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    img {
+        @apply inline-block;
+    }
+}
 
 .light{
     --text-clr-50: theme('colors.white');

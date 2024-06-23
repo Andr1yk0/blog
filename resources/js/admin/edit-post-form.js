@@ -1,20 +1,51 @@
 import {Editor} from "@toast-ui/editor";
 import '@toast-ui/editor/dist/toastui-editor.css';
 import {bundledLanguages, getHighlighter} from "shiki";
+import html2canvas from "html2canvas";
 
 const highlighterTheme = 'nord';
 const highlightLangs = Object.keys(bundledLanguages)
-let highlighter = await getHighlighter({
+
+Alpine.data('editPostForm', (postTitle, imageLang) => ({
+    postTitle: postTitle,
+    imageText: window.imageText,
+    imageTextHighlighted: null,
+    base64Image: null,
+    highlightLangs: highlightLangs,
+    selectedLang: imageLang,
+    init() {
+        setTimeout(() => {
+            this.highlightImagePreview();
+        }, 1000)
+        this.$watch('imageText, selectedLang', () => {
+            this.highlightImagePreview()
+        })
+    },
+    highlightImagePreview(){
+        this.imageTextHighlighted = highlighter.codeToHtml(this.imageText, {
+            theme: highlighterTheme,
+            lang: this.selectedLang,
+        })
+    },
+    createImage(){
+        const element = document.getElementById('thumbnailPreview');
+        Alpine.store('loader', true);
+        html2canvas(element).then((canvas) => {
+            this.base64Image = canvas.toDataURL('image/jpeg');
+            Alpine.store('loader', false);
+        });
+    }
+}));
+Alpine.store('editPostForm', {
+    postDescriptionLength: 0,
+});
+
+window.highlighter = await getHighlighter({
     themes: [highlighterTheme],
     langs: highlightLangs
 })
 
 const form = document.querySelector('#editPostForm');
-
-Alpine.store('editPostForm', {
-    postDescriptionLength: 0,
-});
-
 const setPostDescription = (editor) => {
     const descriptionInput = document.querySelector('textarea[name="meta_description"]')
     let html = editor.getHTML();
@@ -28,7 +59,6 @@ const setPostDescription = (editor) => {
     descriptionInput.value = element.innerText;
     Alpine.store('editPostForm').postDescriptionLength = element.textContent.length;
 }
-
 const editor = new Editor({
     el: form.querySelector('#editor'),
     initialEditType: 'markdown',
@@ -50,7 +80,10 @@ const editor = new Editor({
                     theme: highlighterTheme,
                     lang: node.info
                 });
-                content = (new DOMParser()).parseFromString(content, 'text/html').querySelector('pre code').innerHTML;
+                content = (new DOMParser())
+                    .parseFromString(content, 'text/html')
+                    .querySelector('pre code')
+                    .innerHTML;
             }
             return [
                 {
@@ -66,17 +99,15 @@ const editor = new Editor({
         }
     }
 });
-
 editor.addHook('change', () => {
     setPostDescription(editor);
 });
-
 
 form.addEventListener('submit', (e) => {
     const descriptionLength = Alpine.store('editPostForm').postDescriptionLength
     if (
         (descriptionLength < 100 || descriptionLength > 170) &&
-        !confirm(`Are you sure you want to continue with description lenght ${descriptionLength} ?`)
+        !confirm(`Are you sure you want to continue with description length ${descriptionLength} ?`)
     ) {
         e.preventDefault();
         e.stopPropagation();
@@ -85,8 +116,6 @@ form.addEventListener('submit', (e) => {
     form.querySelector('[name="body_markdown"]').value = editor.getMarkdown();
     let html = document.querySelector('.toastui-editor-md-preview .toastui-editor-contents').innerHTML;
     html = html.replace(/data-nodeid="\d+"/ig,'')
-
     form.querySelector('[name="body_html"]').value = html;
     return true;
 });
-

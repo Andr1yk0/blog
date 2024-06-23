@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\AbstractTranslator;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -27,8 +28,11 @@ use Illuminate\Support\Carbon;
  * @property Collection $related
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $image_path
+ * @property string|null $image_url
  * @property-read Collection<int, Tag> $tags
  * @property-read int|null $tags_count
+ *
  *
  * @method static PostFactory factory($count = null, $state = [])
  * @method static Builder|Post newModelQuery()
@@ -50,7 +54,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'body_html', 'meta_description', 'body_markdown', 'published_at'];
+    protected $fillable = [
+        'title', 'slug', 'body_html', 'meta_description', 'body_markdown', 'published_at', 'image_text', 'image_lang'
+    ];
 
     protected function publishedAt(): Attribute
     {
@@ -83,6 +89,30 @@ class Post extends Model
                 ->published()
                 ->orderBy('id', 'asc')
                 ->first()
+        );
+    }
+
+    public function imagePath(): Attribute
+    {
+        return Attribute::make(
+            get: function (){
+                if(!$this->slug || !$this->image_text){
+                    return null;
+                }
+                return "post-images/{$this->slug}.jpeg";
+            }
+        );
+    }
+
+    public function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function (){
+                if($this->image_path){
+                    return \Storage::disk('public')->url($this->image_path);
+                }
+                return null;
+            }
         );
     }
 

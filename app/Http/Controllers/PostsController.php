@@ -44,6 +44,7 @@ class PostsController extends Controller
             'SEOData' => new SEOData(
                 title: $post->title,
                 description: $post->meta_description,
+                image: $post->image_url,
             ),
             'post' => $post,
         ]);

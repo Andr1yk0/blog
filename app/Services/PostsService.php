@@ -26,7 +26,11 @@ class PostsService
         $post->fill($data);
         $post->save();
         $post->tags()->sync($tagIds);
-
+        if(isset($data['base64_image']) && $data['base64_image']){
+            \Storage::disk('public')->delete($post->image_path);
+            $image = base64_decode(explode(',', $data['base64_image'])[1]);
+            \Storage::disk('public')->put($post->image_path, $image);
+        }
         return $post;
     }
 }

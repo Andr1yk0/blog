@@ -21,6 +21,7 @@
                         <thead>
                             <tr>
                                 <x-admin-table-header title="ID" sortBy="id"/>
+                                <x-admin-table-header title="Photo" />
                                 <x-admin-table-header title="Title" sortBy="title"/>
                                 <x-admin-table-header title="Slug" sortBy="slug"/>
                                 <x-admin-table-header title="Tags"/>
@@ -34,6 +35,9 @@
                         @foreach($posts as $post)
                             <tr>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$post->id}}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">
+                                    @if($post->image_url)<img src="{{$post->image_url}}">@endif
+                                </td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->title}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->slug}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->tags->pluck('title')->join(', ')}}</td>
