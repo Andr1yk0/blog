@@ -43,6 +43,7 @@
                 <div class="flex h-full w-full items-center mt-4">
                     <div class="p-4 flex-grow align-middle" x-html="imageTextHighlighted"></div>
                 </div>
+                <div class="absolute bottom-0 right-0 text-amber-300 p-2 opacity-60">prostocode.com</div>
             </div>
             <img x-bind:src="base64Image">
         </div>
