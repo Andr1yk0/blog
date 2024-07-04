@@ -55,12 +55,72 @@
                             </div>
                         </div>
                     </x-slot>
-
-
                     <div class="mx-auto prose prose-base prose-pre:mt-2 prose-p:mb-0 mb-5">
                         {!! $post->body_html !!}
                     </div>
-                    <div class="flex flex-wrap mt-16">
+                    <hr class="m-3">
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mx-4">Share: </span>
+                        <ul role="list" class="flex items-center space-x-4">
+                            <li>
+                                <a
+                                    title="Share on LinkedIn"
+                                    target="_blank"
+                                    href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}"
+                                    class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-500"
+                                >
+                                    <span class="sr-only">Share on LinkedIn</span>
+                                    <x-icons.linkedin />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    title="Share on Facebook"
+                                    target="_blank"
+                                    href="https://www.facebook.com/sharer.php?u={{url()->current()}}"
+                                    class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-500"
+                                >
+                                    <span class="sr-only">Share on Facebook</span>
+                                    <x-icons.facebook />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    title="Share on Mastodon"
+                                    target="_blank"
+                                    href="https://mastodonshare.com/?url={{url()->current()}}"
+                                    class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-500"
+                                >
+                                    <span class="sr-only">Share on Mastodon</span>
+                                    <x-icons.mastodon />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    title="Share on X"
+                                    target="_blank"
+                                    href="https://twitter.com/intent/tweet?url={{url()->current()}}"
+                                    class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-500"
+                                >
+                                    <span class="sr-only">Share on X</span>
+                                    <x-icons.twitter />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    title="Share on Reddit"
+                                    target="_blank"
+                                    href="https://reddit.com/submit?url={{url()->current()}}"
+                                    class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-500"
+                                >
+                                    <span class="sr-only">Share on Reddit</span>
+                                    <x-icons.reddit />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="m-3">
+                    <div class="flex flex-wrap mt-12">
                         @if($post->previous)
                             <div class="relative py-5 basis-full hover:bg-text-clr-100 md:basis-1/2">
                                 <div class="mx-auto flex gap-x-2 px-4">
