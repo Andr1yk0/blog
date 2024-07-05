@@ -72,6 +72,23 @@ class PostAdminControllerTest extends TestCase
         ]);
     }
 
+    public function test_create_post_with_image()
+    {
+        $postData = Post::factory()->raw();
+        $tag = Tag::factory()->create();
+        $postData['tags'] = (string) $tag->id;
+        $postData['base64_image'] = file_get_contents(base_path('tests/fixtures/base64.txt'));
+        $postData['image_text'] = 'test';
+        \Storage::fake('public');
+        $this->withoutExceptionHandling();
+        $response = $this->setUser()->post('/admin/posts', $postData);
+
+        $response->assertRedirect('/admin/posts');
+
+        $post = Post::first();
+        \Storage::disk('public')->assertExists($post->image_path);
+    }
+
     public function test_delete_post()
     {
         $post = Post::factory()->create();

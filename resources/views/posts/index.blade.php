@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <x-header-google-add />
+    <x-header-google-add/>
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
             <div>
-                <x-top-tags />
-                <x-sidebar-google-add />
+                <x-top-tags/>
+                <x-sidebar-google-add/>
             </div>
             <div class="grid grid-cols-1 order-first md:order-last md:col-span-2">
                 <x-card>
@@ -39,34 +39,35 @@
                         </div>
                     </x-slot>
                     <div class="divide-y divide-text-clr-300">
-                            @foreach($posts as $post)
-                                <article class="py-10">
-                                    <div class="group relative max-w-xl">
-                                        <div class="flex items-center gap-x-4">
-                                            <time datetime="{{ $post->published_at->format('Y-m-d') }}"
-                                                  class="block text-sm leading-6 text-text-clr-500"
-                                            >
-                                                {{ $post->published_at_formatted }}
-                                            </time>
-                                            <div class="flex gap-1">
-                                                @foreach($post->tags as $tag)
-                                                    <x-tag :tag="$tag"/>
-                                                @endforeach
-                                            </div>
+                        @foreach($posts as $post)
+                            <article class="py-10">
+                                <div class="group relative max-w-xl">
+                                    <div class="flex items-center gap-x-4">
+                                        <time
+                                            datetime="{{ $post->published_at->format('Y-m-d') }}"
+                                            class="block text-sm leading-6 text-text-clr-500"
+                                        >
+                                            {{ $post->published_at_formatted }}
+                                        </time>
+                                        <div class="flex gap-1">
+                                            @foreach($post->tags as $tag)
+                                                <x-tag :tag="$tag"/>
+                                            @endforeach
                                         </div>
-                                        <h2 class="mt-2 text-xl font-semibold text-text-clr-900 hover:underline underline-offset-4 decoration-clr-400">
-                                            <a href="{{ route('posts.show', [$post->slug]) }}">
-                                                {{ $post->title }}
-                                            </a>
-                                        </h2>
                                     </div>
-                                </article>
-                            @endforeach
-                        </div>
-                        {{$posts->links()}}
+                                    <h2 class="mt-2 text-xl font-semibold text-text-clr-900 hover:underline underline-offset-4 decoration-clr-400">
+                                        <a href="{{ route('posts.show', [$post->slug]) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </h2>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                    {{$posts->links()}}
                 </x-card>
             </div>
         </div>
     </div>
-    <x-footer-google-add />
+    <x-footer-google-add/>
 @endsection

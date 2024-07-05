@@ -20,14 +20,14 @@ class UpdateExperienceHeatmapTest extends TestCase
         $config->type = ConfigTypeEnum::ARRAY->value;
         $config->value = [0 => 'b'];
         $config->save();
-        $storage->put(config('heatmap.filename'), \File::get(base_path('tests/Stubs/files/experience_heatmap.csv')));
+        $storage->put(config('heatmap.filename'), \File::get(base_path('tests/fixtures/experience_heatmap.csv')));
 
         $this->artisan('app:update-experience-heatmap')->assertSuccessful();
 
         $config = Config::where('key', ConfigKeyEnum::EXPERIENCE_HEATMAP)->first();
         $this->assertEquals('PHP', $config->value[0]['title']);
-        $this->assertEquals(4, $config->value[0]['months']);
-        $this->assertEquals('4 months', $config->value[0]['duration']);
+        $this->assertEquals(14, $config->value[0]['months']);
+        $this->assertEquals('1 year 2 months', $config->value[0]['duration']);
         $this->assertCount(4, $config->value);
     }
 }
