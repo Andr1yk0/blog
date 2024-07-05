@@ -18,6 +18,7 @@
                             <x-admin-table-header title="Name" sortBy="name"/>
                             <x-admin-table-header title="Email" sortBy="email"/>
                             <x-admin-table-header title="Message"/>
+                            <x-admin-table-header title="Score" />
                             <x-admin-table-header title="Created" sortBy="created_at"/>
                             <x-admin-table-header title="Actions"/>
                         </tr>
@@ -29,17 +30,20 @@
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$contactRequest->name}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$contactRequest->email}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$contactRequest->message}}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{$contactRequest->captcha_score}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$contactRequest->created_at}}</td>
                                 <td>
                                     <form action="{{route('admin.contact-requests.destroy', $contactRequest->id)}}"
-                                          method="POST">
+                                          method="POST"
+                                    >
                                         @csrf
                                         @method('DELETE')
-                                    <a href="#"
-                                       onclick="if(confirm('Delete contact request?')){this.closest('form').submit()}"
-                                       class="text-red-600 hover:text-red-900">
-                                        Delete
-                                    </a>
+                                        <a
+                                            onclick="if(confirm('Delete contact request?')){this.closest('form').submit()}"
+                                            class="inline-block"
+                                        >
+                                            <x-icons.mini.trash class="text-red-500 hover:text-red-700"/>
+                                        </a>
                                     </form>
                                 </td>
                             </tr>
