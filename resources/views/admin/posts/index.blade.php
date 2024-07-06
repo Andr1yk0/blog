@@ -14,6 +14,37 @@
                 </a>
             </div>
         </div>
+        <form
+            x-data="postsFilter('{{request("filter.title", "")}}', '{{request("filter", "")["tags.title"] ?? ""}}')"
+            class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 bg-gray-100 p-4 rounded-md"
+        >
+            <div class="sm:col-span-3">
+                <label for="titleFilter" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+                <div class="mt-2">
+                    <input
+                        @input.debounce.600ms="$event.target.closest('form').submit()"
+                        x-model="title"
+                        type="text"
+                        name="filter[title]"
+                        id="titleFilter"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    >
+                </div>
+            </div>
+            <div class="sm:col-span-3">
+                <label for="tagFilter" class="block text-sm font-medium leading-6 text-gray-900">Tag</label>
+                <div class="mt-2">
+                    <input
+                        @input.debounce.600ms="$event.target.closest('form').submit()"
+                        x-model="tagTitle"
+                        type="text"
+                        name="filter[tags.title]"
+                        id="tagFilter"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    >
+                </div>
+            </div>
+        </form>
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -72,3 +103,11 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        Alpine.data('postsFilter', (title, tagTitle) => ({
+            title: title,
+            tagTitle: tagTitle
+        }))
+    </script>
+@endpush
