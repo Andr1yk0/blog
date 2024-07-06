@@ -37,7 +37,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', '{{config('google.ga_measurement_id')}}');
     </script>
 @endenv
