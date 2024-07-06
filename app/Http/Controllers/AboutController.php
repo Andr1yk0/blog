@@ -18,6 +18,7 @@ class AboutController extends Controller
             'SEOData' => new SEOData(
                 title: 'About',
                 description: 'Personal blog about web development technologies. I write short posts about problems and solutions that I encounter in my work',
+                image: asset('logo.jpg')
             ),
         ]);
     }

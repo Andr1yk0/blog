@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $id
  * @property string $slug
  * @property string $title
+ * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Tag> $mainTags
@@ -42,6 +43,7 @@ class Tag extends Model
     protected $fillable = [
         'title',
         'slug',
+        'description',
     ];
 
     public function posts(): BelongsToMany

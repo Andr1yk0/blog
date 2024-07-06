@@ -17,15 +17,16 @@
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                     <table class="min-w-full divide-y divide-gray-300">
                         <thead>
-                            <tr>
-                                <x-admin-table-header title="ID" sortBy="id"/>
-                                <x-admin-table-header title="Title" sortBy="title"/>
-                                <x-admin-table-header title="Slug" sortBy="slug"/>
-                                <x-admin-table-header title="Posts count" sortBy="posts_count"/>
-                                <x-admin-table-header title="Created" sortBy="created_at"/>
-                                <x-admin-table-header title="Updated" sortBy="updated_at"/>
-                                <x-admin-table-header title="Actions"/>
-                            </tr>
+                        <tr>
+                            <x-admin-table-header title="ID" sortBy="id"/>
+                            <x-admin-table-header title="Title" sortBy="title"/>
+                            <x-admin-table-header title="Slug" sortBy="slug"/>
+                            <x-admin-table-header title="Description" sortBy="description"/>
+                            <x-admin-table-header title="Posts count" sortBy="posts_count"/>
+                            <x-admin-table-header title="Created" sortBy="created_at"/>
+                            <x-admin-table-header title="Updated" sortBy="updated_at"/>
+                            <x-admin-table-header title="Actions"/>
+                        </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                         @foreach($tags as $tag)
@@ -33,20 +34,24 @@
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $tag->id }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->title }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->slug }}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->description }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->posts_count }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->created_at }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->updated_at }}</td>
                                 <td>
                                     <a href="{{ route('admin.tags.edit', [$tag->id]) }}"
-                                       class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                       class="inline-block cursor-pointer"
+                                    >
+                                        <x-icons.mini.pencil-square class="text-indigo-500 hover:text-indigo-700"/>
+                                    </a>
                                     <form action="{{route('admin.tags.destroy', $tag->id)}}"
                                           method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="#"
-                                           onclick="if(confirm('Are you sure you want to delete the tag?')){this.closest('form').submit()}"
-                                           class="text-red-600 hover:text-red-900">
-                                            Delete
+                                        <a
+                                            onclick="if(confirm('Are you sure you want to delete the tag?')){this.closest('form').submit()}"
+                                            class="inline-block cursor-pointer">
+                                            <x-icons.mini.trash class="text-red-500 hover:text-red-700"/>
                                         </a>
                                     </form>
                                 </td>
