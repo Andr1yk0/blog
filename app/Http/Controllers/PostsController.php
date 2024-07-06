@@ -16,10 +16,19 @@ class PostsController extends Controller
     {
         $seoTitle = $tag ? $tag->title.' posts' : 'Posts';
         $postsQuery = Post::published()->with('tags');
+        $description = 'Practical posts about PHP, JavaScript, Docker and other web development technologies.';
         if ($tag) {
             $postsQuery->whereHas('tags', function ($query) use ($tag) {
                 $query->where('slug', $tag->slug);
             });
+            if($tag->description){
+                $description = "Posts about {$tag->title} - {$tag->description}";
+            }
+        }
+
+        if(request('page') && request('page') != 1){
+            $description .= ' Page ' . request('page');
+            $seoTitle .= " Page " . request('page');
         }
 
         $posts = QueryBuilder::for($postsQuery)
@@ -31,7 +40,8 @@ class PostsController extends Controller
         return view('posts.index', [
             'SEOData' => new SEOData(
                 title: $seoTitle,
-                description: 'Practical posts about PHP, JavaScript, Docker and other web development technologies.',
+                description: $description,
+                image: asset('logo.jpg')
             ),
             'posts' => $posts,
             'pageTag' => $tag,
@@ -44,7 +54,7 @@ class PostsController extends Controller
             'SEOData' => new SEOData(
                 title: $post->title,
                 description: $post->meta_description,
-                image: $post->image_url,
+                image: $post->image_url ?? asset('logo.jpg'),
             ),
             'post' => $post,
         ]);

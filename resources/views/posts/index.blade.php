@@ -13,8 +13,11 @@
                         <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
                             <div class="ml-4 mt-2">
                                 <h1 class="text-xl font-semibold leading-6 text-text-clr-900">
-                                    {{isset($pageTag) ? $pageTag->title : 'All'}} posts
+                                    {{isset($pageTag) ? 'Posts about ' . $pageTag->title : 'All posts'}}
                                 </h1>
+                                @if(isset($pageTag) && $pageTag->description)
+                                    <p class="mt-2 text-sm text-text-clr-800">{{$pageTag->description}}</p>
+                                @endif
                             </div>
                             <div class="ml-4 mt-2 flex-shrink-0">
                                 <div>

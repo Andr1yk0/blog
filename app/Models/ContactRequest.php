@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string $email
  * @property string $message
+ * @property float $captcha_score
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
