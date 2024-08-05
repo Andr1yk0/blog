@@ -1,4 +1,4 @@
-<form x-data="editPostForm('{{old('title', $post->title ?? '')}}', '{{old('image_lang', $post->image_lang ?? '')}}')"
+<form x-data="editPostForm(`{{old('title', $post->title ?? '')}}`, `{{old('image_lang', $post->image_lang ?? '')}}`)"
       class="row"
       method="post"
       action="{{$formAction}}"
