@@ -43,7 +43,7 @@
 <body class="theme-indigo bg-text-clr-200">
 <div class="flex flex-col h-screen justify-between">
     <x-main-header />
-    <div class="mb-auto">
+    <div class="mb-auto mt-6">
         @yield('content')
         <x-notification />
         <x-loader />
