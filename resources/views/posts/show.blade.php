@@ -6,7 +6,7 @@
 @endphp
 @extends('layouts.app')
 @section('content')
-    <x-header-google-add />
+{{--    <x-header-google-add />--}}
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-[auto,minmax(71ch,1fr)] items-start gap-x-8 gap-y-8">
             <div>
@@ -168,11 +168,11 @@
                         @endif
                     </div>
                 </x-card>
-                <x-block-google-add />
+{{--                <x-block-google-add />--}}
             </div>
         </div>
     </div>
-    <x-footer-google-add />
+{{--    <x-footer-google-add />--}}
 @endsection
 @push('scripts')
     <script src="{{ mix('js/pages/posts-show.js') }}"></script>

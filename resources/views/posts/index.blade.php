@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <x-header-google-add/>
+{{--    <x-header-google-add/>--}}
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-3">
             <div>
                 <x-top-tags/>
-                <x-sidebar-google-add/>
+{{--                <x-sidebar-google-add/>--}}
             </div>
             <div class="grid grid-cols-1 order-first md:order-last md:col-span-2">
                 <x-card>
@@ -72,5 +72,5 @@
             </div>
         </div>
     </div>
-    <x-footer-google-add/>
+{{--    <x-footer-google-add/>--}}
 @endsection
