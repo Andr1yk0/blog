@@ -23,6 +23,10 @@ Route::get('/cookie-policy', [ContactsController::class, 'cookiePolicy'])->name(
 Route::get('/privacy-policy', [ContactsController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/terms-and-conditions', [ContactsController::class, 'terms'])->name('terms');
 
+Route::get('/themes/{id}', function (){
+    return view('themes.'.request('id').'.index');
+});
+
 \Auth::routes(['register' => false, 'confirm' => false]);
 
 Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(function () {
