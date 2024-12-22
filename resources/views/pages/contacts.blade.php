@@ -12,12 +12,12 @@
                     Any questions?
                 </div>
                 <h2 class="mb-4 text-4xl font-black tex t-black dark:text-white">
-                    Contact Us
+                    Contact me
                 </h2>
                 <h3
                     class="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 dark:text-gray-300"
                 >
-                    Feel free to get in touch and we will get back to your as soon as possible.
+                    Feel free to get in touch and I will get back to your as soon as possible.
                 </h3>
             </div>
             <div

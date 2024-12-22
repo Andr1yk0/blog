@@ -16,7 +16,7 @@ class ContactsControllerTest extends TestCase
         $response = $this->get('/contacts');
 
         $response->assertStatus(200)
-            ->assertSee('Contact form');
+            ->assertSee('Contact me');
     }
 
     public function test_store_contact_info(): void
