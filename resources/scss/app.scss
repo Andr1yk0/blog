@@ -6,36 +6,6 @@
         @apply inline-block;
     }
 }
-
-.light{
-    --text-clr-50: theme('colors.white');
-    --text-clr-100: theme('colors.gray.50');
-    --text-clr-200: theme('colors.gray.100');
-    --text-clr-300: theme('colors.gray.200');
-    --text-clr-400: theme('colors.gray.300');
-    --text-clr-500: theme('colors.gray.400');
-    --text-clr-600: theme('colors.gray.500');
-    --text-clr-700: theme('colors.gray.600');
-    --text-clr-800: theme('colors.gray.700');
-    --text-clr-900: theme('colors.gray.800');
-    --text-clr-950: theme('colors.gray.900');
-    --tw-prose-links: theme('colors.gray.900');
-}
-.dark{
-    --text-clr-50: theme('colors.slate.900');
-    --text-clr-100: theme('colors.slate.800');
-    --text-clr-200: theme('colors.slate.700');
-    --text-clr-300: theme('colors.slate.600');
-    --text-clr-400: theme('colors.slate.500');
-    --text-clr-500: theme('colors.slate.400');
-    --text-clr-600: theme('colors.slate.300');
-    --text-clr-700: theme('colors.slate.200');
-    --text-clr-800: theme('colors.slate.100');
-    --text-clr-900: theme('colors.slate.50');
-    --text-clr-950: theme('colors.white');
-    --tw-prose-links: theme('colors.slate.100');
-}
-
 .theme-indigo{
     --clr-50: theme('colors.indigo.50');
     --clr-100: theme('colors.indigo.100');
@@ -48,6 +18,48 @@
     --clr-800: theme('colors.indigo.800');
     --clr-900: theme('colors.indigo.900');
     --clr-950: theme('colors.indigo.950');
+}
+
+.theme-blue{
+    --clr-50: theme('colors.blue.50');
+    --clr-100: theme('colors.blue.100');
+    --clr-200: theme('colors.blue.200');
+    --clr-300: theme('colors.blue.300');
+    --clr-400: theme('colors.blue.400');
+    --clr-500: theme('colors.blue.500');
+    --clr-600: theme('colors.blue.600');
+    --clr-700: theme('colors.blue.700');
+    --clr-800: theme('colors.blue.800');
+    --clr-900: theme('colors.blue.900');
+    --clr-950: theme('colors.blue.950');
+}
+
+.theme-orange{
+    --clr-50: theme('colors.orange.50');
+    --clr-100: theme('colors.orange.100');
+    --clr-200: theme('colors.orange.200');
+    --clr-300: theme('colors.orange.300');
+    --clr-400: theme('colors.orange.400');
+    --clr-500: theme('colors.orange.500');
+    --clr-600: theme('colors.orange.600');
+    --clr-700: theme('colors.orange.700');
+    --clr-800: theme('colors.orange.800');
+    --clr-900: theme('colors.orange.900');
+    --clr-950: theme('colors.orange.950');
+}
+
+.theme-teal{
+    --clr-50: theme('colorComponents.teal-50');
+    --clr-100: theme('colorComponents.teal-100');
+    --clr-200: theme('colorComponents.teal-200');
+    --clr-300: theme('colorComponents.teal-300');
+    --clr-400: theme('colorComponents.teal-400');
+    --clr-500: theme('colorComponents.teal-500');
+    --clr-600: theme('colorComponents.teal-600');
+    --clr-700: theme('colorComponents.teal-700');
+    --clr-800: theme('colorComponents.teal-800');
+    --clr-900: theme('colorComponents.teal-900');
+    --clr-950: theme('colorComponents.teal-950');
 }
 
 .theme-green{
@@ -64,6 +76,20 @@
     --clr-950: theme('colors.green.950');
 }
 
+.theme-slate{
+    --clr-50: theme('colors.slate.50');
+    --clr-100: theme('colors.slate.100');
+    --clr-200: theme('colors.slate.200');
+    --clr-300: theme('colors.slate.300');
+    --clr-400: theme('colors.slate.400');
+    --clr-500: theme('colors.slate.500');
+    --clr-600: theme('colors.slate.600');
+    --clr-700: theme('colors.slate.700');
+    --clr-800: theme('colors.slate.800');
+    --clr-900: theme('colors.slate.900');
+    --clr-950: theme('colors.slate.950');
+}
+
 [x-cloak] { display: none !important; }
 .prose .hljs {
     @apply bg-transparent;
@@ -73,13 +99,13 @@
 }
 .prose{
     a{
-        @apply font-semibold underline-offset-4 text-clr-500 hover:text-clr-400
+        @apply font-semibold underline-offset-4 text-gray-500 hover:text-gray-400
     }
     th, td{
         @apply p-3
     }
     th{
-        @apply bg-text-clr-100
+        @apply bg-gray-100
     }
     th p, td p{
         @apply m-0
@@ -91,7 +117,7 @@
         @apply m-0 w-full rounded-md shadow-[0px_0px_6px_-3px_rgba(0,0,0,0.7)];
     }
     code[data-backticks]{
-        @apply bg-text-clr-200 p-1 rounded border font-normal
+        @apply bg-gray-200 p-1 rounded border font-normal
     }
     pre{
         @apply text-base

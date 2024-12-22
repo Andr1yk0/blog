@@ -40,7 +40,7 @@
         gtag('config', '{{config('google.ga_measurement_id')}}');
     </script>
 @endenv
-<body class="theme-indigo bg-text-clr-200">
+<body class="theme-teal bg-text-clr-200">
 <div
     id="page-container"
     class="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
@@ -51,64 +51,44 @@
         >
             <x-main-header/>
         </div>
-        @yield('content')
+        <div class="min-h-full">
+            @yield('content')
+        </div>
+
         <footer
             id="page-footer"
-            class="bg-blue-900 text-gray-100"
+            class="bg-clr-900 text-gray-100"
         >
             <div
                 class="container mx-auto flex flex-col gap-6 px-4 py-16 text-center text-sm lg:flex-row-reverse lg:gap-0 lg:px-8 lg:py-32 xl:max-w-7xl"
             >
                 <nav class="space-x-4 lg:w-1/3 lg:text-right">
                     <a
-                        href="javascript:void(0)"
-                        class="text-gray-400 hover:text-gray-800 dark:hover:text-white"
+                        href="https://www.linkedin.com/in/andriy-lozynskyy-2a64a898/"
+                        class="text-gray-400 hover:text-[#0077b6]"
+                        target="_blank"
                     >
                         <svg
-                            class="bi bi-twitter-x inline-block size-5"
+                            class="bi bi-linkedin inline-block size-5"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
                             viewBox="0 0 16 16"
                             aria-hidden="true"
                         >
-                            <path
-                                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"
-                            />
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
                         </svg>
                     </a>
                     <a
-                        href="javascript:void(0)"
-                        class="text-gray-400 hover:text-[#1877f2]"
+                        href="https://stackoverflow.com/users/5712529/andriy-lozynskiy"
+                        class="text-gray-400 hover:text-[#f48024]"
+                        target="_blank"
                     >
-                        <svg
-                            class="icon-facebook inline-block size-5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"
-                            ></path>
-                        </svg>
+                        <svg class="bi bi-stack-overflow inline-block size-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.412 14.572V10.29h1.428V16H1v-5.71h1.428v4.282h9.984z"/><path d="M3.857 13.145h7.137v-1.428H3.857v1.428zM10.254 0 9.108.852l4.26 5.727 1.146-.852L10.254 0zm-3.54 3.377 5.484 4.567.913-1.097L7.627 2.28l-.914 1.097zM4.922 6.55l6.47 3.013.603-1.294-6.47-3.013-.603 1.294zm-.925 3.344 6.985 1.469.294-1.398-6.985-1.468-.294 1.397z"/></svg>
                     </a>
                     <a
-                        href="javascript:void(0)"
-                        class="text-gray-400 hover:text-[#405de6]"
-                    >
-                        <svg
-                            class="icon-instagram inline-block size-5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                            ></path>
-                        </svg>
-                    </a>
-                    <a
-                        href="javascript:void(0)"
+                        href="https://github.com/Andr1yk0"
                         class="text-gray-400 hover:text-[#333] dark:hover:text-gray-50"
+                        target="_blank"
                     >
                         <svg
                             class="icon-github inline-block size-5"
@@ -124,19 +104,19 @@
                 </nav>
                 <nav class="space-x-2 sm:space-x-4 lg:w-1/3 lg:text-center">
                     <a
-                        href="javascript:void(0)"
+                        href="{{route('terms')}}"
                         class="font-medium text-white/80 hover:text-white"
                     >
                         Terms & conditions
                     </a>
                     <a
-                        href="javascript:void(0)"
+                        href="{{route('cookie-policy')}}"
                         class="font-medium text-white/80 hover:text-white"
                     >
                         Cookie policy
                     </a>
                     <a
-                        href="javascript:void(0)"
+                        href="{{route('privacy-policy')}}"
                         class="font-medium text-white/80 hover:text-white"
                     >
                         Privacy policy

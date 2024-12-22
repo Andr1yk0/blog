@@ -1,6 +1,6 @@
 <header
     id="page-header"
-    class="bg-blue-900 relative flex flex-none items-center py-8"
+    class="bg-clr-900 relative flex flex-none items-center py-8"
 >
     <div
         class="container mx-auto flex flex-col gap-4 px-4 text-center md:flex-row md:items-center md:justify-between md:gap-0 lg:px-8 xl:max-w-7xl"
@@ -28,7 +28,7 @@
                 @foreach($menuItems as $menuItem)
                     <a
                         href="{{$menuItem['url']}}"
-                        class="text-sm font-semibold text-gray-100 hover:text-blue-300"
+                        class="text-sm font-semibold text-gray-100 hover:text-clr-300"
                     >
                         <span>{{$menuItem['title']}}</span>
                     </a>

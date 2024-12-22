@@ -1,5 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-
+const {default: flattenColorPalette} = require("tailwindcss/lib/util/flattenColorPalette");
+const {parseColor} = require("tailwindcss/lib/util/color");
 import aspectRatio from "@tailwindcss/aspect-ratio";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
@@ -15,12 +16,30 @@ module.exports = {
     ],
     safelist: [
         {
-            pattern: /bg-blue-(100|200|300|400|500|600|700|800|900)/
+            pattern: /bg-clr-(100|200|300|400|500|600|700|800|900)/
         },
         'bg-gray-100',
     ],
     theme: {
         extend: {
+            colorComponents: ({ theme }) => {
+                // Flatten possible multi-depth color configuration.
+                const flatPalette = flattenColorPalette(theme('colors'));
+
+                // Iterate through the color configuration.
+                const entries = Object.entries(flatPalette)
+                    .map(([key, value]) => [
+                        key,
+                        // parseColor() by default breaks down colors to RGB.
+                        // One may need to adjust if it returns other formats.
+                        parseColor(value)?.color.join(' '),
+                    ])
+                    // Filter unparsable colors, like `currentColor`.
+                    .filter(([, value]) => value);
+
+                // Return the iterated color configuration as a flat dictionary.
+                return Object.fromEntries(entries);
+            },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
@@ -48,48 +67,21 @@ module.exports = {
                 "spin-slow": "spin-slow 8s linear infinite",
             },
             colors: {
-                'clr-50': 'var(--clr-50)',
-                'clr-100': 'var(--clr-100)',
-                'clr-200': 'var(--clr-200)',
-                'clr-300': 'var(--clr-300)',
-                'clr-400': 'var(--clr-400)',
-                'clr-500': 'var(--clr-500)',
-                'clr-600': 'var(--clr-600)',
-                'clr-700': 'var(--clr-700)',
-                'clr-800': 'var(--clr-800)',
-                'clr-900': 'var(--clr-900)',
-                'clr-950': 'var(--clr-950)',
-                'text-clr-50': 'var(--text-clr-50)',
-                'text-clr-100': 'var(--text-clr-100)',
-                'text-clr-200': 'var(--text-clr-200)',
-                'text-clr-300': 'var(--text-clr-300)',
-                'text-clr-400': 'var(--text-clr-400)',
-                'text-clr-500': 'var(--text-clr-500)',
-                'text-clr-600': 'var(--text-clr-600)',
-                'text-clr-700': 'var(--text-clr-700)',
-                'text-clr-800': 'var(--text-clr-800)',
-                'text-clr-900': 'var(--text-clr-900)',
-                'text-clr-950': 'var(--text-clr-950)',
+                'clr-50': 'rgb(var(--clr-50)/<alpha-value>)',
+                'clr-100': 'rgb(var(--clr-100)/<alpha-value>)',
+                'clr-200': 'rgb(var(--clr-200)/<alpha-value>)',
+                'clr-300': 'rgb(var(--clr-300)/<alpha-value>)',
+                'clr-400': 'rgb(var(--clr-400)/<alpha-value>)',
+                'clr-500': 'rgb(var(--clr-500)/<alpha-value>)',
+                'clr-600': 'rgb(var(--clr-600)/<alpha-value>)',
+                'clr-700': 'rgb(var(--clr-700)/<alpha-value>)',
+                'clr-800': 'rgb(var(--clr-800)/<alpha-value>)',
+                'clr-900': 'rgb(var(--clr-900)/<alpha-value>)',
+                'clr-950': 'rgb(var(--clr-950)/<alpha-value>)',
             },
             'typography': () => ({
                 DEFAULT: {
                     css: {
-                        '--tw-prose-body': 'var(--text-clr-700)',
-                        '--tw-prose-headings': 'var(--text-clr-900)',
-                        '--tw-prose-lead': 'var(--text-clr-800)',
-                        '--tw-prose-links': 'var(--text-clr-800)',
-                        '--tw-prose-bold': 'var(--text-clr-900)',
-                        '--tw-prose-counters': 'var(--text-clr-700)',
-                        '--tw-prose-bullets': 'var(--text-clr-800)',
-                        '--tw-prose-hr': 'var(--text-clr-500)',
-                        '--tw-prose-quotes': 'var(--text-clr-800)',
-                        '--tw-prose-quote-borders': 'var(--text-clr-800)',
-                        '--tw-prose-captions': 'var(--text-clr-800)',
-                        '--tw-prose-code': 'var(--text-clr-900)',
-                        // '--tw-prose-pre-code': theme('colors.pink[100]'),
-                        // '--tw-prose-pre-bg': 'var(--text-clr-800)',
-                        '--tw-prose-th-borders': 'var(--text-clr-300)',
-                        '--tw-prose-td-borders': 'var(--text-clr-200)',
                         'code::before': {
                             content: '""'
                         },

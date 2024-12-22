@@ -1,66 +1,90 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mx-auto max-w-2xl my-10">
-        <x-card>
-            <x-slot:header>
-                <h1 class="text-3xl font-bold text-center tracking-tight text-text-clr-900 sm:text-2xl">Contact form</h1>
-                </x-slot>
-                <form action="{{ route('contacts.store') }}"
-                      id="contactForm"
-                      method="POST"
-                      class="mx-auto mt-6 max-w-xl"
+    <!-- Contact Section: Simple Boxed -->
+    <div class="bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
+        <div
+            class="container mx-auto space-y-16 px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl"
+        >
+            <div class="text-center">
+                <div
+                    class="mb-1 text-sm font-bold uppercase tracking-wider text-clr-600 dark:text-clr-500"
+                >
+                    Any questions?
+                </div>
+                <h2 class="mb-4 text-4xl font-black tex t-black dark:text-white">
+                    Contact Us
+                </h2>
+                <h3
+                    class="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 dark:text-gray-300"
+                >
+                    Feel free to get in touch and we will get back to your as soon as possible.
+                </h3>
+            </div>
+            <div
+                class="mx-auto flex w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:text-gray-100"
+            >
+                <form
+                    action="{{ route('contacts.store') }}"
+                    class="space-y-6 p-5 md:p-10"
+                    id="contactForm"
+                    method="POST"
                 >
                     @csrf
-                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                        <div class="sm:col-span-2">
-                            <label for="name" class="block text-sm font-semibold leading-6 text-text-clr-800">Your
-                                name</label>
-                            <div class="mt-2.5">
-                                <input type="text"
-                                       name="name"
-                                       id="name"
-                                       autocomplete="given-name"
-                                       value="{{ old('name') }}"
-                                       class="block bg-transparent w-full rounded-md border-0 px-3.5 py-2 text-text-clr-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-clr-600 sm:text-sm sm:leading-6"
-                                >
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="email" class="block text-sm font-semibold leading-6 text-text-clr-900">Email</label>
-                            <div class="mt-2.5">
-                                <input type="email"
-                                       name="email"
-                                       id="email"
-                                       autocomplete="email"
-                                       value="{{ old('email') }}"
-                                       class="block w-full rounded-md border-0 bg-transparent px-3.5 py-2 text-text-clr-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-clr-600 sm:text-sm sm:leading-6"
-                                >
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="message"
-                                   class="block text-sm font-semibold leading-6 text-text-clr-900">Message</label>
-                            <div class="mt-2.5">
-                                <textarea name="message"
-                                          id="message"
-                                          rows="4"
-                                          class="block w-full rounded-md bg-transparent border-0 px-3.5 py-2 text-text-clr-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-clr-600 sm:text-sm sm:leading-6"
-                                >{{ old('message') }}</textarea>
-                            </div>
-                        </div>
+                    <div class="space-y-1">
+                        <label for="name" class="font-medium">Your name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value="{{ old('name') }}"
+                            autocomplete="given-name"
+                            class="block w-full rounded-lg border border-gray-200 px-5 py-3 leading-6 placeholder-gray-500 focus:border-clr-500 focus:ring focus:ring-clr-500/50 dark:border-gray-600 dark:bg-gray-800 dark:placeholder-gray-400 dark:focus:border-clr-500"
+                        />
                     </div>
-                    <div class="mt-10">
-                        <button type="submit"
-                                data-action="submit"
-                                data-callback="onSubmit"
-                                data-sitekey="{{ config('captcha.site_key') }}"
-                                class="g-recaptcha block w-full rounded-md bg-clr-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-clr-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clr-600"
+                    <div class="space-y-1">
+                        <label for="email" class="font-medium">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            value="{{ old('email') }}"
+                            class="block w-full rounded-lg border border-gray-200 px-5 py-3 leading-6 placeholder-gray-500 focus:border-clr-500 focus:ring focus:ring-clr-500/50 dark:border-gray-600 dark:bg-gray-800 dark:placeholder-gray-400 dark:focus:border-clr-500"
+                        />
+                    </div>
+                    <div class="space-y-1">
+                        <label for="message" class="font-medium">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            class="block w-full rounded-lg border border-gray-200 px-5 py-3 leading-6 placeholder-gray-500 focus:border-clr-500 focus:ring focus:ring-clr-500/50 dark:border-gray-600 dark:bg-gray-800 dark:placeholder-gray-400 dark:focus:border-clr-500"
+                        >{{ old('message') }}</textarea>
+                    </div>
+                    <button
+                        data-action="submit"
+                        data-callback="onSubmit"
+                        data-sitekey="{{ config('captcha.site_key') }}"
+                        type="submit"
+                        class="g-recaptcha inline-flex w-full items-center justify-center gap-2 rounded-lg border border-clr-700 bg-clr-700 px-8 py-4 font-semibold leading-6 text-white hover:border-clr-600 hover:bg-clr-600 hover:text-white focus:ring focus:ring-clr-400/50 active:border-clr-700 active:bg-clr-700 dark:focus:ring-clr-400/90"
+                    >
+                        <svg
+                            class="hi-mini hi-paper-airplane inline-block size-5 opacity-50"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
                         >
-                            Let's talk
-                        </button>
-                    </div>
+                            <path
+                                d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.896 28.896 0 0015.293-7.154.75.75 0 000-1.115A28.897 28.897 0 003.105 2.289z"
+                            />
+                        </svg>
+                        <span>Send Message</span>
+                    </button>
                 </form>
-        </x-card>
+            </div>
+            <!-- END Contact Form -->
+        </div>
     </div>
 @endsection
 @push('scripts')
