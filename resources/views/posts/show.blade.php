@@ -31,7 +31,7 @@
                         </h3>
                     </div>
                     <article
-                        class="prose prose-lg prose-blue dark:prose-invert prose-a:no-underline hover:prose-a:opacity-75 prose-img:rounded-lg p-6"
+                        class="prose prose-lg prose-blue dark:prose-invert prose-a:no-underline hover:prose-a:opacity-75 prose-img:rounded-lg p-6 prose-pre:mt-2 prose-p:mb-0"
                     >
                         {!! $post->body_html !!}
                     </article>
