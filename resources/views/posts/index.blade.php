@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div
-                class="rounded-lg bg-white shadow-sm lg:col-span-4 lg:block dark:bg-gray-900 max-h-max"
+                class="rounded-lg bg-white shadow-sm lg:col-span-4 lg:block dark:bg-gray-900 max-h-max overflow-hidden"
             >
                 <div class="bg-gray-50 px-5 py-4 dark:bg-gray-700/50">
                     <h3 class="mb-1 font-semibold">Tags</h3>

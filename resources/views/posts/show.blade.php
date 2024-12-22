@@ -121,7 +121,7 @@
                 </div>
                 <div class="lg:col-span-4 max-h-max">
                     <div
-                        class="rounded-lg bg-white shadow-sm lg:block dark:bg-gray-900 mb-6"
+                        class="rounded-lg bg-white shadow-sm lg:block dark:bg-gray-900 mb-6 overflow-hidden"
                     >
                         <div class="bg-gray-50 px-5 py-4 dark:bg-gray-700/50">
                             <h3 class="mb-1 font-semibold">Tags</h3>
