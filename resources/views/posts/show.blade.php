@@ -12,7 +12,7 @@
             class="container mx-auto space-y-16 px-4 py-16 lg:px-8 lg:py-16 xl:max-w-7xl"
         >
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-                <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-900 overflow-hidden">
+                <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-900 overflow-hidden max-h-max">
                     <div class="mb-6 p-6">
                         @foreach($post->tags as $postTag)
                             <span
