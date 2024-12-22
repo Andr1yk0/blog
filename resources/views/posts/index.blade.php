@@ -5,7 +5,7 @@
             <div
                 class="space-y-2 py-2 text-center sm:flex sm:items-center sm:justify-between sm:space-y-0 sm:text-left lg:py-0"
             >
-                <div class="grow">
+                <div class="grow max-w-[65ch]">
                     <h1 class="mb-1 text-xl font-bold">{{isset($pageTag) ? 'Posts about ' . $pageTag->title : 'All posts'}}</h1>
                     @if(isset($pageTag) && $pageTag->description)
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{$pageTag->description}}</p>

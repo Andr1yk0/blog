@@ -51,7 +51,7 @@
         >
             <x-main-header/>
         </div>
-        <div class="min-h-full">
+        <div class="grow">
             @yield('content')
         </div>
 
