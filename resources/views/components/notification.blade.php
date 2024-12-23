@@ -118,36 +118,6 @@
             </button>
         </div>
     </template>
-
-
-    <!-- END Success Notification -->
-
-    <!-- Error Notification -->
-    {{--    <div--}}
-    {{--        class="flex items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-5 text-sm shadow-md shadow-gray-200/50 dark:border-gray-700/75 dark:bg-gray-800 dark:shadow-gray-950/50"--}}
-    {{--        role="alert"--}}
-    {{--        aria-live="assertive"--}}
-    {{--    >--}}
-    {{--        <div--}}
-    {{--            class="flex size-11 flex-none items-center justify-center rounded-xl bg-rose-100 text-rose-700 dark:bg-rose-600/25 dark:text-rose-100"--}}
-    {{--        >--}}
-    {{--            <svg--}}
-    {{--                xmlns="http://www.w3.org/2000/svg"--}}
-    {{--                viewBox="0 0 16 16"--}}
-    {{--                fill="currentColor"--}}
-    {{--                class="hi-micro hi-x-mark inline-block size-4"--}}
-    {{--            >--}}
-    {{--                <path--}}
-    {{--                    d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z"--}}
-    {{--                />--}}
-    {{--            </svg>--}}
-    {{--        </div>--}}
-    {{--        <div class="flex flex-grow flex-col gap-0.5">--}}
-    {{--            <h5 class="font-semibold">Payment failed</h5>--}}
-    {{--            <p class="dark:text-gray-400">The payment was not successful.</p>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    <!-- END Error Notification -->
 </div>
 @push('scripts')
     <script>

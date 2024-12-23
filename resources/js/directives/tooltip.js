@@ -37,14 +37,14 @@ Alpine.directive('tooltip', (el, { modifiers, expression }, {cleanup}) => {
                     </div>
                 </div>
             `;
-    let mouseEnter = function(event){
+    let mouseEnter = function(){
         if(el.querySelector('[data-toggle="tooltip"]')){
             return;
         }
         el.innerHTML += tooltipHTML;
     };
 
-    let mouseLeave = function(event){
+    let mouseLeave = function(){
         el.querySelector('[data-toggle="tooltip"]').remove();
     };
 

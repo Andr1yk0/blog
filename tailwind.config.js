@@ -1,4 +1,3 @@
-import defaultTheme from "tailwindcss/defaultTheme";
 const {default: flattenColorPalette} = require("tailwindcss/lib/util/flattenColorPalette");
 const {parseColor} = require("tailwindcss/lib/util/color");
 import aspectRatio from "@tailwindcss/aspect-ratio";
