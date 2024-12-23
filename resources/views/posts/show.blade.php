@@ -13,7 +13,7 @@
         >
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
                 <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-900 overflow-hidden max-h-max">
-                    <div class="mb-6 p-6">
+                    <div class="p-4 md:p-6 lg:p-8">
                         @foreach($post->tags as $postTag)
                             <span
                                 class="inline-flex rounded-full bg-clr-100 mb-1 px-2 py-1 text-sm font-semibold leading-4 text-clr-800 dark:bg-clr-900/75 dark:text-clr-200"
@@ -21,20 +21,22 @@
                                 {{$postTag->title}}
                             </span>
                         @endforeach
-                        <h1 class="mb-4 text-4xl font-black text-black dark:text-white">
+                        <h1 class="mb-4 text-2xl md:text-3xl lg:text-4xl font-black text-black dark:text-white">
                             {{$post->title}}
                         </h1>
                         <h3
-                            class="text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300"
+                            class="text-md md:text-lg lg:text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300"
                         >
                           <span class="font-semibold">{{$post->published_at_formatted}}</span>
                         </h3>
                     </div>
-                    <article
-                        class="prose prose-lg prose-blue dark:prose-invert prose-a:no-underline hover:prose-a:opacity-75 prose-img:rounded-lg p-6 prose-pre:mt-2 prose-p:mb-0"
-                    >
-                        {!! $post->body_html !!}
-                    </article>
+                    <div class="px-4 md:px-6 lg:px-8">
+                        <article
+                            class="prose prose-sm md:prose-lg prose-blue dark:prose-invert prose-a:no-underline hover:prose-a:opacity-75 prose-img:rounded-lg prose-pre:mt-2 prose-p:mb-0"
+                        >
+                            {!! $post->body_html !!}
+                        </article>
+                    </div>
                     <div
                         class="mt-10 flex gap-6 bg-gray-50 p-4 text-center text-sm justify-between md:text-left"
                     >
