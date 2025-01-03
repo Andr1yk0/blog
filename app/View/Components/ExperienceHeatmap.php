@@ -11,7 +11,7 @@ use Illuminate\View\Component;
 class ExperienceHeatmap extends Component
 {
     public array $heatMapCellBackgrounds = [
-        'bg-gray-100', 'bg-clr-100', 'bg-clr-200', 'bg-clr-300', 'bg-clr-400', 'bg-clr-500',
+        'bg-gray-100 dark:bg-gray-800/50', 'bg-clr-100', 'bg-clr-200', 'bg-clr-300', 'bg-clr-400', 'bg-clr-500',
         'bg-clr-600', 'bg-clr-700', 'bg-clr-800', 'bg-clr-900'
     ];
 

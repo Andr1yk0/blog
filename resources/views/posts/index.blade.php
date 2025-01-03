@@ -76,14 +76,14 @@
                 </div>
             </div>
             <div
-                class="rounded-lg bg-white shadow-sm lg:col-span-4 lg:block dark:bg-gray-900 max-h-max overflow-hidden"
+                class="rounded-lg bg-white shadow-sm lg:col-span-4 lg:block dark:bg-gray-800 max-h-max overflow-hidden"
             >
                 <div class="bg-gray-50 px-5 py-4 dark:bg-gray-700/50">
                     <h3 class="mb-1 font-semibold">Tags</h3>
                 </div>
                 <div class="grow p-5">
                     <div
-                        class="flex rounded-xl border-gray-200 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+                        class="flex rounded-xl text-gray-400"
                     >
                         <x-top-tags />
                     </div>

@@ -2,11 +2,11 @@
     <div class="lg:col-span-2">
         <div>
             <div class="flex">
-                <div class="w-28 mt-7 border-r border-text-clr-300 flex-shrink-0">
+                <div class="w-28 mt-7 flex-shrink-0">
                     @foreach($heatMapData as $item)
                         <div class="h-10">
-                            <span class="text-sm text-gray-800-800">{{ $item['title'] }}</span>
-                            <p class="text-xs text-gray-600"> {{$item['duration']}} </p>
+                            <span class="text-sm text-gray-800 dark:text-white">{{ $item['title'] }}</span>
+                            <p class="text-xs text-gray-600 dark:text-gray-300"> {{$item['duration']}} </p>
                         </div>
                     @endforeach
                 </div>

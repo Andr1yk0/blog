@@ -1,5 +1,5 @@
 @if($paginator->hasPages())
-    <div class="text-center bg-white shadow-sm p-4 rounded-lg dark:text-gray-100">
+    <div class="text-center bg-white shadow-sm p-4 rounded-lg dark:text-gray-100 dark:bg-gray-800">
         <!-- Visible on mobile -->
         <nav class="flex sm:hidden">
             @if(!$paginator->onFirstPage())

@@ -12,7 +12,7 @@
             class="container mx-auto space-y-16 px-4 py-16 lg:px-8 lg:py-16 xl:max-w-7xl"
         >
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-                <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-900 overflow-hidden max-h-max">
+                <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-800 overflow-hidden max-h-max">
                     <div class="p-4 md:p-6 lg:p-8">
                         @foreach($post->tags as $postTag)
                             <span
@@ -38,7 +38,7 @@
                         </article>
                     </div>
                     <div
-                        class="mt-10 flex gap-6 bg-gray-50 p-4 text-center text-sm justify-between md:text-left"
+                        class="mt-10 flex gap-6 bg-gray-50 p-4 text-center text-sm justify-between md:text-left dark:bg-gray-700/50"
                     >
                         <div class="text-gray-500">
                             Share on:
@@ -123,33 +123,29 @@
                 </div>
                 <div class="lg:col-span-4 max-h-max">
                     <div
-                        class="rounded-lg bg-white shadow-sm lg:block dark:bg-gray-900 mb-6 overflow-hidden"
+                        class="rounded-lg bg-white shadow-sm lg:block dark:bg-gray-800 mb-6 overflow-hidden"
                     >
                         <div class="bg-gray-50 px-5 py-4 dark:bg-gray-700/50">
                             <h3 class="mb-1 font-semibold">Tags</h3>
                         </div>
                         <div class="grow p-5">
-                            <div
-                                class="flex rounded-xl border-gray-200 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
-                            >
-                                <x-top-tags />
-                            </div>
+                            <x-top-tags />
                         </div>
                     </div>
                     @if($post->related->isNotEmpty())
                         <div
-                            class="rounded-lg bg-white overflow-hidden shadow-sm lg:block dark:bg-gray-900 "
+                            class="rounded-lg bg-white overflow-hidden shadow-sm lg:block dark:bg-gray-800 "
                         >
                             <div class="bg-gray-50 px-5 py-4 dark:bg-gray-700/50">
                                 <h3 class="mb-1 font-semibold">Similar posts</h3>
                             </div>
                             <nav
-                                class="divide-y divide-gray-200 overflow-hidden bg-white dark:divide-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                                class="divide-y divide-gray-200 overflow-hidden bg-white dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             >
                                 @foreach($post->related as $relatedPost)
                                     <a
                                         href="{{ route('posts.show', [$relatedPost->slug]) }}"
-                                        class="flex items-center text-sm font-semibold justify-between p-4 text-gray-700 hover:bg-gray-50 hover:text-gray-700 active:bg-white dark:text-gray-200 dark:hover:bg-gray-800/50 dark:active:bg-gray-900"
+                                        class="flex items-center text-sm font-semibold justify-between p-4 text-gray-700 hover:bg-gray-50 hover:text-gray-700 dark:hover:text-gray-200 active:bg-white dark:text-gray-200 dark:hover:bg-gray-600/50 dark:active:bg-gray-900"
                                     >
                                         {{$relatedPost->title}}
                                     </a>
