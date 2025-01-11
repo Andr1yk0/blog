@@ -1,42 +1,3 @@
-{{--<div x-data--}}
-{{--     aria-live="assertive"--}}
-{{--     class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50"--}}
-{{-->--}}
-{{--    <div class="flex w-full flex-col items-center space-y-4 sm:items-end">--}}
-{{--        <!----}}
-{{--          Notification panel, dynamically insert this into the live region when it needs to be displayed--}}
-
-{{--          Entering: "transform ease-out duration-300 transition"--}}
-{{--            From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"--}}
-{{--            To: "translate-y-0 opacity-100 sm:translate-x-0"--}}
-{{--          Leaving: "transition ease-in duration-100"--}}
-{{--            From: "opacity-100"--}}
-{{--            To: "opacity-0"--}}
-{{--        -->--}}
-{{--        <template x-for="(notification, index) in $store.notifications.items">--}}
-{{--            <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-text-clr-100 shadow-lg ring-1 ring-black ring-opacity-5">--}}
-{{--                <div class="p-4">--}}
-{{--                    <div class="flex items-start">--}}
-{{--                        <div class="flex-shrink-0">--}}
-{{--                            <x-icons.outline.check-circle x-show="notification.type === 'success'" class="text-green-400" />--}}
-{{--                            <x-icons.outline.x-circle x-show="notification.type === 'error'" class="text-red-400" />--}}
-{{--                        </div>--}}
-{{--                        <div class="ml-3 w-0 flex-1 pt-0.5">--}}
-{{--                            <p class="text-sm font-medium text-text-clr-900" x-text="notification.message"></p>--}}
-{{--                            <p class="mt-1 text-sm text-text-clr-500" x-text="notification.description"></p>--}}
-{{--                        </div>--}}
-{{--                        <div class="ml-4 flex flex-shrink-0">--}}
-{{--                            <button @click="$store.notifications.remove(index)" type="button" class="inline-flex rounded-md text-text-clr-400 hover:text-text-clr-500">--}}
-{{--                                <span class="sr-only">Close</span>--}}
-{{--                                <x-icons.mini.x-mark />--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </template>--}}
-{{--    </div>--}}
-{{--</div>--}}
 <div
     class="fixed right-4 top-4 z-50 flex w-72 flex-col-reverse gap-2 sm:w-96"
 >
@@ -53,8 +14,6 @@
         leave-end     'opacity-0 translate-y-20' (if position is set to 'top-start' or 'top-end')
         leave-end     'opacity-0 -translate-y-20' (if position is set to 'bottom-start' or 'bottom-end')
     -->
-
-    <!-- Success Notification -->
     <template x-for="(notification, index) in $store.notifications.items">
         <div
             class="flex items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-5 text-sm shadow-md shadow-gray-200/50 dark:border-gray-700/75 dark:bg-gray-800 dark:shadow-gray-950/50"
@@ -122,7 +81,7 @@
 @push('scripts')
     <script>
         const notifications = @json($notifications);
-        if (notifications) {
+        if (Array.isArray(notifications) && notifications.length) {
             Alpine.store('notifications').items = notifications;
             notifications
                 .filter(notification => notification.timeout)

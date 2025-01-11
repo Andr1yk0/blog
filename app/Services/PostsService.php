@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Post;
 use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
 
 class PostsService
 {
@@ -32,5 +33,13 @@ class PostsService
             \Storage::disk('public')->put($post->image_path, $image);
         }
         return $post;
+    }
+
+    public function uploadPhoto(UploadedFile $file)
+    {
+        $filename = $file->getClientOriginalPath();
+        $storagePath = 'media/posts/images';
+        \Storage::disk('public')->putFileAs($storagePath, $file, $filename);
+        return "/storage/". $storagePath . "/" . $filename;
     }
 }

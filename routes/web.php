@@ -28,6 +28,8 @@ Route::get('/terms-and-conditions', [ContactsController::class, 'terms'])->name(
 Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])
         ->name('dashboard');
+    Route::post('/posts/upload-image', [PostAdminController::class, 'uploadImage'])
+        ->name('posts.upload-image');
     Route::resource('posts', PostAdminController::class);
     Route::resource('tests', TestAdminController::class);
     Route::resource('tags', TagAdminController::class);

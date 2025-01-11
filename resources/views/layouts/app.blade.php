@@ -23,13 +23,13 @@
         <link rel="canonical" href="{{request()->fullUrlWithoutQuery('page')}}">
     @endif
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    @if(app()->isProduction())
+    @env('production')
         <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710254041885287"
             crossorigin="anonymous"
         ></script>
-    @endif
+    @endenv
 </head>
 @env('production')
     <script async src="https://www.googletagmanager.com/gtag/js?id={{config('google.ga_measurement_id')}}"></script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostEditAdminRequest;
+use App\Http\Requests\UploadPostImageRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Services\PostsService;
@@ -61,5 +62,12 @@ class PostAdminController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('success', 'Post deleted');
+    }
+
+    public function uploadImage(PostsService $postsService, UploadPostImageRequest $request)
+    {
+        $filepath = $postsService->uploadPhoto($request->file('image'));
+        return response()->json(['path' => $filepath]);
+
     }
 }

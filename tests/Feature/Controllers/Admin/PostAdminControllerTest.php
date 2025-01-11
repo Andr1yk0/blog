@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Http\UploadedFile;
 use Tests\AuthUser;
 use Tests\RefreshDatabaseCustom;
 use Tests\TestCase;
@@ -100,5 +101,18 @@ class PostAdminControllerTest extends TestCase
         $response->assertRedirect('/admin/posts')->assertSessionHas('success');
         $this->assertDatabaseEmpty('posts');
         $this->assertDatabaseEmpty('post_tag');
+    }
+
+    public function test_upload_image()
+    {
+        $storage = \Storage::fake('public');
+
+        $response = $this->setUser()->post('/admin/posts/upload-image', [
+            'image' => UploadedFile::fake()->image('test.png')
+        ]);
+
+        $response->assertSuccessful();
+        $response->assertJsonFragment(['path' => '/storage/media/posts/images/test.png']);
+        $storage->assertExists('media/posts/images/test.png');
     }
 }

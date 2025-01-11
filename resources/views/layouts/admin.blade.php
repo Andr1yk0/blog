@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="light">
+<html x-data lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="light">
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,7 +10,7 @@
             showProfileDropdown: false,
             showMobileSidebar: false,
             logoutHandler: function () {
-                axios.post('logout').then(response => {
+                axios.post('logout').then(() => {
                     window.location.href = '/';
                 });
             }
@@ -50,7 +50,7 @@
                 >
                     <button type="button" class="-m-2.5 p-2.5" @click="showMobileSidebar = false">
                         <span class="sr-only">Close sidebar</span>
-                        <x-icons.outline.x-mark class="text-white" />
+                        <x-icons.outline.x-mark class="text-white"/>
                     </button>
                 </div>
                 <x-admin-sidebar/>
@@ -69,7 +69,7 @@
         >
             <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="showMobileSidebar = true">
                 <span class="sr-only">Open sidebar</span>
-                <x-icons.outline.bars-3 />
+                <x-icons.outline.bars-3/>
             </button>
             <div class="flex flex-1 justify-end gap-x-4 self-stretch lg:gap-x-6">
                 <div class="flex items-center gap-x-4 lg:gap-x-6">
@@ -90,7 +90,7 @@
                             </span>
                             <span class="hidden lg:flex lg:items-center">
                                 <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Admin</span>
-                                <x-icons.mini.chevron-down class="ml-2 text-gray-400" />
+                                <x-icons.mini.chevron-down class="ml-2 text-gray-400"/>
                             </span>
                         </button>
                         <div

@@ -21,13 +21,13 @@ Alpine.data('editPostForm', (postTitle, imageLang) => ({
             this.highlightImagePreview()
         })
     },
-    highlightImagePreview(){
+    highlightImagePreview() {
         this.imageTextHighlighted = highlighter.codeToHtml(this.imageText, {
             theme: highlighterTheme,
             lang: this.selectedLang,
         })
     },
-    createImage(){
+    createImage() {
         const element = document.getElementById('thumbnailPreview');
         Alpine.store('loader', true);
         html2canvas(element).then((canvas) => {
@@ -97,6 +97,35 @@ const editor = new Editor({
                 {type: 'closeTag', tagName: 'pre'},
             ];
         }
+    },
+    hooks: {
+        addImageBlobHook(file, callback) {
+            const formData = new FormData();
+            formData.append('image', file);
+            Alpine.store('loader', true);
+            fetch('/admin/posts/upload-image', {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    callback(data.path);
+                })
+                .catch((error) => {
+                    Alpine.store('notifications').add({
+                        type: 'error',
+                        message: error.message ? error.message : 'Something went wrong',
+                    })
+                })
+                .finally(() => {
+                    Alpine.store('loader', false);
+                })
+        }
     }
 });
 editor.addHook('change', () => {
@@ -115,7 +144,7 @@ form.addEventListener('submit', (e) => {
     }
     form.querySelector('[name="body_markdown"]').value = editor.getMarkdown();
     let html = document.querySelector('.toastui-editor-md-preview .toastui-editor-contents').innerHTML;
-    html = html.replace(/data-nodeid="\d+"/ig,'')
+    html = html.replace(/data-nodeid="\d+"/ig, '')
     form.querySelector('[name="body_html"]').value = html;
     return true;
 });
