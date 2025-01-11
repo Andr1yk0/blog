@@ -99,7 +99,7 @@
 }
 .prose{
     a{
-        @apply font-semibold underline text-clr-800 hover:text-clr-700
+        @apply font-semibold underline text-clr-600 hover:text-clr-400
     }
     th, td{
         @apply p-3

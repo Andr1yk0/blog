@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-        <div class="mx-auto rounded-lg bg-white shadow-sm dark:bg-gray-900 max-w-[65ch] my-10 p-6">
-            <div class="prose prose-base prose-h1:text-center">
+        <div class="mx-auto rounded-lg bg-white shadow-sm dark:bg-gray-800 max-w-[65ch] my-10 p-6">
+            <div class="prose prose-base prose-h1:text-center dark:prose-invert">
 
                 <h1>Cookie Policy</h1>
                 <p>Updated at 2024-02-26</p>
