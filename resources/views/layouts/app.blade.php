@@ -9,11 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('safari-pinned-tab.svg')}}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     @if(isset($SEOData))
@@ -62,7 +62,7 @@
             <div
                 class="container mx-auto flex flex-col gap-6 px-4 py-16 text-center text-sm lg:flex-row-reverse lg:gap-0 lg:px-8 lg:py-32 xl:max-w-7xl"
             >
-                <nav class="space-x-4 lg:w-1/3 lg:text-right">
+                <nav class="space-x-4 lg:w-1/4 lg:text-right">
                     <a
                         href="https://www.linkedin.com/in/andriy-lozynskyy-2a64a898/"
                         class="text-gray-400 hover:text-[#0077b6]"
@@ -102,27 +102,27 @@
                         </svg>
                     </a>
                 </nav>
-                <nav class="space-x-2 sm:space-x-4 lg:w-1/3 lg:text-center">
+                <nav class="space-x-2 sm:space-x-4 lg:w-1/2 lg:text-center">
                     <a
                         href="{{route('terms')}}"
-                        class="font-medium text-white/80 hover:text-white"
+                        class="font-medium text-white/80 hover:text-white whitespace-nowrap"
                     >
                         Terms & conditions
                     </a>
                     <a
                         href="{{route('cookie-policy')}}"
-                        class="font-medium text-white/80 hover:text-white"
+                        class="font-medium text-white/80 hover:text-white whitespace-nowrap"
                     >
                         Cookie policy
                     </a>
                     <a
                         href="{{route('privacy-policy')}}"
-                        class="font-medium text-white/80 hover:text-white"
+                        class="font-medium text-white/80 hover:text-white whitespace-nowrap"
                     >
                         Privacy policy
                     </a>
                 </nav>
-                <div class="text-white/70 lg:w-1/3 lg:text-left">
+                <div class="text-white/70 lg:w-1/4 lg:text-left">
                     <span class="font-medium">Prostocode</span> © {{date('Y')}}
                 </div>
             </div>
