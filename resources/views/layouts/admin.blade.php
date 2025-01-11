@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
-<body class="theme-indigo">
+<body class="theme-teal">
 <div x-data="{
             showProfileDropdown: false,
             showMobileSidebar: false,
