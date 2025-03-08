@@ -12,6 +12,25 @@
                 </a>
             </div>
         </div>
+        <form
+            x-data="postsFilter('{{request("filter.title", "")}}', '{{request("filter.slug", "")}}')"
+            class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 bg-gray-100 p-4 rounded-md"
+        >
+            <x-table-filter
+                label="Title"
+                inputId="titleFilter"
+                inputName="filter[title]"
+                xModel="title"
+                class="sm:col-span-3"
+            />
+            <x-table-filter
+                label="Slug"
+                inputId="slugFilter"
+                inputName="filter[slug]"
+                xModel="slug"
+                class="sm:col-span-3"
+            />
+        </form>
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -29,7 +48,7 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                        @foreach($tags as $tag)
+                        @forelse($tags as $tag)
                             <tr>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $tag->id }}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{ $tag->title }}</td>
@@ -56,7 +75,9 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr><td class="text-center p-2" colspan="8">No tags found</td></tr>
+                        @endforelse
                         </tbody>
                     </table>
                     <div class="mt-4">
@@ -67,3 +88,11 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        Alpine.data('postsFilter', (title, slug) => ({
+            title: title,
+            slug: slug
+        }))
+    </script>
+@endpush

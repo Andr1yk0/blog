@@ -15,6 +15,7 @@ class TagAdminController extends Controller
         $query = Tag::withCount('posts');
         $tags = QueryBuilder::for($query)
             ->allowedSorts(['id', 'title', 'slug', 'posts_count', 'created_at', 'updated_at'])
+            ->allowedFilters(['title', 'slug'])
             ->paginate(10)
             ->appends(request()->query());
 
