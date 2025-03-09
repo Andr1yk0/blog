@@ -71,7 +71,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        {!! $posts->links() !!}
+                        {!! $posts->onEachSide(1)->links() !!}
                     </div>
                 </div>
             </div>

@@ -84,7 +84,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                        {{$posts->links()}}
+                        {{$posts->onEachSide(1)->links()}}
                     </div>
                 </div>
             </div>

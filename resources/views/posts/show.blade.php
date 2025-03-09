@@ -14,18 +14,21 @@
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
                 <div class="rounded-lg bg-white shadow-sm lg:col-span-8 dark:bg-gray-800 overflow-hidden max-h-max">
                     <div class="p-4 md:p-6 lg:p-8">
-                        @foreach($post->tags as $postTag)
-                            <span
-                                class="inline-flex rounded-full bg-clr-100 mb-1 px-2 py-1 text-sm font-semibold leading-4 text-clr-800 dark:bg-clr-900/75 dark:text-clr-200"
-                            >
+                        <div class="mb-2">
+                            @foreach($post->tags as $postTag)
+                                <span
+                                    class="inline-flex rounded-full bg-clr-100 mb-1 px-2 py-1 text-sm font-semibold leading-4 text-clr-800 dark:bg-clr-900/75 dark:text-clr-200"
+                                >
                                 {{$postTag->title}}
                             </span>
-                        @endforeach
-                        <h1 class="mb-4 text-2xl md:text-3xl lg:text-4xl font-black text-black dark:text-white">
+                            @endforeach
+                        </div>
+
+                        <h1 class="mb-4 text-2xl lg:text-3xl font-black text-black dark:text-white">
                             {{$post->title}}
                         </h1>
                         <h3
-                            class="text-md md:text-lg lg:text-xl font-medium leading-relaxed text-gray-700 dark:text-gray-300"
+                            class="text-md md:text-lg font-medium leading-relaxed text-gray-500 dark:text-gray-300"
                         >
                           <span class="font-semibold">{{$post->published_at_formatted}}</span>
                         </h3>

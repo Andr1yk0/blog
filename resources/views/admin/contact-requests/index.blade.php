@@ -51,7 +51,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                        {{$contactRequests->links()}}
+                        {{$contactRequests->onEachSide(1)->links()}}
                     </div>
                 </div>
             </div>

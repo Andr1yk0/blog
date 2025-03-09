@@ -117,7 +117,7 @@
         @apply m-0 w-full rounded-md shadow-[0px_0px_6px_-3px_rgba(0,0,0,0.7)];
     }
     code[data-backticks]{
-        @apply bg-gray-200 p-1 rounded border font-normal dark:bg-gray-700/50 dark:border-gray-600 border-gray-300
+        @apply bg-clr-50 text-clr-700 p-1 rounded font-semibold dark:bg-clr-900/50 dark:text-clr-100
     }
     pre{
         @apply text-base
