@@ -5,6 +5,7 @@ import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
+const themes = ['indigo', 'blue', 'amber', 'teal', 'stone', 'rose'];
 
 module.exports = {
     darkMode: "selector",
@@ -18,6 +19,7 @@ module.exports = {
             pattern: /bg-clr-(100|200|300|400|500|600|700|800|900)/
         },
         'bg-gray-100',
+        ...themes.map((theme) => `bg-${theme}-500`),
     ],
     theme: {
         extend: {

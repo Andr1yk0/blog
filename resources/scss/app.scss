@@ -7,45 +7,45 @@
     }
 }
 .theme-indigo{
-    --clr-50: theme('colors.indigo.50');
-    --clr-100: theme('colors.indigo.100');
-    --clr-200: theme('colors.indigo.200');
-    --clr-300: theme('colors.indigo.300');
-    --clr-400: theme('colors.indigo.400');
-    --clr-500: theme('colors.indigo.500');
-    --clr-600: theme('colors.indigo.600');
-    --clr-700: theme('colors.indigo.700');
-    --clr-800: theme('colors.indigo.800');
-    --clr-900: theme('colors.indigo.900');
-    --clr-950: theme('colors.indigo.950');
+    --clr-50: theme('colorComponents.indigo-50');
+    --clr-100: theme('colorComponents.indigo-100');
+    --clr-200: theme('colorComponents.indigo-200');
+    --clr-300: theme('colorComponents.indigo-300');
+    --clr-400: theme('colorComponents.indigo-400');
+    --clr-500: theme('colorComponents.indigo-500');
+    --clr-600: theme('colorComponents.indigo-600');
+    --clr-700: theme('colorComponents.indigo-700');
+    --clr-800: theme('colorComponents.indigo-800');
+    --clr-900: theme('colorComponents.indigo-900');
+    --clr-950: theme('colorComponents.indigo-950');
 }
 
 .theme-blue{
-    --clr-50: theme('colors.blue.50');
-    --clr-100: theme('colors.blue.100');
-    --clr-200: theme('colors.blue.200');
-    --clr-300: theme('colors.blue.300');
-    --clr-400: theme('colors.blue.400');
-    --clr-500: theme('colors.blue.500');
-    --clr-600: theme('colors.blue.600');
-    --clr-700: theme('colors.blue.700');
-    --clr-800: theme('colors.blue.800');
-    --clr-900: theme('colors.blue.900');
-    --clr-950: theme('colors.blue.950');
+    --clr-50: theme('colorComponents.blue-50');
+    --clr-100: theme('colorComponents.blue-100');
+    --clr-200: theme('colorComponents.blue-200');
+    --clr-300: theme('colorComponents.blue-300');
+    --clr-400: theme('colorComponents.blue-400');
+    --clr-500: theme('colorComponents.blue-500');
+    --clr-600: theme('colorComponents.blue-600');
+    --clr-700: theme('colorComponents.blue-700');
+    --clr-800: theme('colorComponents.blue-800');
+    --clr-900: theme('colorComponents.blue-900');
+    --clr-950: theme('colorComponents.blue-950');
 }
 
-.theme-orange{
-    --clr-50: theme('colors.orange.50');
-    --clr-100: theme('colors.orange.100');
-    --clr-200: theme('colors.orange.200');
-    --clr-300: theme('colors.orange.300');
-    --clr-400: theme('colors.orange.400');
-    --clr-500: theme('colors.orange.500');
-    --clr-600: theme('colors.orange.600');
-    --clr-700: theme('colors.orange.700');
-    --clr-800: theme('colors.orange.800');
-    --clr-900: theme('colors.orange.900');
-    --clr-950: theme('colors.orange.950');
+.theme-amber{
+    --clr-50: theme('colorComponents.amber-50');
+    --clr-100: theme('colorComponents.amber-100');
+    --clr-200: theme('colorComponents.amber-200');
+    --clr-300: theme('colorComponents.amber-300');
+    --clr-400: theme('colorComponents.amber-400');
+    --clr-500: theme('colorComponents.amber-500');
+    --clr-600: theme('colorComponents.amber-600');
+    --clr-700: theme('colorComponents.amber-700');
+    --clr-800: theme('colorComponents.amber-800');
+    --clr-900: theme('colorComponents.amber-900');
+    --clr-950: theme('colorComponents.amber-950');
 }
 
 .theme-teal{
@@ -62,32 +62,32 @@
     --clr-950: theme('colorComponents.teal-950');
 }
 
-.theme-green{
-    --clr-50: theme('colors.green.50');
-    --clr-100: theme('colors.green.100');
-    --clr-200: theme('colors.green.200');
-    --clr-300: theme('colors.green.300');
-    --clr-400: theme('colors.green.400');
-    --clr-500: theme('colors.green.500');
-    --clr-600: theme('colors.green.600');
-    --clr-700: theme('colors.green.700');
-    --clr-800: theme('colors.green.800');
-    --clr-900: theme('colors.green.900');
-    --clr-950: theme('colors.green.950');
+.theme-stone{
+    --clr-50: theme('colorComponents.stone-50');
+    --clr-100: theme('colorComponents.stone-100');
+    --clr-200: theme('colorComponents.stone-200');
+    --clr-300: theme('colorComponents.stone-300');
+    --clr-400: theme('colorComponents.stone-400');
+    --clr-500: theme('colorComponents.stone-500');
+    --clr-600: theme('colorComponents.stone-600');
+    --clr-700: theme('colorComponents.stone-700');
+    --clr-800: theme('colorComponents.stone-800');
+    --clr-900: theme('colorComponents.stone-900');
+    --clr-950: theme('colorComponents.stone-950');
 }
 
-.theme-slate{
-    --clr-50: theme('colors.slate.50');
-    --clr-100: theme('colors.slate.100');
-    --clr-200: theme('colors.slate.200');
-    --clr-300: theme('colors.slate.300');
-    --clr-400: theme('colors.slate.400');
-    --clr-500: theme('colors.slate.500');
-    --clr-600: theme('colors.slate.600');
-    --clr-700: theme('colors.slate.700');
-    --clr-800: theme('colors.slate.800');
-    --clr-900: theme('colors.slate.900');
-    --clr-950: theme('colors.slate.950');
+.theme-rose{
+    --clr-50: theme('colorComponents.rose-50');
+    --clr-100: theme('colorComponents.rose-100');
+    --clr-200: theme('colorComponents.rose-200');
+    --clr-300: theme('colorComponents.rose-300');
+    --clr-400: theme('colorComponents.rose-400');
+    --clr-500: theme('colorComponents.rose-500');
+    --clr-600: theme('colorComponents.rose-600');
+    --clr-700: theme('colorComponents.rose-700');
+    --clr-800: theme('colorComponents.rose-800');
+    --clr-900: theme('colorComponents.rose-900');
+    --clr-950: theme('colorComponents.rose-950');
 }
 
 [x-cloak] { display: none !important; }

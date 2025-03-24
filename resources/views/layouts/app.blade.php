@@ -1,9 +1,8 @@
 <!doctype html>
 <html
     x-cloak
+    x-data="appData()"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    :class="{dark: isDarkMode, light: !isDarkMode}"
-    x-data="{isDarkMode: localStorage.getItem('darkMode')}"
 >
 <head>
     <meta charset="utf-8">
@@ -40,25 +39,20 @@
         gtag('config', '{{config('google.ga_measurement_id')}}');
     </script>
 @endenv
-<body class="theme-teal bg-text-clr-200">
+<body class="bg-text-clr-200" :class="{dark: isDarkMode, light: !isDarkMode, [themeClass]: true}">
 <div
     id="page-container"
     class="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
 >
     <main id="page-content" class="flex max-w-full flex-auto flex-col">
-        <div
-            class="relative overflow-hidden bg-white dark:bg-gray-900 dark:text-gray-100"
-        >
+        <div class="relative bg-white dark:bg-gray-900 dark:text-gray-100">
             <x-main-header/>
         </div>
         <div class="grow">
             @yield('content')
         </div>
 
-        <footer
-            id="page-footer"
-            class="bg-clr-900 text-gray-100"
-        >
+        <footer id="page-footer" class="bg-clr-900 text-gray-100">
             <div
                 class="container mx-auto flex flex-col gap-6 px-4 py-16 text-center text-sm lg:flex-row-reverse lg:gap-0 lg:px-8 lg:py-32 xl:max-w-7xl"
             >
@@ -134,6 +128,10 @@
 <script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
 <script>
+    Alpine.data('appData', () => ({
+        isDarkMode: localStorage.getItem('darkMode'),
+        themeClass: localStorage.getItem('theme') ? localStorage.getItem('theme') : 'theme-teal'
+    }))
     Alpine.start();
 </script>
 </body>
