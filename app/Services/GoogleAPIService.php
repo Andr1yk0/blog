@@ -30,8 +30,8 @@ class GoogleAPIService
         $this->client->setAuthConfig(base_path('credentials.json'));
 
         $oauthToken = OauthToken::where('token_type', OauthTokenTypeEnum::GOOGLE_API->value)->first();
-        $this->client->setAccessToken($oauthToken->access_token);
-        $this->client->refreshToken($oauthToken->refresh_token);
+        $this->client->setAccessToken($oauthToken->access_token ?? null);
+        $this->client->refreshToken($oauthToken->refresh_token ?? null);
     }
 
     public function getAuthUrl(): string
