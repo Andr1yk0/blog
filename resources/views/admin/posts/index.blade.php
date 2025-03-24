@@ -45,6 +45,7 @@
                             <x-admin-table-header title="Slug" sortBy="slug"/>
                             <x-admin-table-header title="Tags"/>
                             <x-admin-table-header title="Published" sortBy="published_at"/>
+                            <x-admin-table-header title="Indexed" sortBy="indexed_by_google" />
                             <x-admin-table-header title="Created" sortBy="created_at"/>
                             <x-admin-table-header title="Updated" sortBy="updated_at"/>
                             <x-admin-table-header title="Actions"/>
@@ -63,13 +64,14 @@
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->slug}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->tags->pluck('title')->join(', ')}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->published_at}}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{{$post->indexed_by_google ? 'Yes' : 'No'}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->created_at}}</td>
                                 <td class="px-3 py-4 text-sm text-gray-500">{{$post->updated_at}}</td>
                                 <td>
                                     <a class="cursor-pointer" href="{{route('admin.posts.edit', [$post->id])}}">
                                         <x-icons.mini.pencil-square class="text-indigo-500 hover:text-indigo-700"/>
                                     </a>
-                                    <form method="POST" action="{{route('admin.posts.destroy', $post->id)}}">
+                                    <form method="POST" action="{{route('admin.posts.destroy', ['post' => $post->id])}}">
                                         @csrf
                                         @method('DELETE')
                                         <a class="cursor-pointer"
@@ -78,6 +80,14 @@
                                             <x-icons.mini.trash class="text-red-500 hover:text-red-700"/>
                                         </a>
                                     </form>
+                                    @if(!$post->indexed_by_google)
+                                        <form method="POST" action="{{route('admin.posts.index-now', $post->id)}}">
+                                            @csrf
+                                            <a class="cursor-pointer" onclick="this.closest('form').submit()">
+                                                <x-icons.database-fill-up class="text-clr-500 hover:text-clr-700"/>
+                                            </a>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

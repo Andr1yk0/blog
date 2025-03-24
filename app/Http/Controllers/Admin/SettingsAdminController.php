@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Console\Commands\UpdateExperienceHeatmap;
 use App\Http\Controllers\Controller;
+use App\Services\GoogleAPIService;
 use App\Services\SitemapService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class SettingsAdminController extends Controller
 {
-    public function index(): View
+    public function index(GoogleAPIService $googleAPIService): View
     {
-        return view('admin.settings.index');
+        $googleAuthUrl = $googleAPIService->getAuthUrl();
+        return view('admin.settings.index', compact('googleAuthUrl'));
     }
 
     public function generateSitemap(SitemapService $sitemapService): RedirectResponse

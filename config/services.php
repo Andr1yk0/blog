@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google-adsense' => [
+        'property-id' => env('GOOGLE_ADSENSE_PROPERTY_ID'),
+    ]
+
 ];

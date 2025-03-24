@@ -44,5 +44,12 @@
                 </form>
             </div>
         </div>
+        <div class="bg-gray-50 shadow sm:rounded-lg mb-2">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="mt-5 flex content-start gap-2">
+                    <a href="{{$googleAuthUrl}}" target="_blank" class="rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Refresh Google API token</a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

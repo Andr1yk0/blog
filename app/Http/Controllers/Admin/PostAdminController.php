@@ -7,6 +7,7 @@ use App\Http\Requests\PostEditAdminRequest;
 use App\Http\Requests\UploadPostImageRequest;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Services\GoogleAPIService;
 use App\Services\PostsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +20,7 @@ class PostAdminController extends Controller
         $query = Post::with('tags');
         $posts = QueryBuilder::for($query)
             ->allowedFilters(['title', 'content', 'tags.title'])
-            ->allowedSorts(['id', 'title', 'slug', 'published_at', 'updated_at', 'created_at'])
+            ->allowedSorts(['id', 'title', 'slug', 'published_at', 'indexed_by_google', 'updated_at', 'created_at'])
             ->defaultSort('-id')
             ->paginate(10)
             ->appends(request()->query());
@@ -68,6 +69,11 @@ class PostAdminController extends Controller
     {
         $filepath = $postsService->uploadPhoto($request->file('image'));
         return response()->json(['path' => $filepath]);
+    }
 
+    public function indexNow(Post $post, GoogleAPIService $googleAPIService)
+    {
+        $googleAPIService->indexNow('https://prostocode.com/posts/' . $post->slug);
+        return redirect()->route('admin.posts.index');
     }
 }

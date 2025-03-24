@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\ContactRequestAdminController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GoogleAuthController;
 use App\Http\Controllers\Admin\MediaAdminController;
 use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\SettingsAdminController;
@@ -30,6 +31,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(functi
         ->name('dashboard');
     Route::post('/posts/upload-image', [PostAdminController::class, 'uploadImage'])
         ->name('posts.upload-image');
+    Route::post('/posts/index-now/{post}', [PostAdminController::class, 'indexNow'])
+        ->name('posts.index-now');
     Route::resource('posts', PostAdminController::class);
     Route::resource('tests', TestAdminController::class);
     Route::resource('tags', TagAdminController::class);
@@ -42,4 +45,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(functi
         ->name('settings.generate-sitemap');
     Route::put('/update-heatmap', [SettingsAdminController::class, 'updateHeatmap'])
         ->name('settings.update-heatmap');
+
+
+    Route::get('/google-auth', [GoogleAuthController::class, 'callback'])->name('google-auth.callback');
 });
