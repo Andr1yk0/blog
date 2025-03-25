@@ -28,6 +28,7 @@ class GoogleAPIService
         $this->client->setAccessType('offline');
         $this->client->setPrompt('consent');
         $this->client->setAuthConfig(base_path('credentials.json'));
+        $this->client->setRedirectUri(config('services.google-api.redirect-url'));
 
         $oauthToken = OauthToken::where('token_type', OauthTokenTypeEnum::GOOGLE_API->value)->first();
         if($oauthToken) {

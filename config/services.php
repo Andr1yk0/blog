@@ -33,6 +33,10 @@ return [
 
     'google-adsense' => [
         'property-id' => env('GOOGLE_ADSENSE_PROPERTY_ID'),
+    ],
+
+    'google-api' => [
+        'redirect-url' => env('GOOGLE_API_REDIRECT_URL'),
     ]
 
 ];
