@@ -3,6 +3,7 @@
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Services\GoogleAPIService;
+use Mockery;
 use Tests\AuthUser;
 use Tests\RefreshDatabaseCustom;
 use Tests\TestCase;
@@ -21,11 +22,17 @@ class DashboardControllerTest extends TestCase
 
     public function test_logged_in_user_can_access_dashboard(): void
     {
-        $this->markTestSkipped();
         $this->mock(GoogleAPIService::class, function ($mock) {
-            $mock->shouldReceive('adSenseReport')->once();
+            $fakeResult = Mockery::mock(\Google_Service_Adsense_ReportResult::class);
+            $fakeResult->shouldReceive('getHeaders')
+                ->once()
+                ->andReturn([(object) ['name' => 'COUNTRY_NAME']]);
+            $fakeResult->shouldReceive('getRows')->once()->andReturn([]);
+
+            $mock->shouldReceive('adSenseReport')->once()->andReturn($fakeResult);
 
         });
+
 
         $response = $this->setUser()->get('/admin');
 
