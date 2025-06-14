@@ -31,7 +31,6 @@ jobs:
           npm ci
           npm run production
       - name: PHPUnit tests
-        uses: php-actions/phpunit@v3
         env:
           APP_KEY: base64:jUufceXxV/VCwQa+FfUao45IijVUeEPK4g6E/dq5WRM=
           DB_TESTING_CONNECTION: mysql_testing
@@ -41,18 +40,16 @@ jobs:
           DB_TESTING_USERNAME: tester
           DB_TESTING_PASSWORD: password
           XDEBUG_MODE: coverage
-        with:
-          version: "10.5.10"
-          php_version: "8.2"
-          configuration: "phpunit.xml"
-          coverage_html: "storage/framework/testing/coverage"
-          php_extensions: xdebug pdo_mysql zip gd json
+        run: vendor/bin/pest --coverage-clover clover.xml
+#        with:
+#          php_version: "8.2"
+#          configuration: "phpunit.xml"
+#          coverage_html: "storage/framework/testing/coverage"
+#          php_extensions: xdebug pdo_mysql zip gd json
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
           coverage_badge_path: output/coverage.svg
-          report_type: 'html'
-          report: 'storage/framework/testing/coverage/index.html'
           push_badge: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Git push to image-data branch

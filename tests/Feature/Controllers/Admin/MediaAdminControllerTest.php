@@ -1,79 +1,64 @@
 <?php
 
-namespace Tests\Feature\Controllers\Admin;
-
 use Illuminate\Http\UploadedFile;
-use Storage;
-use Tests\AuthUser;
-use Tests\RefreshDatabaseCustom;
-use Tests\TestCase;
 
-class MediaAdminControllerTest extends TestCase
-{
-    use AuthUser, RefreshDatabaseCustom;
+uses(\Tests\AuthUser::class);
+uses(\Tests\RefreshDatabaseCustom::class);
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-    }
+afterEach(function () {
+});
 
-    public function test_list_media(): void
-    {
-        $publicDisk = Storage::fake('public');
-        $publicDisk->put('media/test.jpg', 'test');
+test('list media', function () {
+    $publicDisk = Storage::fake('public');
+    $publicDisk->put('media/test.jpg', 'test');
 
-        $response = $this->setUser()->get('/admin/media');
+    $response = $this->setUser()->get('/admin/media');
 
-        $response->assertStatus(200);
-        $response->assertSee('test.jpg');
-    }
+    $response->assertStatus(200);
+    $response->assertSee('test.jpg');
+});
 
-    public function test_add_media(): void
-    {
-        $publicDisk = Storage::fake('public');
-        $folder = 'test';
-        $fileName = 'test.png';
+test('add media', function () {
+    $publicDisk = Storage::fake('public');
+    $folder = 'test';
+    $fileName = 'test.png';
 
-        $response = $this->setUser()->post('/admin/media', [
-            'file' => UploadedFile::fake()->image($fileName),
-            'path' => $folder,
-        ]);
+    $response = $this->setUser()->post('/admin/media', [
+        'file' => UploadedFile::fake()->image($fileName),
+        'path' => $folder,
+    ]);
 
-        $response->assertRedirect('/admin/media');
-        $response->assertSessionDoesntHaveErrors();
-        $this->assertTrue($publicDisk->exists('media/'.$folder.'/'.$fileName));
-    }
+    $response->assertRedirect('/admin/media');
+    $response->assertSessionDoesntHaveErrors();
+    expect($publicDisk->exists('media/'.$folder.'/'.$fileName))->toBeTrue();
+});
 
-    public function test_duplicated_media(): void
-    {
-        $publicDisk = Storage::fake('public');
-        $folder = 'test';
-        $fileName = 'test.png';
-        $filePath = $folder.'/'.$fileName;
-        $publicDisk->put('media/'.$filePath, 'test');
+test('duplicated media', function () {
+    $publicDisk = Storage::fake('public');
+    $folder = 'test';
+    $fileName = 'test.png';
+    $filePath = $folder.'/'.$fileName;
+    $publicDisk->put('media/'.$filePath, 'test');
 
-        $response = $this->setUser()->post('/admin/media', [
-            'file' => UploadedFile::fake()->image($fileName),
-            'path' => $folder,
-        ]);
+    $response = $this->setUser()->post('/admin/media', [
+        'file' => UploadedFile::fake()->image($fileName),
+        'path' => $folder,
+    ]);
 
-        $response->assertRedirect('/admin/media');
-        $this->assertEquals('File already exists!', session('errors')->getBag('default')->first());
-    }
+    $response->assertRedirect('/admin/media');
+    expect(session('errors')->getBag('default')->first())->toEqual('File already exists!');
+});
 
-    public function test_delete_media(): void
-    {
-        $publicDisk = Storage::fake('public');
-        $filePath = 'test/test.png';
-        $publicDisk->put('media/'.$filePath, 'test');
+test('delete media', function () {
+    $publicDisk = Storage::fake('public');
+    $filePath = 'test/test.png';
+    $publicDisk->put('media/'.$filePath, 'test');
 
-        $response = $this->setUser()->delete('/admin/media', [
-            'path' => 'media/'.$filePath,
-        ]);
+    $response = $this->setUser()->delete('/admin/media', [
+        'path' => 'media/'.$filePath,
+    ]);
 
-        $response->assertRedirect('/admin/media');
-        $response->assertSessionHas('success');
-        $this->assertFalse($publicDisk->exists('media/'.$filePath));
-
-    }
-}
+    $response->assertRedirect('/admin/media');
+    $response->assertSessionHas('success');
+    expect($publicDisk->exists('media/'.$filePath))->toBeFalse();
+});
