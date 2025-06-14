@@ -39,19 +39,15 @@ jobs:
           DB_TESTING_DATABASE: testing
           DB_TESTING_USERNAME: tester
           DB_TESTING_PASSWORD: password
-          XDEBUG_MODE: coverage
         run: vendor/bin/pest --coverage-clover clover.xml
-#        with:
-#          php_version: "8.2"
-#          configuration: "phpunit.xml"
-#          coverage_html: "storage/framework/testing/coverage"
-#          php_extensions: xdebug pdo_mysql zip gd json
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
           coverage_badge_path: output/coverage.svg
           push_badge: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Clean up
+        run: rm clover.xml
       - name: Git push to image-data branch
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\MediaAdminController;
 use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\SettingsAdminController;
 use App\Http\Controllers\Admin\TagAdminController;
-use App\Http\Controllers\Admin\TestAdminController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +33,6 @@ Route::middleware('auth:sanctum')->prefix('admin')->name('admin.')->group(functi
     Route::post('/posts/index-now/{post}', [PostAdminController::class, 'indexNow'])
         ->name('posts.index-now');
     Route::resource('posts', PostAdminController::class);
-    Route::resource('tests', TestAdminController::class);
     Route::resource('tags', TagAdminController::class);
     Route::resource('contact-requests', ContactRequestAdminController::class)
         ->only(['index', 'destroy']);
