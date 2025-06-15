@@ -46,8 +46,6 @@ jobs:
           coverage_badge_path: output/coverage.svg
           push_badge: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Clean up
-        run: rm clover.xml
       - name: Git push to image-data branch
         uses: peaceiris/actions-gh-pages@v3
         with:
