@@ -26,6 +26,22 @@ describe('posts', function () {
         $response->assertSee($posts[1]->title);
         $response->assertDontSee($posts[2]->title);
     });
+
+    test('shows published post', function () {
+        $post = Post::factory()->published()->create(['body_html' => 'Hello world!']);
+
+        $response = $this->get('/posts/'. $post->slug);
+        $response->assertStatus(200);
+        $response->assertSee($post->title);
+        $response->assertSee($post->body_html);
+    });
+
+    test('does not show not published post', function () {
+        $post = Post::factory()->create();
+
+        $response = $this->get('/posts/'. $post->slug);
+        $response->assertStatus(404);
+    });
 });
 
 

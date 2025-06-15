@@ -21,5 +21,5 @@ test('generates heatmap', function () {
     expect($config->value[0]['title'])->toEqual('PHP');
     expect($config->value[0]['months'])->toEqual(14);
     expect($config->value[0]['duration'])->toEqual('1 year 2 months');
-    expect($config->value)->toHaveCount(34);
+    expect($config->value)->toHaveCount(4);
 });

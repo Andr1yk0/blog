@@ -48,6 +48,18 @@ test('failed robot check', function () {
     $this->assertDatabaseEmpty('contact_requests');
 });
 
+test('email verification', function () {
+    $data = [
+        'name' => 'Tester',
+        'email' => 'testexample.com',
+        'message' => 'Hello',
+        'captcha_score' => 0.6
+    ];
+
+    $response = $this->followingRedirects()->from('/contacts')->post('contacts', $data);
+    $response->assertSee('The email field must be a valid email address.');
+});
+
 test('cookie policy', function () {
     $this->get('cookie-policy')->assertSuccessful();
 });
@@ -58,4 +70,17 @@ test('privacy policy', function () {
 
 test('terms and conditions', function () {
     $this->get('terms-and-conditions')->assertSuccessful();
+});
+
+test('show success message', function () {
+    $response = $this->withSession(['success' => 'Success message!!'])->get('/contacts');
+    $response->assertStatus(200)
+        ->assertSee('Success message!!');
+});
+
+test('show failed message', function () {
+    $response = $this->withViewErrors([
+        'email' => ['Invalid email address!'],
+    ])->get('/contacts');
+    $response->assertStatus(200);
 });

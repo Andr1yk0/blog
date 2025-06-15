@@ -50,6 +50,8 @@ class PostsController extends Controller
 
     public function show(Post $post): View|Application|Factory
     {
+        abort_if(!$post->published_at, 404);
+
         return view('posts.show', [
             'SEOData' => new SEOData(
                 title: $post->title,
